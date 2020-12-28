@@ -7,6 +7,9 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
+import Home from "./components/home/Home";
+import './index.css'
+import Footer from "./components/Footer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -45,8 +48,9 @@ function App() {
         <User />
       </ProtectedRoute>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-        <h1>My Home Page</h1>
+        <Home />
       </ProtectedRoute>
+      <Footer />
     </BrowserRouter>
   );
 }
