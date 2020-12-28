@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -10,6 +10,7 @@ import { authenticate } from "./services/auth";
 import Home from "./components/home/Home";
 import './index.css'
 import Footer from "./components/Footer";
+import Song from "./components/songs/Song";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -32,24 +33,26 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
-      <Route path="/login" exact={true}>
-        <LoginForm
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route path="/sign-up" exact={true}>
-        <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-      </Route>
-      <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-        <UsersList/>
-      </ProtectedRoute>
-      <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-        <User />
-      </ProtectedRoute>
-      <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-        <Home />
-      </ProtectedRoute>
+      <Switch>
+        <Route path="/login" exact={true}>
+          <LoginForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        </Route>
+        <Route path="/sign-up" exact={true}>
+          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        </Route>
+        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+          <UsersList/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+          <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+          <Home />
+        </ProtectedRoute>
+      </Switch>
       <Footer />
     </BrowserRouter>
   );
