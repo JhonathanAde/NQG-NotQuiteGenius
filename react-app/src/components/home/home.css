@@ -3,18 +3,84 @@
     padding: 50px;
     padding-left: 100px;
     padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-20 {
     background-color: orange;
     padding: 20px;
     display: flex;
+    width: 75%;
     flex-direction: column;
     align-items: space-around;
-    margin: 50px;
+    height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 40px;
+    margin-top: 0px;
+}
+
+
+.top-artists {
+    background-color: lightpink;
+    padding: 20px;
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "title title"
+    ". ."
+    ". ."
+    ;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.title-20 {
+    font-size: 40px;
+
+}
+.title-artist {
+    font-size: 40px;
+    grid-area: title;
 }
 
 .song-tile {
+    background-color: lightblue;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.song-number {
+    margin: 10px;
+}
+
+.song-image {
+    width: 60px;
+    height: 60px;
+    background-color: pink;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.song-title {
+    width: 60%;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.song-artist {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.artist-tile {
     background-color: lightblue;
     margin: 10px;
     padding: 10px;
