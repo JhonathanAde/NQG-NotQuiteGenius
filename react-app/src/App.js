@@ -12,6 +12,8 @@ import './index.css'
 import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 
+import SongForm from "./components/SongFormTest"
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
