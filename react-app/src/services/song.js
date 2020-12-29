@@ -1,15 +1,11 @@
 
-export const createSong = async (title, image, lyrics) => {
+export const createSong = async (payload) => {
   const response = await fetch('/api/songs/', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      title,
-      image,
-      lyrics
-    })
+    // headers: {
+    //   'Content-Type': 'application/json'
+    // },
+    body: payload
   });
 //   const res = await response.json();
 //   console.log("RESULT: ", res)

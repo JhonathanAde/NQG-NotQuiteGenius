@@ -11,12 +11,13 @@ def get_songs():
     songs = Song.query.all()
     return {"songs": [song.to_dict() for song in songs]}
 
+
 # CREATE SONG
 @song_routes.route('/', methods=["POST"])
 def create_song():
     print("INSIDE CREATE SONG!!")
     form = SongForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Check for existing artist
         # artist = Artist.query.filter(Artist.name === form.data['name']).first()
@@ -41,8 +42,9 @@ def create_song():
         # return user.to_dict()
         # img = request.files['image']
 
-        # img = form.data['image']
-        # print(f"IMAGE: {image}")
+        # img = form.data
+        img = form.image.data
+        print(f"IMAGE: {img}")
 
         print('HERE!')
         return {"result": "SUCCESS!"}
@@ -59,3 +61,24 @@ def create_song():
 def get_one_song(id):
     song = Song.query.get(id)
     return song.to_dict()
+
+
+
+# import boto3
+# from botocore.client import Config
+
+# ACCESS_KEY_ID = ''
+# ACCESS_SECRET_KEY = ''
+# BUCKET_NAME = 'img-bucket-00123'
+
+# data = open('bitmoji.png', 'rb')
+
+# s3 = boto3.resource(
+#     's3',
+#     aws_access_key_id=ACCESS_KEY_ID,
+#     aws_secret_access_key=ACCESS_SECRET_KEY,
+#     config=Config(signature_version='s3v4')
+# )
+# s3.Bucket(BUCKET_NAME).put_object(Key='bitmoji.png', Body=data)
+
+# print ("Done")
