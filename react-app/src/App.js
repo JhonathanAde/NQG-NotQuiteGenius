@@ -70,7 +70,7 @@ function App() {
             <Song />
           </Route>
           <Route path="/artists/:artistId" exact={true}>
-            <Artist />
+              <Artist />
           </Route>
           <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
             <UsersList/>
@@ -81,6 +81,12 @@ function App() {
           <Route path="/" exact={true} authenticated={authenticated}>
             <Home />
           </Route>
+
+          
+          <Route path="/song-form-test" exact={true}>
+            <SongForm />
+          </Route>
+
         </Switch>
         <div className="push"></div>
       </div>

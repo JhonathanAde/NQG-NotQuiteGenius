@@ -10,7 +10,12 @@ const SongForm = () => {
 
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
-    const song = await createSong(title, image, lyrics);
+    const data = new FormData();
+
+    data.append('title', title);
+    data.append('lyrics', lyrics);
+    data.append('image', image);
+    const song = await createSong(data);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
@@ -29,12 +34,12 @@ const SongForm = () => {
   };
 
   const updateImage = (e) => {
-    setImage(e.target.value);
+    setImage(e.target.files[0]);
   };
 
 
   return (
-    <form onSubmit={songDataSubmitHandler}>
+    <form onSubmit={songDataSubmitHandler} encType="multipart/form-data">
       <div>
         {errors.map((error) => (
           <div>{error}</div>
@@ -56,7 +61,6 @@ const SongForm = () => {
           name="file"
           type="file"
           placeholder="Album art"
-          value={image}
           onChange={updateImage}
         />
       </div>
