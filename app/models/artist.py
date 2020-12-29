@@ -17,3 +17,10 @@ class Artist(db.Model):
             "image": self.image,
             "songs": list(self.songs)
         }
+
+    def to_dict_no_songs(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "image": self.image,
+        }
