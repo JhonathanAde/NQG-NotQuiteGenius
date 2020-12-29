@@ -16,7 +16,7 @@
     width: 75%;
     flex-direction: column;
     align-items: space-around;
-    height: 450px;
+    height: 500px;
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 40px;
@@ -24,15 +24,22 @@
 }
 
 
+.artists-container {
+    background-color: lightpink;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 .top-artists {
     background-color: lightpink;
     padding: 20px;
     display: grid;
-    width: 90%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-    "title title"
     ". ."
     ". ."
     ;
@@ -70,6 +77,14 @@
     font-size: 20px;
     cursor: pointer;
 }
+.artist-image {
+    width: 150px;
+    height: 150px;
+    background-color: pink;
+    margin: 0px 0px 0px 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
 
 .song-title {
     margin: 0px 30px 0px 30px;
@@ -88,6 +103,9 @@
     background-color: lightblue;
     margin: 10px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .song-link {

@@ -1,11 +1,15 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom'
+import {useHistory, BrowserRouter} from 'react-router-dom'
 
 const SongTile = ({song, idx}) => {
     let history = useHistory()
 
     const songReroute = () => {
-        history.push(`songs/${song.id}`)
+        history.push(`/songs/${song.id}`)
+    }
+    const artistReroute = () => {
+
+        history.push(`/artists/${song.artist.id}`)
     }
 
     return (
@@ -15,7 +19,7 @@ const SongTile = ({song, idx}) => {
                 <div className="song-image">{song.image}</div>
                 <div className="song-title">{song.title}</div>
             </div>
-            <div className="artist-link">
+            <div className="artist-link" onClick={artistReroute}>
                 <div className="song-artist">{song.artist.name}</div>
             </div>
         </div>
