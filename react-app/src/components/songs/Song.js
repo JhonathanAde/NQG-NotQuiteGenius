@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useParams } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser'
 import './Song.css';
 
 
 const Song = () => {
   const [annotation, setAnnotation] = useState("");
+  const [song, setSong] = useState("");
+  const [lyricsHTML, setLyricsHTML] = useState("");
+  const {songId} = useParams();
 
   useEffect(() => {
-    if (annotation === '') {
-      return
-    }
+    // Load the song information
+    (async () => {
+      const response = await fetch(`/api/songs/${songId}`);
+      const song = await response.json();
+      setSong(song);
+      let lyrics = song.lyrics;
+      song.annotations.forEach((annot, i) => {
+        const key = annot.lyricKey
+        lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
+      })
+      setLyricsHTML(ReactHtmlParser(lyrics));
+    })();
+  }, [songId]);
 
-  }, [annotation]);
+  // useEffect(() => {
+  // }, [song])
 
   const onAnnotationClick = (e) => {
     const elementToReset = document.querySelector('.annotation-key.active');
@@ -19,9 +34,9 @@ const Song = () => {
     if (e.target.classList.contains('annotation-key')) {
       e.target.classList.add('active')
       const annotationKey = e.target.innerHTML;
-      // TODO fetch actual annotation and set it
-      document.querySelector('.songpage-annotation-text').innerHTML = annotationKey
-      setAnnotation(annotationKey)
+      const annotation = song.annotations[parseInt(e.target.getAttribute("data-index"))].content;
+      document.querySelector('.songpage-annotation-text').innerHTML = annotation
+      setAnnotation(annotation)
     }
     else {
       setAnnotation("")
@@ -33,20 +48,22 @@ const Song = () => {
       <header className="songpage-header">
         <img className="songpage-image" alt="Album Cover"/>
         <div className="songpage-info">
-          <h1 className="songpage-title">Song Title</h1>
-          <Link to="/artists/1" className="artist-name">Artist's Name</Link>
+          { song &&
+          <>
+            <h1 className="songpage-title">{song.title}</h1>
+            <Link to={`/artists/${song.artist.id}`} className="artist-name">{song.artist.name}</Link>
+          </>
+          }
         </div>
       </header>
       <div className="songpage-content">
         <section className="songpage-lyrics">
-          <p><span className="annotation-key" >Lyrics will go here</span> based of DB information<br />
-          <span className="annotation-key">Second line</span> of text<br />
-          Third line<br />
-          <span className="annotation-key">A really long fourth line of lyrics that may lap to two lines in a narrow window and show how the functionality will work with that.</span><br />
-          Fifth line<br />
-          Sixth line<br />
-          <span className="annotation-key">Seventh</span> line<br />
-          </p>
+          {song &&
+            <p> {
+                lyricsHTML
+              }
+            </p>
+          }
         </section>
         <section className="songpage-sidebar">
           <div className={`songpage-annotation ${(annotation ? " active" : "")}`}>Some active annotation comment
