@@ -17,6 +17,7 @@ import SongForm from "./components/SongFormTest"
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [active, setActive] = useState(false)
 
   useEffect(() => {
     (async() => {
@@ -28,22 +29,43 @@ function App() {
     })();
   }, []);
 
+    const toggleClass = () => {
+      const currentState = active
+      setActive(!currentState);
+  };
+
+
   if (!loaded) {
     return null;
   }
 
+
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      <div>
+        
+      </div>
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+          <SignUpForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
+            <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
+            <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
+          </div>
+          <div className="form-page">
+            <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </div>
         </Route>
         <Route path="/songs/:songId" exact={true}>
           <Song />

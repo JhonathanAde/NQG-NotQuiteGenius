@@ -1,0 +1,63 @@
+.form-container {
+    height: 80vh;
+    width: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-inputs {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    height: auto;
+    background-color: lightblue;
+    padding: 30px;
+}
+
+.form-input {
+    margin: 10px;
+}
+
+.partition {
+    position: absolute;
+    z-index: 1;
+    background-color: lightblue;
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: margin 1s ease;
+}
+
+.partition-login {
+    position: absolute;
+    margin-left: 50vw;
+}
+
+.partition-sign-up {
+    position: absolute;
+    margin-left: 0vw;
+}
+
+.login-active {
+    z-index: 3;
+    position: absolute;
+    cursor: pointer;
+}
+
+.login-hidden {
+    display: none;
+}
+
+.sign-up-hidden {
+    display: none;
+}
+
+.sign-up-active {
+    cursor: pointer;
+}

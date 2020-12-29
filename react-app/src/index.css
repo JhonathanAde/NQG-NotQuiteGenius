@@ -16,3 +16,11 @@ html {
     padding: 0px;
 }
 
+.form-page {
+    display: flex;
+
+}
+
+input:focus {
+    border: none;
+}
