@@ -6,13 +6,6 @@ from flask_login import UserMixin
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
-<<<<<<< HEAD
-  id = db.Column(db.Integer, primary_key = True)
-  username = db.Column(db.String(40), nullable = False, unique = True)
-  email = db.Column(db.String(255), nullable = False, unique = True)
-  hashed_password = db.Column(db.String(255), nullable = False)
-  
-=======
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100), nullable = False, unique = True)
     is_admin = db.Column(db.Boolean, nullable = False, default = False)
@@ -20,7 +13,6 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable = False)
 
     annotations = relationship('Annotation', back_populates='user', order_by='asc(Annotation.id)')
->>>>>>> f86dfb75c4fdd4896f093021c6a39f1ab52988d4
 
     @property
     def password(self):
