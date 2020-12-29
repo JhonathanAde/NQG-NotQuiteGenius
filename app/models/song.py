@@ -22,6 +22,6 @@ class Song(db.Model):
         "lyrics": self.lyrics,
         "image": self.image,
         "audioFiles": self.audio_files,
-        "artist": self.artist,
+        "artist": self.artist.to_dict_no_songs(),
         "annotations": list(self.annotations)
         }
