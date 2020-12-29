@@ -12,6 +12,8 @@ import './index.css'
 import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 
+import SongForm from "./components/SongFormTest"
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +44,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/songs/:songId" exact={true}>
+          <Song />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
