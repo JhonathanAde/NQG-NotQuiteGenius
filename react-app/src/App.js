@@ -79,6 +79,12 @@ function App() {
         <Route path="/" exact={true} authenticated={authenticated}>
           <Home />
         </Route>
+
+        
+        <Route path="/song-form-test" exact={true}>
+          <SongForm />
+        </Route>
+
       </Switch>
       <Footer />
     </BrowserRouter>
