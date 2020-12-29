@@ -1,3 +1,4 @@
+from app.models import annotation
 from sqlalchemy.orm import relationship
 from .db import db
 
@@ -23,5 +24,5 @@ class Song(db.Model):
         "image": self.image,
         "audioFiles": self.audio_files,
         "artist": self.artist.to_dict_no_songs(),
-        "annotations": list(self.annotations)
+        "annotations": [annotation.to_dict() for annotation in self.annotations],
         }

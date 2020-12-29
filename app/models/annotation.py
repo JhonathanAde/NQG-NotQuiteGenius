@@ -7,8 +7,8 @@ class Annotation(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id  = db.Column(db.ForeignKey('users.id'))
     song_id =  db.Column(db.ForeignKey('songs.id'))
-    lyric_key = db.Column(db.String(150), nullable = False)
-    content = db.Column(db.String(500), nullable = False)
+    lyric_key = db.Column(db.String(300), nullable = False)
+    content = db.Column(db.Text, nullable = False)
 
     song = relationship('Song', back_populates="annotations")
     user = relationship('User', back_populates="annotations")
@@ -22,7 +22,5 @@ class Annotation(db.Model):
             "songId": self.song_id,
             "lyricKey": self.lyric_key,
             "content": self.content,
-            "song": self.song,
-            "user": self.user
+            "user": self.user.to_dict()
         }
-    
