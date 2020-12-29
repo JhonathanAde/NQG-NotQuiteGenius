@@ -13,12 +13,17 @@ def seed_users():
 
     admin_adc = User(username='adc', email='adc@nqg.com', is_admin= True,
                 password='password')
-    
+
     admin_jhon = User(username='jhon', email='jhon@nqg.com', is_admin= True,
                 password='password')
 
+    admin_scott = User(username='scott',      email='scott@scott.com', is_admin= True,
+        password='password'
+    )
+
     db.session.add(admin_adc)
     db.session.add(admin_jhon)
+    db.session.add(admin_scott)
 
     db.session.commit()
 

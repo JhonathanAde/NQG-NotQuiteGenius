@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useParams } from 'react-router-dom';
 import './Song.css';
 
 
 const Song = () => {
   const [annotation, setAnnotation] = useState("");
+  const [song, setSong] = useState("");
+  const {songId} = useParams();
 
   useEffect(() => {
-    if (annotation === '') {
-      return
-    }
-
-  }, [annotation]);
+    (async () => {
+      const response = await fetch(`/api/songs/${songId}`);
+      const song = await response.json();
+      setSong(song);
+    })();
+  }, [annotation, songId]);
 
   const onAnnotationClick = (e) => {
     const elementToReset = document.querySelector('.annotation-key.active');
@@ -39,6 +42,10 @@ const Song = () => {
       </header>
       <div className="songpage-content">
         <section className="songpage-lyrics">
+          <p> {
+              song
+            }
+          </p>
           <p><span className="annotation-key" >Lyrics will go here</span> based of DB information<br />
           <span className="annotation-key">Second line</span> of text<br />
           Third line<br />
