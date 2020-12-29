@@ -13,6 +13,7 @@ const Song = () => {
       const response = await fetch(`/api/songs/${songId}`);
       const song = await response.json();
       setSong(song);
+      alert(song)
     })();
   }, [annotation, songId]);
 

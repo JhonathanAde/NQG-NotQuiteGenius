@@ -16,3 +16,7 @@ export const createSong = async (title, image, lyrics) => {
   return await response.json();
 }
 
+export const getSongs = async () => {
+  const response = await fetch("/api/songs/")
+  return await response.json();
+}
