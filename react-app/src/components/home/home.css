@@ -58,30 +58,41 @@
 }
 
 .song-number {
-    margin: 10px;
+    margin-left: 30px;
+    font-size: 30px;
 }
 
 .song-image {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     background-color: pink;
-    margin: 5px;
+    margin: 0px 0px 0px 30px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .song-title {
-    width: 60%;
-    margin: 10px;
-    font-size: 20px;
+    margin: 0px 30px 0px 30px;
+    font-size: 25px;
+    cursor: pointer;
 }
 
 .song-artist {
     margin: 10px;
-    font-size: 20px;
+    font-size: 25px;
+    text-align: right;
+    cursor: pointer;
 }
 
 .artist-tile {
     background-color: lightblue;
     margin: 10px;
     padding: 10px;
+}
+
+.song-link {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
 }
