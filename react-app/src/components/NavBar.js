@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = ({ setAuthenticated, authenticated }) => {
   return (
     <nav className="nav-bar">
       <div className="logo">
@@ -15,16 +15,21 @@ const NavBar = ({ setAuthenticated }) => {
         <input type="search" className="search-bar" placeholder="search" />
       </div>
       <div className="user-buttons">
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-          <LogoutButton setAuthenticated={setAuthenticated} />
+        {authenticated? 
+          <LogoutButton setAuthenticated={setAuthenticated} /> 
+          : 
+          <>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+            {/* <NavLink to="/users" exact={true} activeClassName="active">
+              Users
+            </NavLink> */}
+          </>
+        }
       </div>
     </nav>
   );
