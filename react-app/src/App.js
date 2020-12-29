@@ -8,6 +8,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 
+import SongForm from "./components/SongFormTest"
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +36,7 @@ function App() {
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
         />
+        <SongForm />
       </Route>
       <Route path="/sign-up" exact={true}>
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
