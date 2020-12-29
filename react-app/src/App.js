@@ -15,6 +15,7 @@ import Song from "./components/songs/Song";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [active, setActive] = useState(false)
 
   useEffect(() => {
     (async() => {
@@ -26,9 +27,16 @@ function App() {
     })();
   }, []);
 
+    const toggleClass = () => {
+      const currentState = active
+      setActive(!currentState);
+  };
+
+
   if (!loaded) {
     return null;
   }
+
 
   return (
     <BrowserRouter>
@@ -39,9 +47,20 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+          <SignUpForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
+            <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
+            <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
+          </div>
+          <div className="form-page">
+            <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </div>
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>

@@ -18,6 +18,8 @@
 
 .user-buttons {
     width: 30%;
+    display: flex;
+    justify-content: center;
 }
 
 .logo {

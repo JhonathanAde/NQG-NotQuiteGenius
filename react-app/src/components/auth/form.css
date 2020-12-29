@@ -1,0 +1,23 @@
+.form-container {
+    height: 80vh;
+    width: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-inputs {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    height: auto;
+    background-color: lightblue;
+    padding: 30px;
+}
+
+.form-input {
+    margin: 10px;
+}
