@@ -13,6 +13,6 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 class SongForm(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
-    lyrics = TextAreaField('lyrics', validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired()])
+    lyrics = TextAreaField('Lyrics', validators=[DataRequired()])
     image = FileField('Album art')
