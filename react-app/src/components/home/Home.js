@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ArtistTile from './ArtistTile';
 import './home.css'
 import SongTile from './SongTile';
+import {getSongs} from '../../services/song'
 
 const Home = () => {
+    const [songs, setSongs] = useState([])
+
+    useEffect(() => {
+        (async () => {
+            console.log("hits")
+            const songs = await getSongs()
+            setSongs(songs)
+            console.log(songs)
+        })()
+    }, []);
+
     return (
         <div className="main-content">
             <div className="top-20">

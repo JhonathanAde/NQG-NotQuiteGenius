@@ -9,6 +9,7 @@ song_routes = Blueprint('songs', __name__)
 @song_routes.route('/', methods=["GET"])
 def get_songs():
     songs = Song.query.all()
+    print("songs", songs)
     return {"songs": [song.to_dict() for song in songs]}
 
 

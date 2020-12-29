@@ -12,3 +12,7 @@ export const createSong = async (payload) => {
   return await response.json();
 }
 
+export const getSongs = async () => {
+  const response = await fetch("/api/songs/")
+  return await response.json();
+}
