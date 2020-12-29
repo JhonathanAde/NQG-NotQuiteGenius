@@ -5,6 +5,7 @@ import './form.css'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
+  const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -15,8 +16,13 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       const user = await signUp(username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
-      }
+      }  else {
+      setErrors(user.errors);
+      } 
+    } else {
+      setErrors(["Your passwords must match"])
     }
+    
   };
 
   const updateUsername = (e) => {
@@ -42,6 +48,11 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   return (
     <div className="form-container">
       <form onSubmit={onSignUp}>
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
         <div className="form-inputs">
           <div className="form-input">
             {/* <label>User Name</label> */}
