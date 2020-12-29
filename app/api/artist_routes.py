@@ -6,7 +6,7 @@ artist_routes = Blueprint('artists', __name__)
 
 # GETS ALL ARTISTS
 @artist_routes.route('/', methods=["GET"])
-def artist():
+def all_artist():
     artists = Artist.query.all()
     return {"artists": [artist.to_dict() for artist in artists]}
 
@@ -18,6 +18,6 @@ def artist():
 
 # GETS ONE ARTIST
 @artist_routes.route('/<int:id>', methods=["GET"])
-def artist(id):
+def one_artist(id):
     artist = Artist.query.get(id)
     return artist.to_dict()

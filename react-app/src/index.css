@@ -24,3 +24,12 @@ html {
 input:focus {
     border: none;
 }
+
+.wrapper {
+    min-height: 100%
+}
+
+.footer,
+.push {
+    height: 250px;
+}

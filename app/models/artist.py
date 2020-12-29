@@ -15,7 +15,7 @@ class Artist(db.Model):
             "id": self.id,
             "name": self.name,
             "image": self.image,
-            "songs": list(self.songs)
+            "songs": [song.to_dict() for song in self.songs]
         }
 
     def to_dict_no_songs(self):
