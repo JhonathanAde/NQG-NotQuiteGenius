@@ -43,6 +43,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
+        <Route path="/songs/:songId" exact={true}>
+          <Song />
+        </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
         </ProtectedRoute>

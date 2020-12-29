@@ -1,0 +1,75 @@
+.songpage-header {
+  padding: 30px;
+  display: flex;
+  background-color: gray;
+}
+
+.songpage-image {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+}
+
+.songpage-info {
+  padding-left: 10px;
+}
+
+.songpage-content {
+  display: flex;
+  align-items: stretch;
+}
+
+.songpage-lyrics {
+  padding: 5px;
+  flex-grow: .5;
+  position: relative;
+}
+
+.songpage-sidebar {
+  display: flex;
+  padding: 5px;
+  flex-grow: .5;
+}
+
+.songpage-annotation {
+  display: none;
+  border-left: 1px solid black;
+  padding: 5px;
+}
+
+.songpage-annotation.active {
+  display: block;
+}
+
+.songpage-sidelinks {
+  display: none;
+}
+
+.songpage-annotation:not(.active) ~ .songpage-sidelinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.annotation-key {
+  background-color: lightgray;
+}
+
+.annotation-key.active {
+  background-color: yellow;
+}
+
+.annotation-key.active:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 0;
+  margin-top: calc(-15px - .5rem);
+  margin-right: -6px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
