@@ -22,14 +22,14 @@
 
 .songpage-lyrics {
   padding: 5px;
-  flex-grow: .5;
+  flex: 0 0 50%;
   position: relative;
 }
 
 .songpage-sidebar {
   display: flex;
   padding: 5px;
-  flex-grow: .5;
+  flex: 0 0 50%;
 }
 
 .songpage-annotation {
@@ -53,6 +53,11 @@
 
 .annotation-key {
   background-color: lightgray;
+  cursor: pointer;
+}
+
+.annotation-key:hover {
+  background-color: rgb(252, 252, 190);
 }
 
 .annotation-key.active {
@@ -67,9 +72,8 @@
   position: absolute;
   right: 0;
   margin-top: calc(-15px - .5rem);
-  margin-right: -6px;
+  margin-right: -5px;
   border-width: 15px;
   border-style: solid;
   border-color: transparent black transparent transparent;
 }
-
