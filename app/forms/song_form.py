@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, FileField
+from wtforms import IntegerField, StringField, TextAreaField, FileField
 from wtforms.validators import DataRequired, ValidationError
+from flask_wtf.file import FileAllowed
 # from app.models import Song, Artist
 
 
@@ -14,5 +15,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 class SongForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
+    artist_id = IntegerField('Artist ID', validators=[DataRequired()])
     lyrics = TextAreaField('Lyrics', validators=[DataRequired()])
-    image = FileField('Album art')
+    image = FileField('Album art', validators=[FileAllowed(['jpg', 'png'], 'Images only!')])
+    audio_file = FileField('Audio', validators=[FileAllowed(['mp3', 'wav'], 'mp3 or wav files only!')])

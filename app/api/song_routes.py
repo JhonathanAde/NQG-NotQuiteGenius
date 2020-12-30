@@ -8,7 +8,9 @@ from app.forms import SongForm, AnnotationForm
 
 
 song_routes = Blueprint('songs', __name__)
-ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+# REGEX TO CHECK FOR EXTENSIONS
+#  \.(?i)(jpe?g|png|gif)$
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -34,6 +36,7 @@ def get_songs():
 def create_song():
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         img = request.files['image']
         img_name = secure_filename(img.filename)
@@ -43,22 +46,21 @@ def create_song():
         result = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img)
 
         img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
-        print(f"IMG PATH!! {img_path}")
+        # print(f"IMG PATH!! {img_path}")
 
-        # song = Song(
-        #     title=form.data['title'],
-        #     artist_id=form.data['artist_id']
-        #     lyrics
-        #     image
-        #     audio_files
-        # )
-        # return song.to_dict()
+        song = Song(
+            title=form.data['title'],
+            artist_id=form.data['artist_id'],
+            lyrics=form.data['lyrics'],
+            image=img_path,
+            audio_file=form.data['audio_file']
+        )
+
+        db.session.add(song)
+        db.session.commit()
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
-
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 # GETS ONE SONG
 @song_routes.route('/<int:id>', methods=["GET"])
@@ -66,6 +68,37 @@ def get_one_song(id):
     song = Song.query.get(id)
     return song.to_dict()
 
+
+# EDIT SONG
+# @song_routes.route('/<int:id>', methods=["PATCH"])
+# def create_song():
+#     form = SongForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#         img = request.files['image']
+#         img_name = secure_filename(img.filename)
+#         print(f"FILE NAME!! {img_name}")
+
+#         s3 = boto3.resource('s3')
+#         result = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img)
+
+#         img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
+#         # print(f"IMG PATH!! {img_path}")
+
+#         song = Song(
+#             title=form.data['title'],
+#             artist_id=form.data['artist_id'],
+#             lyrics=form.data['lyrics'],
+#             image=img_path,
+#             audio_file=form.data['audio_file']
+#         )
+
+#         db.session.add(song)
+#         db.session.commit()
+#         return song.to_dict()
+#     else:
+#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # POSTS AN ANNOTATION
