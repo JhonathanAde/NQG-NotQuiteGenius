@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createSong } from "../services/song";
 import "./SongForm.css"
+import {getArtists} from '../services/artists'
 
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
@@ -9,7 +10,17 @@ const SongForm = () => {
   const [lyrics, setLyrics] = useState("");
   const [image, setImage] = useState("");
   const [audioFile, setAudioFile] = useState("");
+  const [artists, setArtists] = useState(null);
 
+  useEffect(() => {
+    (async () => {
+      const res = await getArtists()
+      console.log(res)
+      setArtists(res.artists)
+    })()
+  }, []);
+  
+  console.log("hits", artists)
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
     console.log("ARTIST ID", artistId)
@@ -77,32 +88,47 @@ const SongForm = () => {
             <input
               name="artist_id"
               type="text"
+              list="artists"
               placeholder="Artist"
               value={artistId}
               onChange={updateArtistId}
             />
+            <datalist id="artists">
+              {artists && 
+              // console.log("inside datalist", artists)
+              artists.map((artist, id) => (
+                <option value={artist.id}>{artist.name}</option>
+              ))
+              }
+            </datalist>
           </div>
-          <label htmlFor="image">Album Art</label>
-          <div className="form-input">
+
+          <label htmlFor="image">Album Cover</label>
+          <div className="form-input-file">
             <input
+              className="custom-file-input"
               name="Album art"
               type="file"
               placeholder="Album art"
               onChange={updateImage}
             />
+          <div className="file-button">Upload File</div>
           </div>
           <label htmlFor="">Song Sample</label>
-          <div className="form-input">
+          <div className="form-input-file">
             <input
+              className="custom-file-input"
               name="Song sample"
               type="file"
               placeholder="Song_sample"
               onChange={updateSong}
             />
+            <div className="file-button">Upload File</div>
           </div>
           <label htmlFor="lyrics">Lyrics</label>
           <div className="form-input">
             <textarea
+              className="lyrics-field"
               name="lyrics"
               placeholder="Lyrics"
               value={lyrics}

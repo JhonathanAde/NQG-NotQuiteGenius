@@ -80,7 +80,7 @@ const Song = (authenticated) => {
   return (
     <div className="songpage" onClick={onAnnotationClick}>
       <header className="songpage-header">
-        <img className="songpage-image" alt="Album Cover"/>
+        <img className="songpage-image" alt="Album Cover" src={song.image}/>
         <div className="songpage-info">
           { song &&
           <>

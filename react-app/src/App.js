@@ -95,8 +95,8 @@ function App() {
           </Route>
 
         </Switch>
-      </div>
         <div className="push"></div>
+      </div>
       <Footer className="footer"/>
     </BrowserRouter>
   );

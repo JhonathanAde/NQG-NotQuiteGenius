@@ -34,7 +34,6 @@ def get_songs():
 def create_song():
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("#############", form.data)
 
     if form.validate_on_submit():
         # image file
@@ -57,6 +56,8 @@ def create_song():
 
         img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
         song_path = f"https://nqg-songs.s3.amazonaws.com/{song_name}"
+
+        
 
         song = Song(
             title=form.data['title'],
