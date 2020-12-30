@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { createSong } from "../services/song";
+import { createSong, editSong } from "../services/song";
 
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState("");
+  const [artistId, setArtistId] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [image, setImage] = useState("");
+  const [audioFile, setAudioFile] = useState("");
 
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
+    console.log("ARTIST ID", artistId)
     const data = new FormData();
 
     data.append('title', title);
+    data.append('artist_id', artistId);
     data.append('lyrics', lyrics);
     data.append('image', image);
-    const song = await createSong(data);
+    data.append('audio_file', audioFile);
+    // const song = await createSong(data);
+    const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
@@ -27,6 +33,10 @@ const SongForm = () => {
 
   const updateTitle = (e) => {
     setTitle(e.target.value);
+  };
+
+  const updateArtistId = (e) => {
+    setArtistId(e.target.value);
   };
 
   const updateLyrics = (e) => {
@@ -53,6 +63,16 @@ const SongForm = () => {
           placeholder="Title"
           value={title}
           onChange={updateTitle}
+        />
+      </div>
+      <div>
+        <label htmlFor="artistId">Artist ID</label>
+        <input
+          name="artistId"
+          type="number"
+          placeholder="Artist ID"
+          value={artistId}
+          onChange={updateArtistId}
         />
       </div>
       <div>
