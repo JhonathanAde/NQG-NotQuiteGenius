@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import './form.css'
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -13,16 +13,17 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
+      const data = await signUp(username, email, password);
+      if (!data.errors) {
         setAuthenticated(true);
+        setUser(data)
       }  else {
-      setErrors(user.errors);
-      } 
+      setErrors(data.errors);
+      }
     } else {
       setErrors(["Your passwords must match"])
     }
-    
+
   };
 
   const updateUsername = (e) => {
