@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, jsonify, request, url_for
 import boto3
+import mimetypes
 from werkzeug.utils import secure_filename
 # from flask_login import login_required
 from app.models import Artist, Song, Annotation, db
@@ -13,9 +14,6 @@ song_routes = Blueprint('songs', __name__)
 #  \.(?i)(jpe?g|png|gif)$
 
 def validation_errors_to_error_messages(validation_errors):
-    """
-    Simple function that turns the WTForms validation errors into a simple list
-    """
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
@@ -42,11 +40,13 @@ def create_song():
         img_name = secure_filename(img.filename)
         print(f"FILE NAME!! {img_name}")
 
+        mime_type = mimetypes.guess_type(img_name)
+        print(f"MIME TYPE!! {mime_type}")
+        
         s3 = boto3.resource('s3')
-        result = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img)
+        uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
         img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
-        # print(f"IMG PATH!! {img_path}")
 
         song = Song(
             title=form.data['title'],
@@ -70,35 +70,41 @@ def get_one_song(id):
 
 
 # EDIT SONG
-# @song_routes.route('/<int:id>', methods=["PATCH"])
-# def create_song():
-#     form = SongForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+@song_routes.route('/<int:id>', methods=["PATCH"])
+def edit_song(id):
+    form = SongForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     if form.validate_on_submit():
-#         img = request.files['image']
-#         img_name = secure_filename(img.filename)
-#         print(f"FILE NAME!! {img_name}")
+    if form.validate_on_submit():
+        img = request.files['image']
+        img_name = secure_filename(img.filename)
 
-#         s3 = boto3.resource('s3')
-#         result = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img)
+        mime_type = mimetypes.guess_type(img_name)
+        print(f"MIME TYPE!! {mime_type}")
 
-#         img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
-#         # print(f"IMG PATH!! {img_path}")
+        s3 = boto3.resource('s3')
+        uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
-#         song = Song(
-#             title=form.data['title'],
-#             artist_id=form.data['artist_id'],
-#             lyrics=form.data['lyrics'],
-#             image=img_path,
-#             audio_file=form.data['audio_file']
-#         )
+        # 'ContentDisposition' => 'inline; filename=filename.jpg'
+        img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
+        # print(f"IMG PATH!! {img_path}")
 
-#         db.session.add(song)
-#         db.session.commit()
-#         return song.to_dict()
-#     else:
-#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        song_to_edit = Song.query.get(id)
+        # if !song:
+        #     return {"error":f"song with song ID {id} does not exist."}
+        
+        song_to_edit.title = form.data['title']
+        song_to_edit.artist_id = form.data['artist_id']
+        song_to_edit.lyrics = form.data['lyrics']
+        song_to_edit.image = img_path
+        song_to_edit.audio_file = form.data['audio_file']
+
+        db.session.add(song_to_edit)
+        db.session.commit()
+
+        return song_to_edit.to_dict()
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # POSTS AN ANNOTATION

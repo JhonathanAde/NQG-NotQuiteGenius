@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { createSong } from "../services/song";
+import { createSong, editSong } from "../services/song";
 
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
@@ -20,7 +20,8 @@ const SongForm = () => {
     data.append('lyrics', lyrics);
     data.append('image', image);
     data.append('audio_file', audioFile);
-    const song = await createSong(data);
+    // const song = await createSong(data);
+    const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
