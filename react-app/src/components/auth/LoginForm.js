@@ -3,18 +3,19 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import './form.css'
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
-    if (!user.errors) {
+    const data = await login(email, password);
+    if (!data.errors) {
       setAuthenticated(true);
+      setUser(data)
     } else {
-      setErrors(user.errors);
+      setErrors(data.errors);
     }
   };
 
