@@ -4,7 +4,7 @@ import ReactHtmlParser from 'react-html-parser'
 import './Song.css';
 
 
-const Song = (authenticated) => {
+const Song = ({authenticated}) => {
   const [annotation, setAnnotation] = useState("");
   const [song, setSong] = useState("");
   const [lyricsHTML, setLyricsHTML] = useState("");
@@ -30,11 +30,11 @@ const Song = (authenticated) => {
   useEffect(() => {
     //Remove any previous selections
     const priorSelection = document.querySelectorAll('.songpage-new-annotation');
-    for n in priorSelection {
-      const text = n.innerHTML;
-      n.after(text)
-      n.remove()
-    }
+    // for (const n in priorSelection) {
+    //   const text = n.innerHTML;
+    //   n.after(text)
+    //   n.remove()
+    // }
     //Make new selections
     if (newAnnotationKey) {
 
@@ -57,22 +57,45 @@ const Song = (authenticated) => {
     }
   }
 
-  const trackSelectionStart = (e) => {
-    if (!authenticated) return;
-    setValidSelect(true)
-  }
-
   const onLyricSelection = (e) => {
-      if (!validSelect || !authenticated) return;
-      var text = "";
+      if (!authenticated) return;
+      let text = "";
+      let sel;
+      let range;
+
+      function validSelectionCheck(range) {
+        const startParent = range.startContainer.parentElement;
+        const endParent = range.endContainer.parentElement;
+
+        //Make sure new key does exist in current key
+        const startNotNestedInKey = startParent.closest('.annotation-key') === null;
+        const endNotNestedInKey = endParent.closest('.annotation-key');
+        const notNestedInKey = startNotNestedInKey && endNotNestedInKey;
+
+        //Make sure selection does not wrap a current key
+        const notContainingKey = 
+
+        //Make sure selection is within lyrics only
+        const startInLyrics = startParent.closest('.songpage-lyrics') !== null;
+        const endInLyrics = .closest('.songpage-lyrics') !== null;
+        const isInLyrics = startInLyrics && endInLyrics;
+
+        return notNestedInKey && isInLyrics
+      }
+
       if (window.getSelection) {
-          text = window.getSelection().toString();
+        sel = window.getSelection();
+        range = sel.getRangeAt(0)
+        if (!validSelectionCheck(range)) return;
+        text = sel.toString();
       } else if (document.selection && document.selection.type != "Control") {
-          text = document.selection.createRange().text;
+        sel = document.selection;
+        range = sel.createRange();
+        if (!validSelectionCheck(range)) return;
+        text = sel.text;
       }
       console.log('setting new annotation:', text)
       setNewAnnotationKey(text);
-      setValidSelect(false);
       return text;
   }
 
@@ -90,7 +113,7 @@ const Song = (authenticated) => {
         </div>
       </header>
       <div className="songpage-content">
-        <section className="songpage-lyrics" onMouseDown={trackSelectionStart} onMouseUp={onLyricSelection}>
+        <section className="songpage-lyrics" onMouseUp={onLyricSelection}>
           {song &&
             <p> {
                 lyricsHTML

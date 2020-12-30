@@ -66,8 +66,13 @@ function App() {
               <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </div>
           </Route>
+<<<<<<< Updated upstream
           <Route path="/songs/:songId" exact={true} authenticated={authenticated}>
             <Song />
+=======
+          <Route path="/songs/:songId" exact={true}>
+            <Song authenticated={authenticated} user={user}/>
+>>>>>>> Stashed changes
           </Route>
           <Route path="/artists/:artistId" exact={true}>
               <Artist />
