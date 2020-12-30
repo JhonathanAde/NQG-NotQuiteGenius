@@ -66,7 +66,7 @@ function App() {
               <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </div>
           </Route>
-          <Route path="/songs/:songId" exact={true}>
+          <Route path="/songs/:songId" exact={true} authenticated={authenticated}>
             <Song />
           </Route>
           <Route path="/artists/:artistId" exact={true}>
@@ -82,7 +82,7 @@ function App() {
             <Home />
           </Route>
 
-          
+
           <Route path="/song-form-test" exact={true}>
             <SongForm />
           </Route>
