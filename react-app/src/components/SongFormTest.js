@@ -48,6 +48,10 @@ const SongForm = () => {
     setImage(e.target.files[0]);
   };
 
+  const updateSong = (e) => {
+    setAudioFile(e.target.files[0])
+  }
+
 
   return (
     <div className="form-container">
@@ -68,6 +72,16 @@ const SongForm = () => {
               onChange={updateTitle}
             />
           </div>
+          <label htmlFor="title">Artist</label>
+          <div className="form-input">
+            <input
+              name="artist_id"
+              type="text"
+              placeholder="Artist"
+              value={artistId}
+              onChange={updateArtistId}
+            />
+          </div>
           <label htmlFor="image">Album Art</label>
           <div className="form-input">
             <input
@@ -83,7 +97,7 @@ const SongForm = () => {
               name="Song sample"
               type="file"
               placeholder="Song_sample"
-              onChange={updateImage}
+              onChange={updateSong}
             />
           </div>
           <label htmlFor="lyrics">Lyrics</label>
