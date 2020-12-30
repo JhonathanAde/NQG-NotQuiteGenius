@@ -41,7 +41,7 @@ def create_song():
         # print(f"FILE NAME!! {img_name}")
 
         mime_type = mimetypes.guess_type(img_name)
-        print(f"MIME TYPE!!! {mime_type}")
+        print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
         
         s3 = boto3.resource('s3')
         uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
