@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useParams } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser'
 import './Song.css';
+import AnnotationForm from './AnnotationForm';
 
 
 const Song = () => {
@@ -73,6 +74,7 @@ const Song = () => {
           <div className="songpage-sidelinks">
             <NavLink to="/songs/1">Song 1</NavLink>
             <NavLink to="/songs/2">Song 2</NavLink>
+            <AnnotationForm lyricKey="man" songId={songId} userId="1"/>
           </div>
         </section>
       </div>

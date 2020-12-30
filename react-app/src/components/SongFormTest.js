@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import { createSong } from "../services/song";
+import "./SongForm.css"
 
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
@@ -39,42 +39,55 @@ const SongForm = () => {
 
 
   return (
-    <form onSubmit={songDataSubmitHandler} encType="multipart/form-data">
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor="title">Title</label>
-        <input
-          name="title"
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={updateTitle}
-        />
-      </div>
-      <div>
-        <label htmlFor="image">Album Art</label>
-        <input
-          name="file"
-          type="file"
-          placeholder="Album art"
-          onChange={updateImage}
-        />
-      </div>
-      <div>
-        <label htmlFor="lyrics">Lyrics</label>
-        <textarea
-          name="lyrics"
-          placeholder="Lyrics"
-          value={lyrics}
-          onChange={updateLyrics}
-        />
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    <div className="form-container">
+      <form onSubmit={songDataSubmitHandler} encType="multipart/form-data">
+        <div className="form-inputs">
+          <div>
+            {errors.map((error) => (
+              <div>{error}</div>
+            ))}
+          </div>
+          <label htmlFor="title">Title</label>
+          <div className="form-input">
+            <input
+              name="title"
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={updateTitle}
+            />
+          </div>
+          <label htmlFor="image">Album Art</label>
+          <div className="form-input">
+            <input
+              name="Album art"
+              type="file"
+              placeholder="Album art"
+              onChange={updateImage}
+            />
+          </div>
+          <label htmlFor="">Song Sample</label>
+          <div className="form-input">
+            <input
+              name="Song sample"
+              type="file"
+              placeholder="Song_sample"
+              onChange={updateImage}
+            />
+          </div>
+          <label htmlFor="lyrics">Lyrics</label>
+          <div className="form-input">
+            <textarea
+              name="lyrics"
+              placeholder="Lyrics"
+              value={lyrics}
+              onChange={updateLyrics}
+            />
+          </div>
+            <button className="form-input" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

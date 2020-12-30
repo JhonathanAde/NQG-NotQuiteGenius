@@ -80,11 +80,12 @@ def post_annotation(id):
             lyric_key=form.data['lyric_key'],
             content=form.data['content']
         )
+        print("#######", annotation)
         db.session.add(annotation)
         db.session.commit()
-        return "Sucess!!"
+        return "Sucess!"
     else:
-        return "Why bro?"
+        return "Form was not validated"
 
 # UPDATES AN ANNOTATION
 @song_routes.route('/annotations/<int:id>', methods=["GET", "POST"])

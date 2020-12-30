@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { annotate } from '../../services/song';
 
 const AnnotationForm = ({lyricKey, songId, userId}) => {
     const [content, setContent] = useState("")
 
-    const addAnnotation = (e) => {
+    const addAnnotation = async (e) => {
         e.preventDefault()
         const data = new FormData();
 
@@ -23,7 +23,7 @@ const AnnotationForm = ({lyricKey, songId, userId}) => {
         <div>
             <form method="post" action={`/api/songs/${songId}/annotation`}>
                 <input type="hidden" name="lyric_key" value={lyricKey} />
-                <input type="text-area" name="content" placeholder="Add Annotation" value={content} onChange={updateContent}/>
+                <textarea name="content" placeholder="Add Annotation" value={content} onChange={updateContent}/>
                 <button type="submit" onClick={addAnnotation}>Add</button>
             </form>
         </div>

@@ -1,6 +1,6 @@
 .form-container {
     height: 80vh;
-    width: 50%;
+    min-width: 50%;
     background-color: pink;
     display: flex;
     justify-content: center;

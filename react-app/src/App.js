@@ -46,7 +46,7 @@ function App() {
       <div className="wrapper">
         <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
         <Switch>
-          <Route path="/login" exact={true}>
+          {/* <Route path="/login" exact={true}>
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
@@ -55,7 +55,7 @@ function App() {
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
             />
-          </Route>
+          </Route> */} 
           <Route path="/sign-up" exact={true}>
             <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
               <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
@@ -77,6 +77,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
             <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/create-song" exact={true} authenticated={authenticated}>
+            <SongForm />
           </ProtectedRoute>
           <Route path="/" exact={true} authenticated={authenticated}>
             <Home />

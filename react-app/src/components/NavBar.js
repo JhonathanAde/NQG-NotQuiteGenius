@@ -16,7 +16,12 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
       </div>
       <div className="user-buttons">
         {authenticated? 
-          <LogoutButton setAuthenticated={setAuthenticated} /> 
+          <>
+            <LogoutButton setAuthenticated={setAuthenticated} />
+            <NavLink to="/create-song" exact={true} activeClassName="active">
+              Create Song
+            </NavLink>
+          </>
           : 
           <>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
