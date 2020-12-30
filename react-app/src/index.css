@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-div, p {
+* {
     box-sizing: border-box;
 }
 
@@ -23,4 +23,13 @@ html {
 
 input:focus {
     border: none;
+}
+
+.wrapper {
+    min-height: 100%
+}
+
+.footer,
+.push {
+    height: 250px;
 }
