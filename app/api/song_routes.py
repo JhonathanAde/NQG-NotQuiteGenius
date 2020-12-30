@@ -3,8 +3,8 @@ from flask import Blueprint, jsonify, request, url_for
 import boto3
 from werkzeug.utils import secure_filename
 # from flask_login import login_required
-from app.models import Artist, Song, db
-from app.forms import SongForm
+from app.models import Artist, Song, Annotation, db
+from app.forms import SongForm, AnnotationForm
 
 
 song_routes = Blueprint('songs', __name__)
@@ -80,6 +80,52 @@ def create_song():
 def get_one_song(id):
     song = Song.query.get(id)
     return song.to_dict()
+
+
+
+# POSTS AN ANNOTATION
+@song_routes.route('/<int:id>/annotations', methods=["POST"])
+def post_annotation(id):
+    form = AnnotationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        annotation = Annotation(
+            user_id=form.data['user_id'],
+            song_id=id,
+            lyric_key=form.data['lyric_key'],
+            content=form.data['content']
+        )
+        db.session.add(annotation)
+        db.session.commit()
+        return "Sucess!!"
+    else:
+        return "Why bro?"
+
+# UPDATES AN ANNOTATION
+@song_routes.route('/annotations/<int:id>', methods=["GET", "POST"])
+def update_annotation(id):
+    annotation = Annotation.query.filter_by(id=id).first()
+    if request.method == 'POST':
+        if annotation:
+            db.session.delete(annotation)
+            db.session.commit()
+
+            form = AnnotationForm()
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                annotation = Annotation(
+                    user_id=form.data['user_id'],
+                    song_id=form.data['song_id'],
+                    lyric_key=form.data['lyric_key'],
+                    content=form.data['content']
+                )
+                db.session.add(annotation)
+                db.session.commit()
+     
+
+
+
+
 
 
 
