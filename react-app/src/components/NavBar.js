@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
-const NavBar = ({ setAuthenticated, authenticated }) => {
+const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
   return (
     <nav className="nav-bar">
       <div className="logo">
@@ -15,9 +15,9 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
         <input type="search" className="search-bar" placeholder="search" />
       </div>
       <div className="user-buttons">
-        {authenticated? 
-          <LogoutButton setAuthenticated={setAuthenticated} /> 
-          : 
+        {authenticated?
+          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
+          :
           <>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Register
