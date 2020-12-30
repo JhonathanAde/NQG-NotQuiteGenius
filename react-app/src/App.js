@@ -17,14 +17,16 @@ import SongForm from "./components/SongFormTest"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState({})
   const [loaded, setLoaded] = useState(false);
   const [active, setActive] = useState(false)
 
   useEffect(() => {
     (async() => {
-      const user = await authenticate();
-      if (!user.errors) {
+      const data = await authenticate();
+      if (!data.errors) {
         setAuthenticated(true);
+        setUser(data)
       }
       setLoaded(true);
     })();
@@ -44,16 +46,18 @@ function App() {
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+        <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser}/>
         <Switch>
           <Route path="/login" exact={true}>
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
+              setUser={setUser}
             />
             <SignUpForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
+              setUser={setUser}
             />
           </Route>
           <Route path="/sign-up" exact={true}>
@@ -62,12 +66,12 @@ function App() {
               <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
             </div>
             <div className="form-page">
-              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} />
+              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  setUser={setUser}/>
             </div>
           </Route>
-          <Route path="/songs/:songId" exact={true} authenticated={authenticated}>
-            <Song />
+          <Route path="/songs/:songId" exact={true}>
+            <Song authenticated={authenticated} />
           </Route>
           <Route path="/artists/:artistId" exact={true}>
               <Artist />
