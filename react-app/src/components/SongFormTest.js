@@ -20,8 +20,9 @@ const SongForm = () => {
     data.append('lyrics', lyrics);
     data.append('image', image);
     data.append('audio_file', audioFile);
-    // const song = await createSong(data);
-    const song = await editSong(data, 6);
+
+    const song = await createSong(data);
+    // const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
