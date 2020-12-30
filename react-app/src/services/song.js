@@ -16,3 +16,12 @@ export const getSongs = async () => {
   const response = await fetch("/api/songs/")
   return await response.json();
 }
+
+export const annotate = async (songId, payload) => {
+  const response = await fetch(`/api/songs/${songId}/annotations`,{
+    method: 'POST',
+    body: payload
+  });
+
+  return await response.json();
+}
