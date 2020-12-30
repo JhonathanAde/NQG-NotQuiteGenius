@@ -46,7 +46,7 @@
   display: none;
 }
 
-.songpage-annotation:not(.active) ~ .songpage-sidelinks {
+:not(.active) ~ .songpage-sidelinks {
   display: flex;
   flex-direction: column;
 }

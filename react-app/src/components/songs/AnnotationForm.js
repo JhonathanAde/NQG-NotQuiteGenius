@@ -12,6 +12,7 @@ const AnnotationForm = ({lyricKey, songId, userId}) => {
         data.append("user_id", userId)
         data.append("content", content)
 
+        setContent("")
         const annotation = await annotate(songId, data)
     }
 

@@ -5,10 +5,12 @@ import './Song.css';
 import AnnotationForm from './AnnotationForm';
 
 
-const Song = () => {
+const Song = (authenticated) => {
   const [annotation, setAnnotation] = useState("");
   const [song, setSong] = useState("");
   const [lyricsHTML, setLyricsHTML] = useState("");
+  const [validSelect, setValidSelect] = useState(false);
+  const [newAnnotationKey, setNewAnnotationKey] = useState("");
   const {songId} = useParams();
 
   useEffect(() => {
@@ -24,12 +26,24 @@ const Song = () => {
       })
       setLyricsHTML(ReactHtmlParser(lyrics));
     })();
-  }, [songId]);
+  }, [songId, authenticated]);
 
-  // useEffect(() => {
-  // }, [song])
+  useEffect(() => {
+    //Remove any previous selections
+    const priorSelection = document.querySelectorAll('.songpage-new-annotation');
+    // for n in priorSelection {
+    //   const text = n.innerHTML;
+    //   n.after(text)
+    //   n.remove()
+    // }
+    //Make new selections
+    if (newAnnotationKey) {
+
+    };
+  }, [newAnnotationKey])
 
   const onAnnotationClick = (e) => {
+    setNewAnnotationKey("");
     const elementToReset = document.querySelector('.annotation-key.active');
     if (elementToReset) elementToReset.classList.remove('active');
     if (e.target.classList.contains('annotation-key')) {
@@ -42,6 +56,25 @@ const Song = () => {
     else {
       setAnnotation("")
     }
+  }
+
+  const trackSelectionStart = (e) => {
+    if (!authenticated) return;
+    setValidSelect(true)
+  }
+
+  const onLyricSelection = (e) => {
+      if (!validSelect || !authenticated) return;
+      var text = "";
+      if (window.getSelection) {
+          text = window.getSelection().toString();
+      } else if (document.selection && document.selection.type != "Control") {
+          text = document.selection.createRange().text;
+      }
+      console.log('setting new annotation:', text)
+      setNewAnnotationKey(text);
+      setValidSelect(false);
+      return text;
   }
 
   return (
@@ -58,7 +91,7 @@ const Song = () => {
         </div>
       </header>
       <div className="songpage-content">
-        <section className="songpage-lyrics">
+        <section className="songpage-lyrics" onMouseDown={trackSelectionStart} onMouseUp={onLyricSelection}>
           {song &&
             <p> {
                 lyricsHTML
@@ -67,14 +100,16 @@ const Song = () => {
           }
         </section>
         <section className="songpage-sidebar">
-          <div className={`songpage-annotation ${(annotation ? " active" : "")}`}>Some active annotation comment
+          <div className={`songpage-annotation ${(annotation ? " active" : "")}`}>
           <p className="songpage-annotation-text">
           </p>
+          </div>
+          <div className={`songpage-add-annotation ${(annotation ? " active" : "")}`}>
           </div>
           <div className="songpage-sidelinks">
             <NavLink to="/songs/1">Song 1</NavLink>
             <NavLink to="/songs/2">Song 2</NavLink>
-            <AnnotationForm lyricKey="man" songId={songId} userId="1"/>
+            <AnnotationForm lyricKey="pillow" songId={songId} userId="1"/>
           </div>
         </section>
       </div>

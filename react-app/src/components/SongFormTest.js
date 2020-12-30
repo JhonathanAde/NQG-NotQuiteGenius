@@ -5,17 +5,24 @@ import "./SongForm.css"
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState("");
+  const [artistId, setArtistId] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [image, setImage] = useState("");
+  const [audioFile, setAudioFile] = useState("");
 
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
+    console.log("ARTIST ID", artistId)
     const data = new FormData();
 
     data.append('title', title);
+    data.append('artist_id', artistId);
     data.append('lyrics', lyrics);
     data.append('image', image);
+    data.append('audio_file', audioFile);
+
     const song = await createSong(data);
+    // const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
@@ -27,6 +34,10 @@ const SongForm = () => {
 
   const updateTitle = (e) => {
     setTitle(e.target.value);
+  };
+
+  const updateArtistId = (e) => {
+    setArtistId(e.target.value);
   };
 
   const updateLyrics = (e) => {
