@@ -30,7 +30,7 @@ const Song = (authenticated) => {
   useEffect(() => {
     //Remove any previous selections
     const priorSelection = document.querySelectorAll('.songpage-new-annotation');
-    for n in priorSelection {
+    for (n in priorSelection) {
       const text = n.innerHTML;
       n.after(text)
       n.remove()
