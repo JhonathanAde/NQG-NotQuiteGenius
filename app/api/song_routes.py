@@ -1,9 +1,15 @@
-from flask import Blueprint, jsonify, request
+import os
+from flask import Blueprint, jsonify, request, url_for
+import boto3
+from werkzeug.utils import secure_filename
 # from flask_login import login_required
 from app.models import Artist, Song, db
 from app.forms import SongForm
 
+
 song_routes = Blueprint('songs', __name__)
+UPLOAD_FOLDER = '../uploads/images/'
+ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 # GETS ALL SONGS
 @song_routes.route('/', methods=["GET"])
@@ -16,7 +22,6 @@ def get_songs():
 # CREATE SONG
 @song_routes.route('/', methods=["POST"])
 def create_song():
-    print("INSIDE CREATE SONG!!")
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -41,13 +46,26 @@ def create_song():
         #     audio_files
         # )
         # return user.to_dict()
-        # img = request.files['image']
 
-        # img = form.data
-        img = form.image.data
-        print(f"IMAGE: {img}")
+        img = request.files['image']
+        img_name = secure_filename(img.filename)
+        print(f"FILE NAME!! {img_name}")
 
-        print('HERE!')
+        s3 = boto3.resource('s3')
+        result = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img)
+
+        img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
+        print(f"IMG PATH!! {img_path}")
+
+        song = Song(
+            title=form.data['title'],
+            artist_id=form.data['artist_id']
+            lyrics
+            image
+            audio_files
+        )
+        return user.to_dict()
+
         return {"result": "SUCCESS!"}
     else:
         print(f"FORM ERRORS: {form.errors}")
