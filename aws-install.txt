@@ -1,9 +1,4 @@
 pip install awscli
 pip install boto3
 
-aws configure 
-
-ACCESS_KEY_ID=AKIAJNO2YI62MJKRMSSQ
-SECRET_ACCESS_KEY=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
-REGION=us-east-1
 
