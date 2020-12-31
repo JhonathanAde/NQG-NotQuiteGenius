@@ -4,6 +4,16 @@ import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
+
+  const doSearch = (e) => {
+    const value = document.getElementById('search').value;
+    (async () => {
+      const response = await fetch(`/api/songs/search?search_string=${value}`);
+      const results = await response.json();
+      console.log(results)
+    })();
+  }
+
   return (
     <nav className="nav-bar">
       <div className="logo">
@@ -12,17 +22,18 @@ const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
           </NavLink>
       </div>
       <div className="search-container">
-        <input type="search" className="search-bar" placeholder="search" />
+        <input id="search" type="search" className="search-bar" placeholder="search" />
+        <button onClick={doSearch}>Search</button>
       </div>
       <div className="user-buttons">
-        {authenticated? 
+        {authenticated?
           <>
             <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser}/>
             <NavLink to="/create-song" exact={true} activeClassName="active">
               Create Song
             </NavLink>
           </>
-          : 
+          :
           <>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Register
