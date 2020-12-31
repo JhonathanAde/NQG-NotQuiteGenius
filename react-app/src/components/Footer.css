@@ -10,9 +10,11 @@
 }
 
 .about-nqg {
+    margin-top: 5px;
     margin-left: 60px;
     font-size: 20px;
     font-family: Staatliches;
+    min-width: 900px;
 }
 
 .about-nqg > p {
@@ -20,11 +22,22 @@
 }
 
 .title {
+    min-width: 900px;
     font-size: 70px;
     color: #FF41AF;
+    position: relative;
+}
+
+.title-divider {
+    top: 75px;
+    background-color: #2AD6E8;
+    position: absolute;
+    width: 100%;
+    height: 5px;
 }
 
 .developers {
+    min-width: 900px;
     display: flex;
     position: absolute;
     margin-left: 60px;

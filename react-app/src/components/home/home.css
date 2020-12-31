@@ -24,10 +24,12 @@
     background-color: rgba(255,255,255,.4);
     position: relative;
     border-radius: 2px;
+    min-width: 700px;
 }
 
 
 .artists-container {
+    min-width: 800px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -36,6 +38,7 @@
     overflow-x: hidden;
     background-color: rgba(255, 255, 255, .4);
     border-radius: 2px;
+
 
 }
 .top-artists {
@@ -60,6 +63,7 @@
     background-color: #2AD6E8;
     padding-left: 20px;
     border-radius: 2px;
+
 
 }
 .title-artist {

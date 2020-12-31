@@ -7,6 +7,7 @@ const Footer = () => {
         <div className="footer">
             <div className="title">
                 NOT QUITE GENIUS...
+            <div className="title-divider"></div>
             </div>
             <div className="about-nqg">
                 <p>

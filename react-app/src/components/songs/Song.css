@@ -5,7 +5,7 @@
   padding-right: 150px;
   color: black;
   font-family: rubik;
-  background-image: url('../../background2.gif')
+  background-image: url('../../background.gif')
 }
 
 .songpage-image {
@@ -33,9 +33,11 @@
   color:white;
   font-family: Staatliches;
   font-size: 20px;
+  min-width: 500px;
 }
 
 .songpage-sidebar {
+  min-width: 500px;
   display: flex;
   flex: 0 0 50%;
   font-family: Staatliches;
