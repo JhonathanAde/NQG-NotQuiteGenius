@@ -72,7 +72,7 @@ function App() {
             </div>
           </Route>
           <Route path="/songs/:songId" exact={true}>
-            <Song authenticated={authenticated} />
+            <Song authenticated={authenticated} user={user}/>
           </Route>
           <Route path="/artists/:artistId" exact={true}>
               <Artist />
