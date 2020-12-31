@@ -1,0 +1,79 @@
+.profilepage-header {
+    padding: 30px;
+    display: flex;
+    background-color: gray;
+}
+
+.profilepage-image {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+}
+
+.profilepage-info {
+    padding-left: 10px;
+}
+
+.profilepage-content {
+    display: flex;
+    align-items: stretch;
+}
+
+.profilepage-lyrics {
+    padding: 5px;
+    flex: 0 0 50%;
+    position: relative;
+}
+
+.profilepage-sidebar {
+    display: flex;
+    padding: 5px;
+    flex: 0 0 50%;
+}
+
+.profilepage-annotation {
+    display: none;
+    border-left: 1px solid black;
+    padding: 5px;
+}
+
+.profilepage-annotation.active {
+    display: block;
+}
+
+.profilepage-sidelinks {
+    display: none;
+}
+
+.profilepage-annotation:not(.active)~.profilepage-sidelinks {
+    display: flex;
+    flex-direction: column;
+}
+
+.annotation-key {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.annotation-key:hover {
+    background-color: rgb(252, 252, 190);
+}
+
+.annotation-key.active {
+    background-color: yellow;
+}
+
+.annotation-key.active:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    margin-top: calc(-15px - .5rem);
+    margin-right: -5px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}

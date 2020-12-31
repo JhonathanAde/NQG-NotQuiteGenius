@@ -26,3 +26,15 @@ class Song(db.Model):
             "artist": self.artist.to_dict_no_songs(),
             "annotations": [annotation.to_dict() for annotation in self.annotations],
         }
+
+    def to_dict_no_anno(self):
+        return {
+            "id": self.id,
+            "artistId": self.artist_id,
+            "title": self.title,
+            "lyrics": self.lyrics,
+            "image": self.image,
+            "audioFile": self.audio_file,
+            "artist": self.artist.to_dict_no_songs(),
+        }
+    

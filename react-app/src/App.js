@@ -12,6 +12,8 @@ import './index.css'
 import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 import Artist from "./components/artists/Artists";
+import Profile from "./components/profile/Profile";
+import { user } from "./components/User"; 
 
 import SongForm from "./components/SongFormTest"
 import ArtistForm from "./components/ArtistFormTest"
@@ -48,7 +50,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser}/>
+        <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser} user={user}/>
         <Switch>
           {/* <Route path="/login" exact={true}>
             <LoginForm
@@ -66,6 +68,7 @@ function App() {
             <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
               <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
               <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
+              <div className="laptop-icon"></div>
             </div>
             <div className="form-page">
               <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} />
@@ -78,6 +81,9 @@ function App() {
           <Route path="/artists/:artistId" exact={true}>
               <Artist />
           </Route>
+          <ProtectedRoute path="/profile" exact={true} authenticated={authenticated}>
+              <Profile user={user} />
+          </ProtectedRoute>
           <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
             <UsersList/>
           </ProtectedRoute>

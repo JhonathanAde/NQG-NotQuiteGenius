@@ -1,32 +1,48 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
-const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
+const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
+
+  let history = useHistory()
+  const rerouteHome = () => {
+    history.push("/")
+  }
+
+  const rerouteRegister = () => {
+    history.push("/sign-up")
+  }
+
+  const rerouteCreate = () => {
+    history.push("/create-song")
+  }
   return (
     <nav className="nav-bar">
       <div className="logo">
-          <NavLink to="/" exact={true} activeClassName="active">
-            NQG
-          </NavLink>
+        <div className="radio"></div>
+        <div className="home-link" onClick={rerouteHome}>
+          NQG
+        </div>
       </div>
       <div className="search-container">
         <input type="search" className="search-bar" placeholder="search" />
       </div>
       <div className="user-buttons">
-        {authenticated? 
-          <>
-            <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser}/>
-            <NavLink to="/create-song" exact={true} activeClassName="active">
-              Create Song
+        {authenticated?
+        <>
+          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
+          <NavLink to="/profile">
+            {`${user.username}`}
             </NavLink>
+            <button onClick={rerouteCreate}>
+              CREATE SONG
+            </button>
           </>
           : 
           <>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Register
-            </NavLink>
+            <button onClick={rerouteRegister}>Register</button>
+            {/* <NavLink to="/" */}
             {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink> */}

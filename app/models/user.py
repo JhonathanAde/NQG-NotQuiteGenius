@@ -34,3 +34,6 @@ class User(db.Model, UserMixin):
         "email": self.email,
         "isAdmin": self.is_admin,
         }
+    
+    # def annotations(self):
+    #     return [annotation.to_dict() for annotation in self.annotations]
