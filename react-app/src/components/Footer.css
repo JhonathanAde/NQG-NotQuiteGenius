@@ -1,5 +1,6 @@
 .footer {
-    background-color: lightgreen;
+    background-color: black;
     width: 100%;
     padding: 40px;
+    color: white;
 }

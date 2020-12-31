@@ -1,3 +1,4 @@
+
 .main-content {
     box-sizing: border-box;
     padding: 50px;
@@ -10,7 +11,6 @@
 }
 
 .top-20 {
-    background-color: orange;
     padding: 20px;
     display: flex;
     width: 75%;
@@ -21,20 +21,25 @@
     overflow-x: hidden;
     margin: 40px;
     margin-top: 0px;
+    background-color: rgba(255,255,255,.4);
+    position: relative;
+    border-radius: 2px;
 }
 
 
 .artists-container {
-    background-color: lightpink;
     padding: 20px;
     display: flex;
     flex-direction: column;
     width: 90%;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: rgba(255, 255, 255, .4);
+    border-radius: 2px;
+
 }
 .top-artists {
-    background-color: lightpink;
+    
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,16 +53,26 @@
 }
 
 .title-20 {
+    position: sticky;
+    top: 0px;
+    font-family: Rubik;
     font-size: 40px;
+    background-color: #2AD6E8;
+    padding-left: 20px;
+    border-radius: 2px;
 
 }
 .title-artist {
+    font-family: Rubik;
     font-size: 40px;
     grid-area: title;
+    background-color: #2AD6E8;
+    padding-left: 20px;
+    border-radius: 2px;
 }
 
 .song-tile {
-    background-color: lightblue;
+    font-family: Staatliches;
     margin: 10px;
     padding: 10px;
     display: flex;
@@ -66,24 +81,26 @@
 
 .song-number {
     margin-left: 30px;
-    font-size: 30px;
+    font-size: 40px;
+    width: 50px;
 }
 
 .song-image {
     width: 90px;
     height: 90px;
-    background-color: pink;
     margin: 0px 0px 0px 30px;
     font-size: 20px;
     cursor: pointer;
+    border: 2px solid black;
 }
 .artist-image {
     width: 150px;
     height: 150px;
-    background-color: pink;
     margin: 0px 0px 0px 30px;
     font-size: 20px;
     cursor: pointer;
+    border: 2px solid black;
+
 }
 
 .song-title {
@@ -100,7 +117,7 @@
 }
 
 .artist-tile {
-    background-color: lightblue;
+    font-family: Staatliches;
     margin: 10px;
     padding: 10px;
     display: flex;
@@ -113,4 +130,16 @@
     justify-content: flex-start;
     align-items: center;
     width: 80%;
+}
+
+.divider-container {
+    display: flex;
+    justify-content: center;
+}
+
+.divider {
+    width: 90%;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
 }

@@ -1,7 +1,8 @@
 .form-container {
-    height: auto;
+    height: 80vh;
     min-width: 50%;
-    background-color: pink;
+    background-image: url(../../background.gif);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,13 +16,39 @@
     align-items: center;
     width: 40vw;
     height: auto;
-    background-color: lightblue;
+    background-color: rgba(255,255,255,.4);
+    border-radius: 2px;
     padding: 30px;
 }
 
 .form-input {
     margin: 10px;
 }
+
+input {
+    padding-left: 5px;
+    height: 30px;
+    font-size: 20px;
+    color: black;
+    font-family: Quattrocento;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    font-family: Staatliches;
+    font-size: 30px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+button:focus {
+    outline: none;
+}
+
 .form-input-file {
     margin: 10px;
     width: 250px;
@@ -37,7 +64,10 @@
 .partition {
     position: absolute;
     z-index: 1;
-    background-color: lightblue;
+    background-color: black;
+    color:white;
+    text-decoration: underline;
+    font-family: Rubik;
     width: 50%;
     height: 80vh;
     display: flex;

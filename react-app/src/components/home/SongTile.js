@@ -13,16 +13,21 @@ const SongTile = ({song, idx}) => {
     }
 
     return (
-        <div className="song-tile">
-            <div className="song-link" onClick={songReroute}>
-                <div className="song-number">{idx}</div>
-                <img className="song-image" src={song.image} alt="album cover"/>
-                <div className="song-title">{song.title}</div>
+        <>
+            <div className="song-tile">
+                <div className="song-link" onClick={songReroute}>
+                    <div className="song-number">{idx}</div>
+                    <img className="song-image" src={song.image} alt="album cover"/>
+                    <div className="song-title">{song.title}</div>
+                </div>
+                <div className="artist-link" onClick={artistReroute}>
+                    <div className="song-artist">{song.artist.name}</div>
+                </div>
             </div>
-            <div className="artist-link" onClick={artistReroute}>
-                <div className="song-artist">{song.artist.name}</div>
+            <div className="divider-container">
+                <div className="divider"></div>
             </div>
-        </div>
+        </>
     );
 };
 
