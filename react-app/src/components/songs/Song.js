@@ -29,15 +29,6 @@ const Song = ({authenticated, user}) => {
     updateAnnotations(song, annotations)
   }, [annotations, song])
 
-  const updateAnnotations = (song, annotations) => {
-    let lyrics = song.lyrics;
-      annotations.forEach((annot, i) => {
-        const key = annot.lyricKey
-        lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
-      })
-      setLyricsHTML(ReactHtmlParser(lyrics));
-  }
-
   useEffect( () => {
     if (!song) return;
     (async () => {
@@ -49,6 +40,16 @@ const Song = ({authenticated, user}) => {
   useEffect(() => {
     switchActiveSideBar()
   }, [newAnnotationKey, annotation]);
+
+
+  const updateAnnotations = (song, annotations) => {
+    let lyrics = song.lyrics;
+      annotations.forEach((annot, i) => {
+        const key = annot.lyricKey
+        lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
+      })
+      setLyricsHTML(ReactHtmlParser(lyrics));
+  }
 
   const unHighlightKey = () => {
     const elementToReset = document.querySelector('.annotation-key.active');
@@ -195,14 +196,14 @@ const Song = ({authenticated, user}) => {
           </div>
           <div className="songpage-add-annotation">
             Add annotation for key "{newAnnotationKey}"
-            <AnnotationForm 
-            lyricKey={newAnnotationKey}  
-            songId={songId} 
-            userId={user.id} 
+            <AnnotationForm
+            lyricKey={newAnnotationKey}
+            songId={songId}
+            userId={user.id}
             setAnnotations={setAnnotations}
             annotations={annotations}
             clearNewAnnotationKey={clearNewAnnotationKey}/>
-            
+
           </div>
           <div className="songpage-sidelinks">
             {(  authenticated &&
