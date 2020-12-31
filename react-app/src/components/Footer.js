@@ -5,8 +5,10 @@ import './Footer.css'
 const Footer = () => {
     return (
         <div className="footer">
-            NQG
-            Not Quite Genius
+            <div className="title">
+                NOT QUITE GENIUS...
+            </div>
+            <div className="phone-icon"></div>
         </div>
     );
 };
