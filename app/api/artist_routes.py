@@ -78,8 +78,11 @@ def edit_artist(id):
     if form.validate_on_submit():
         artist_to_edit = Artist.query.get(id)
 
-        # if !artist:
+        # if artist_to_edit == None:
         #     return {"errors": [f"artist with ID {id} does not exist."]}
+
+        if not artist_to_edit:
+            return {"errors": [f"artist with ID {id} does not exist"]}
 
         if request.files:
             img = request.files['image']
