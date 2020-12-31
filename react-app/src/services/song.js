@@ -27,6 +27,6 @@ export const annotate = async (songId, payload) => {
     method: 'POST',
     body: payload
   });
-
+  
   return await response.json();
 }

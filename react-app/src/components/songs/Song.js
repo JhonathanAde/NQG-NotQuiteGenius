@@ -8,27 +8,35 @@ import AnnotationForm from './AnnotationForm';
 
 const Song = ({authenticated, user}) => {
   const [annotation, setAnnotation] = useState("");
+  const [annotations, setAnnotations] = useState([]);
   const [song, setSong] = useState("");
   const [artistSongs, setArtistSongs] = useState([]);
   const [lyricsHTML, setLyricsHTML] = useState("");
-  const [validSelect, setValidSelect] = useState(false);
   const [newAnnotationKey, setNewAnnotationKey] = useState("");
   const {songId} = useParams();
 
   useEffect(() => {
-    // Load the song information
     (async () => {
       const response = await fetch(`/api/songs/${songId}`);
       const song = await response.json();
       setSong(song);
-      let lyrics = song.lyrics;
-      song.annotations.forEach((annot, i) => {
+      setAnnotations(song.annotations)
+    })();
+  }, [songId, authenticated]);
+
+  useEffect(() => {
+    clearNewAnnotationKey();
+    updateAnnotations(song, annotations)
+  }, [annotations, song])
+
+  const updateAnnotations = (song, annotations) => {
+    let lyrics = song.lyrics;
+      annotations.forEach((annot, i) => {
         const key = annot.lyricKey
         lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
       })
       setLyricsHTML(ReactHtmlParser(lyrics));
-    })();
-  }, [songId, authenticated]);
+  }
 
   useEffect( () => {
     if (!song) return;
@@ -69,7 +77,7 @@ const Song = ({authenticated, user}) => {
     unHighlightKey();
     e.target.classList.add('active')
     const annotationKey = e.target.innerHTML;
-    const annotation = song.annotations[parseInt(e.target.getAttribute("data-index"))].content;
+    const annotation = annotations[parseInt(e.target.getAttribute("data-index"))].content;
     document.querySelector('.songpage-annotation-text').innerHTML = annotation
     setAnnotation(annotation)
   }
@@ -187,7 +195,14 @@ const Song = ({authenticated, user}) => {
           </div>
           <div className="songpage-add-annotation">
             Add annotation for key "{newAnnotationKey}"
-            <button onClick={clearNewAnnotationKey}>Cancel</button>
+            <AnnotationForm 
+            lyricKey={newAnnotationKey}  
+            songId={songId} 
+            userId={user.id} 
+            setAnnotations={setAnnotations}
+            annotations={annotations}
+            clearNewAnnotationKey={clearNewAnnotationKey}/>
+            
           </div>
           <div className="songpage-sidelinks">
             {(  authenticated &&
