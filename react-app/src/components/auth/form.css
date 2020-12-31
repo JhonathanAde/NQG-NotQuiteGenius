@@ -36,6 +36,7 @@ input {
 }
 
 button {
+    white-space: nowrap;
     background-color: black;
     color: white;
     border: none;
