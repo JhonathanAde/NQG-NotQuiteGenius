@@ -17,6 +17,10 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const rerouteCreate = () => {
     history.push("/create-song")
   }
+
+  const rerouteProfile = () => {
+    history.push("/profile")
+  }
   return (
     <nav className="nav-bar">
       <div className="logo">
@@ -31,13 +35,13 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
       <div className="user-buttons">
         {authenticated?
         <>
-          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
-          <NavLink to="/profile">
+          <button onClick={rerouteCreate}>
+            CREATE SONG
+          </button>
+          <button onClick={rerouteProfile}>
             {`${user.username}`}
-            </NavLink>
-            <button onClick={rerouteCreate}>
-              CREATE SONG
             </button>
+          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
           </>
           : 
           <>
