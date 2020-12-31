@@ -1,4 +1,5 @@
 .footer {
+    border-top: solid 2px white;
     background-color: black;
     width: 100%;
     padding: 30px;
@@ -8,8 +9,19 @@
     overflow: hidden;
 }
 
+.about-nqg {
+    margin-left: 60px;
+    font-size: 20px;
+    font-family: Staatliches;
+}
+
+.about-nqg > p {
+    margin-top: 0px;
+}
+
 .title {
     font-size: 70px;
+    color: #FF41AF;
 }
 
 .developers {
@@ -23,6 +35,10 @@
     margin: 15px;
     font-size: 25px;
     cursor: pointer;
+}
+
+.developers > h1:hover {
+    color: #2AD6E8;
 }
 .phone-icon {
     position: absolute;

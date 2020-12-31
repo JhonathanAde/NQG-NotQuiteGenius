@@ -8,6 +8,12 @@ const Footer = () => {
             <div className="title">
                 NOT QUITE GENIUS...
             </div>
+            <div className="about-nqg">
+                <p>
+                    A lyric site for the rest of us. Not Quite Genius was born 
+                    from the quirkiness of our first impressions of lyrics.
+                </p>
+            </div>
             <div className="developers">
                 <h1>Andrew Choi </h1>
                 <h1>Jhonathan Ade</h1>
