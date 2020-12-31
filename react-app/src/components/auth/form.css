@@ -94,7 +94,7 @@ label {
 }
 
 .login-active {
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     cursor: pointer;
 }
@@ -108,6 +108,7 @@ label {
 }
 
 .sign-up-active {
+    z-index: 4;
     cursor: pointer;
 }
 
@@ -160,4 +161,13 @@ label {
 
 .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.laptop-icon {
+    position: absolute;
+    top: 100px;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-image: url("../../laptopicon.png");
 }

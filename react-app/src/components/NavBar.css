@@ -33,6 +33,7 @@
     width: 30%;
     display: flex;
     justify-content: center;
+    color: #2AD6E8;
 }
 
 .user-buttons > a {
