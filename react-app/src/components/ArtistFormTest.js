@@ -15,14 +15,14 @@ const ArtistForm = () => {
     data.append('image', image);
 
     // const artist = await createArtist(data);
-    const artist = await editArtist(data, 1);
+    const artist = await editArtist(data, 30);
     // const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
     //   setErrors(song.errors);
     // }
-    console.log("Submit successful! ", artist);
+    console.log("fetch result", artist);
     
   };
 

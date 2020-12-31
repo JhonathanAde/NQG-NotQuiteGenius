@@ -46,12 +46,16 @@ def artist():
         else:
             print("NO IMAGE WAS SENT!")
 
-        artist = Artist(
-                name=form.data['name'],
-                image=img_path,
-            )
-        db.session.add(artist)
-        db.session.commit()
+        try:
+            artist = Artist(
+                    name=form.data['name'],
+                    image=img_path,
+                )
+            db.session.add(artist)
+            db.session.commit()
+        except:
+            return {'errors': [f"artist {form.data['name']} already exists"]}
+
         return artist.to_dict_no_songs()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -72,6 +76,11 @@ def edit_artist(id):
     img = ''
     img_path = ''
     if form.validate_on_submit():
+        artist_to_edit = Artist.query.get(id)
+
+        # if !artist:
+        #     return {"errors": [f"artist with ID {id} does not exist."]}
+
         if request.files:
             img = request.files['image']
             print(f"CHECK TO SEE IF IMG EXISTS: {img}")
@@ -86,11 +95,8 @@ def edit_artist(id):
 
             img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
         else:
-            print("NO IMAGE WAS SENT!")
+            print("Creating artist without an image. Just letting you know...")
  
-        artist_to_edit = Artist.query.get(id)
-        # if !artist:
-        #     return {"error":f"artist with ID {id} does not exist."}
 
         artist_to_edit.name = form.data['name']
         artist_to_edit.image = img_path
