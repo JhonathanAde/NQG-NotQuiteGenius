@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { annotate } from '../../services/song';
 
-const AnnotationForm = ({lyricKey, songId, userId}) => {
+const AnnotationForm = ({ setAnnotations, annotations, lyricKey, songId, userId, clearNewAnnotationKey}) => {
     const [content, setContent] = useState("")
 
     const addAnnotation = async (e) => {
@@ -14,18 +14,24 @@ const AnnotationForm = ({lyricKey, songId, userId}) => {
 
         setContent("")
         const annotation = await annotate(songId, data)
+        console.log("passes annotation", annotation)
+        setAnnotations([...annotations, annotation])
     }
 
     const updateContent = (e) => {
         setContent(e.target.value)
     }
 
+
     return (
         <div>
-            <form method="post" action={`/api/songs/${songId}/annotation`}>
+            <form className="annotation-form" method="post" onSubmit={addAnnotation}>
                 <input type="hidden" name="lyric_key" value={lyricKey} />
-                <textarea name="content" placeholder="Add Annotation" value={content} onChange={updateContent}/>
-                <button type="submit" onClick={addAnnotation}>Add</button>
+                <textarea className="content-textarea" name="content" placeholder="Add Annotation..." value={content} onChange={updateContent}/>
+                <div className="annotationButtons">
+                    <button type="submit">Add</button>
+                    <button type="button" onClick={clearNewAnnotationKey}>Cancel</button>
+                </div>
             </form>
         </div>
     );

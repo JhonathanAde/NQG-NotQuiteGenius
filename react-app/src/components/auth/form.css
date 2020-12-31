@@ -47,6 +47,8 @@ button {
     margin: 10px;
     margin-top: 7px;
     margin-bottom: 7px;
+    height: 40px;
+    min-width: auto;
 }
 
 button:focus {
@@ -116,6 +118,8 @@ label {
     width: 300px;
     height: 150px;
     resize: none;
+    padding: 10px;
+    font-family: Roboto;
 }
 
 .custom-file-input::-webkit-file-upload-button {
