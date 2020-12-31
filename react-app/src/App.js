@@ -67,6 +67,7 @@ function App() {
             <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
               <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
               <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
+              <div className="laptop-icon"></div>
             </div>
             <div className="form-page">
               <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} />

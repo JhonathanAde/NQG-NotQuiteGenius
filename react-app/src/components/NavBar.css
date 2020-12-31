@@ -5,15 +5,22 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    background-color: salmon;
+    background-color: #FF41AF;
     margin: 0px;
     padding-right: 50px;
     padding-left: 30px;
     box-sizing: border-box;
-    border-bottom: solid 1px white;
+    border-bottom: solid 5px black;
     position: sticky;
     top: 0;
     z-index: 2;
+    font-family: Rubik;
+    color: white;
+}
+
+.home-link {
+    cursor: pointer;
+    font-size: 50px;
 }
 
 .user-buttons {
@@ -26,6 +33,7 @@
     width: 30%;
     display: flex;
     justify-content: center;
+    color: #2AD6E8;
 }
 
 .user-buttons > a {
@@ -41,4 +49,11 @@
 .search-bar {
     width: 80%;
     text-align: center;
+}
+
+.radio {
+    width: 70px;
+    height: 60px;
+    background-size: contain;
+    background-image: url("../radio.png");
 }
