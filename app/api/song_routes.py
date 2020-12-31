@@ -35,28 +35,32 @@ def create_song():
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    img = ''
+    img_path = ''
     if form.validate_on_submit():
-        # image file
-        img = request.files['image']
-        img_name = secure_filename(img.filename)
-        # song file
-        song = request.files['audio_file']
-        song_name = secure_filename(song.filename)
-        # print(f"FILE NAME!! {img_name}")
+        if request.files:
+            # image file
+            img = request.files['image']
+            img_name = secure_filename(img.filename)
+            # song file
+            song = request.files['audio_file']
+            song_name = secure_filename(song.filename)
+            # print(f"FILE NAME!! {img_name}")
 
-        mime_type = mimetypes.guess_type(img_name)
+            mime_type = mimetypes.guess_type(img_name)
 
-        song_mime_type = mimetypes.guess_type(song_name)
-        print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
-        
-        s3 = boto3.resource('s3')
-        uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
+            song_mime_type = mimetypes.guess_type(song_name)
+            print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
+            
+            s3 = boto3.resource('s3')
+            uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
-        uploaded_song = s3.Bucket('nqg-songs').put_object(Key=song_name, Body=song, ACL='public-read', ContentType=song_mime_type[0])
+            uploaded_song = s3.Bucket('nqg-songs').put_object(Key=song_name, Body=song, ACL='public-read', ContentType=song_mime_type[0])
 
-        img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
-        song_path = f"https://nqg-songs.s3.amazonaws.com/{song_name}"
-
+            img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
+            song_path = f"https://nqg-songs.s3.amazonaws.com/{song_name}"
+        else:
+            print("SOME FILES WEREN'T SENT!")
         
 
         song = Song(
@@ -86,19 +90,24 @@ def edit_song(id):
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    img = ''
+    img_path = ''
     if form.validate_on_submit():
-        img = request.files['image']
-        img_name = secure_filename(img.filename)
+        if request.files:
+            img = request.files['image']
+            print(f"CHECK TO SEE IF IMG EXISTS: {img}")
+            img_name = secure_filename(img.filename)
+            # print(f"FILE NAME!! {img_name}")
 
-        mime_type = mimetypes.guess_type(img_name)
-        print(f"MIME TYPE!! {mime_type}")
+            mime_type = mimetypes.guess_type(img_name)
+            print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
+            
+            s3 = boto3.resource('s3')
+            uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
-        s3 = boto3.resource('s3')
-        uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
-
-        # 'ContentDisposition' => 'inline; filename=filename.jpg'
-        img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
-        # print(f"IMG PATH!! {img_path}")
+            img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
+        else:
+            print("NO IMAGE WAS SENT!")
 
         song_to_edit = Song.query.get(id)
         # if !song:

@@ -5,7 +5,7 @@ class Artist(db.Model):
     __tablename__ = 'artists'
 
     id = db.Column(db.Integer, primary_key = True)
-    name  = db.Column(db.String(40), nullable = False)
+    name  = db.Column(db.String(40), nullable = False, unique = True)
     image  = db.Column(db.String(150), nullable = True)
 
     songs = relationship('Song', back_populates='artist', order_by='asc(Song.id)')

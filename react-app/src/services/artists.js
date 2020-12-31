@@ -9,9 +9,18 @@ export const getArtist = async (id) => {
 }
 
 export const createArtist = async (payload) => {
-    const response = await fetch('/api/artists/', {
-        method: 'POST',
-        body: payload
-    })
+    const response = await fetch(`/api/artists/`, {
+      method: 'POST',
+      body: payload
+    });
+    return await response.json();
+}
+
+export const editArtist = async (payload, id) => {
+    const response = await fetch(`/api/artists/${id}`, {
+      method: 'PATCH',
+      body: payload
+    });
+
     return await response.json();
 }

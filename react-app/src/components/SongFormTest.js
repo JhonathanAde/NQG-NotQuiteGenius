@@ -45,14 +45,14 @@ const SongForm = () => {
     data.append('image', image);
     data.append('audio_file', audioFile);
 
-    const song = await createSong(data);
+    // const song = await createSong(data);
     // const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
     // } else {
     //   setErrors(song.errors);
     // }
-    console.log("Submit successful! ", song);
+    // console.log("Submit successful! ", song);
     
   };
 

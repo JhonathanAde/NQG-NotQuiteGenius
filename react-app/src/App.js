@@ -14,6 +14,7 @@ import Song from "./components/songs/Song";
 import Artist from "./components/artists/Artists";
 
 import SongForm from "./components/SongFormTest"
+import ArtistForm from "./components/ArtistFormTest"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -71,7 +72,7 @@ function App() {
             </div>
           </Route>
           <Route path="/songs/:songId" exact={true}>
-            <Song authenticated={authenticated} />
+            <Song authenticated={authenticated} user={user}/>
           </Route>
           <Route path="/artists/:artistId" exact={true}>
               <Artist />
