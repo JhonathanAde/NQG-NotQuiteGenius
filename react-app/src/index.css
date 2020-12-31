@@ -34,3 +34,23 @@ input:focus {
 .push {
     height: 250px;
 }
+
+input:focus {
+    border: none;
+    outline: none;
+}
+input {
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+textarea {
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+textarea:focus {
+    border: none;
+    outline: none;
+}

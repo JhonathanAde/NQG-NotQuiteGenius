@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { createSong } from "../services/song";
 import "./SongForm.css"
-import {getArtists} from '../services/artists'
+import {createArtist, getArtists} from '../services/artists'
 
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState("");
-  const [artistId, setArtistId] = useState("");
+  const [existingArtist, setExistingArtist] = useState(null);
+  const [newArtist, setNewArtist] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [image, setImage] = useState("");
   const [audioFile, setAudioFile] = useState("");
@@ -23,7 +24,19 @@ const SongForm = () => {
   console.log("hits", artists)
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log("ARTIST ID", artistId)
+    let artistId;
+
+    if(!existingArtist) {
+      const artistData = new FormData()
+      artistData.append('name', newArtist)
+      artistData.append('image', image)
+  
+      const artist = await createArtist(artistData)
+      artistId = artist.id
+    } else {
+      artistId = existingArtist
+    }
+
     const data = new FormData();
 
     data.append('title', title);
@@ -39,7 +52,7 @@ const SongForm = () => {
     // } else {
     //   setErrors(song.errors);
     // }
-      console.log("Submit successful! ", song);
+    console.log("Submit successful! ", song);
     
   };
 
@@ -48,7 +61,13 @@ const SongForm = () => {
   };
 
   const updateArtistId = (e) => {
-    setArtistId(e.target.value);
+    setExistingArtist(e.target.value);
+    setNewArtist("")
+  };
+
+  const updateNewArtist = (e) => {
+    setNewArtist(e.target.value)
+    setExistingArtist(null);
   };
 
   const updateLyrics = (e) => {
@@ -83,8 +102,35 @@ const SongForm = () => {
               onChange={updateTitle}
             />
           </div>
-          <label htmlFor="title">Artist</label>
-          <div className="form-input">
+          <label htmlFor="title">Select Artist</label>
+            <div className="form-input">
+              <select 
+                name="artist_id"
+                type="text"
+                placeholder="Artist"
+                value={existingArtist}
+                onChange={updateArtistId}
+              >
+                <option value={null}>Choose an Artist</option>
+                {artists && 
+                artists.map((artist, id) => (
+                  <option value={artist.id}>{artist.name}</option>
+                  ))
+                }
+              </select>
+            </div>
+            <div className="form-input">-or-</div>
+          <label htmlFor="title">Create New Artist</label>
+            <div className="form-input">
+              <input
+                name="artist_id"
+                type="text"
+                placeholder="Artist"
+                value={newArtist}
+                onChange={updateNewArtist} 
+              />
+            </div>
+          {/* <div className="form-input">
             <input
               name="artist_id"
               type="text"
@@ -95,13 +141,12 @@ const SongForm = () => {
             />
             <datalist id="artists">
               {artists && 
-              // console.log("inside datalist", artists)
-              artists.map((artist, id) => (
-                <option value={artist.id}>{artist.name}</option>
+              artists.map((art, id) => (
+                <option value={art.id}>{art.name}</option>
               ))
               }
             </datalist>
-          </div>
+          </div> */}
 
           <label htmlFor="image">Album Cover</label>
           <div className="form-input-file">

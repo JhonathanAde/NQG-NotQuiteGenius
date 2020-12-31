@@ -85,6 +85,7 @@
 .custom-file-input::-webkit-file-upload-button {
     /* visibility: hidden; */
     display:none;
+    text-overflow: ellipsis;
     /* height: 0.1px;
     width: 0.1px; */
     /* overflow: hidden; */
