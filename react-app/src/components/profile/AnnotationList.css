@@ -1,0 +1,36 @@
+.annoblock {
+  background-color: lightgrey;
+}
+
+.annoblock-content {
+  padding: 5px 2px;
+}
+
+.annoblock-header {
+  background-color: darkgrey;
+}
+
+.annoblock-header_title {
+  padding: 2px;
+  margin-bottom: -2px;
+}
+
+.annoblock-header_artist {
+  padding: 2px;
+}
+
+.annotation-header {
+  font-weight: bold ;
+  text-decoration: underline;
+  margin-bottom: -10px;
+}
+
+.annotation-lyrickey {
+  background-color: yellow;
+  font-style: italic;
+}
+
+.annotation-lyrickey_header {
+  font-weight: bold;
+  text-decoration: underline;
+}

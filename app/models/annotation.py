@@ -22,5 +22,6 @@ class Annotation(db.Model):
             "songId": self.song_id,
             "lyricKey": self.lyric_key,
             "content": self.content,
-            "user": self.user.to_dict()
+            "user": self.user.to_dict(),
+            "song": self.song.to_dict_no_anno()
         }

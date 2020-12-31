@@ -21,9 +21,12 @@ const Home = () => {
     return (
         <div className="main-content">
             <div className="top-20">
-                <div className="title-20">TOP 20</div>
+                <div className="title-20">TOP SONGS</div>
                 {songs ? songs.map((song, idx) => 
-                    <SongTile key={idx} song={song} idx={idx + 1}/>
+                    <>
+                        <SongTile key={idx} song={song} idx={idx + 1}/>
+                        
+                    </>
                 ): "loading"}
             </div>
             <div className="artists-container">
