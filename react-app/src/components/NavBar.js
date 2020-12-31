@@ -20,6 +20,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const rerouteCreate = () => {
     history.push("/create-song")
   }
+
   return (
     <nav className="nav-bar">
       <div className="logo">
