@@ -67,7 +67,7 @@ const SongForm = () => {
 
   const updateNewArtist = (e) => {
     setNewArtist(e.target.value)
-    setExistingArtist(null);
+    setExistingArtist("");
   };
 
   const updateLyrics = (e) => {
@@ -84,7 +84,7 @@ const SongForm = () => {
 
 
   return (
-    <div className="form-container">
+    <div className="form-container-song">
       <form onSubmit={songDataSubmitHandler} encType="multipart/form-data">
         <div className="form-inputs">
           <div>
