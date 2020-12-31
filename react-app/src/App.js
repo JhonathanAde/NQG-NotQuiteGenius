@@ -49,7 +49,7 @@ function App() {
       <div className="wrapper">
         <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser}/>
         <Switch>
-          <Route path="/login" exact={true}>
+          {/* <Route path="/login" exact={true}>
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
@@ -60,7 +60,7 @@ function App() {
               setAuthenticated={setAuthenticated}
               setUser={setUser}
             />
-          </Route>
+          </Route> */} 
           <Route path="/sign-up" exact={true}>
             <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
               <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
@@ -83,15 +83,12 @@ function App() {
           <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
             <User />
           </ProtectedRoute>
+          <ProtectedRoute path="/create-song" exact={true} authenticated={authenticated}>
+            <SongForm />
+          </ProtectedRoute>
           <Route path="/" exact={true} authenticated={authenticated}>
             <Home />
           </Route>
-
-          {/* THIS ARTIST FORM ROUTE IS FOR TESTING PURPOSES. FEEL FREE TO DELETE! */}
-          <Route path="/artist-form-test" exact={true}>
-            <ArtistForm />
-          </Route>
-
           <Route path="/song-form-test" exact={true}>
             <SongForm />
           </Route>

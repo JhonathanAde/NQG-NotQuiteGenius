@@ -16,7 +16,7 @@ const SongTile = ({song, idx}) => {
         <div className="song-tile">
             <div className="song-link" onClick={songReroute}>
                 <div className="song-number">{idx}</div>
-                <div className="song-image">{song.image}</div>
+                <img className="song-image" src={song.image} alt="album cover"/>
                 <div className="song-title">{song.title}</div>
             </div>
             <div className="artist-link" onClick={artistReroute}>

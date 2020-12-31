@@ -3,6 +3,7 @@ import { NavLink, Link, useParams } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import {getArtist} from '../../services/artists'
 import './Song.css';
+import AnnotationForm from './AnnotationForm';
 
 
 const Song = ({authenticated, user}) => {
@@ -158,7 +159,7 @@ const Song = ({authenticated, user}) => {
   return (
     <div className="songpage" onClick={onAnnotationClick}>
       <header className="songpage-header">
-        <img className="songpage-image" alt="Album Cover"/>
+        <img className="songpage-image" alt="Album Cover" src={song.image}/>
         <div className="songpage-info">
           { song &&
           <>
