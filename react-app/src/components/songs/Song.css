@@ -29,12 +29,16 @@
   padding-left: 100px;
   flex: 0 0 50%;
   position: relative;
+  font-family: Staatliches;
+  font-size: 20px;
 }
 
 .songpage-sidebar {
   display: flex;
   padding: 5px;
   flex: 0 0 50%;
+  font-family: Staatliches;
+  font-size: 20px;
 }
 
 .songpage-annotation {
@@ -61,16 +65,19 @@
 }
 
 .annotation-key {
+  padding-left: 3px;
+  padding-right: 3px;
   background-color: lightgray;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .annotation-key:hover {
-  background-color: rgb(252, 252, 190);
+  background-color: #2AD6E8;
 }
 
 .annotation-key.active {
-  background-color: yellow;
+  background-color: #FF41AF;
 }
 
 .annotation-key.active:after {

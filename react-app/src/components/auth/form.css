@@ -40,9 +40,11 @@ button {
     padding: 5px 10px 5px 10px;
     cursor: pointer;
     font-family: Staatliches;
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 5px;
     margin: 10px;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 button:focus {
@@ -66,7 +68,6 @@ button:focus {
     z-index: 1;
     background-color: black;
     color:white;
-    text-decoration: underline;
     font-family: Rubik;
     width: 50%;
     height: 80vh;
