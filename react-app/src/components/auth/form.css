@@ -23,6 +23,8 @@
 
 .form-input {
     margin: 10px;
+    font-size: 20px;
+    font-family: Staatliches, sans-serif;
 }
 
 input {
@@ -62,6 +64,10 @@ button:focus {
     position: relative;
 }
 
+label {
+    font-size: 30px;
+    font-family: Staatliches, sans-serif;
+}
 
 .partition {
     position: absolute;

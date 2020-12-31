@@ -20,6 +20,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
   return (
     <nav className="nav-bar">
       <div className="logo">
+        <div className="radio"></div>
         <div className="home-link" onClick={rerouteHome}>
           NQG
         </div>

@@ -67,7 +67,7 @@ const SongForm = () => {
 
   const updateNewArtist = (e) => {
     setNewArtist(e.target.value)
-    setExistingArtist(null);
+    setExistingArtist("");
   };
 
   const updateLyrics = (e) => {
