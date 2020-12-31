@@ -16,25 +16,17 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         <input type="search" className="search-bar" placeholder="search" />
       </div>
       <div className="user-buttons">
-<<<<<<< HEAD
         {authenticated?
         <>
           <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
           <NavLink to="/profile">
             {`${user.username}`}
             </NavLink>
-        </>
-          :
-=======
-        {authenticated? 
-          <>
-            <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser}/>
             <NavLink to="/create-song" exact={true} activeClassName="active">
               Create Song
             </NavLink>
           </>
           : 
->>>>>>> main
           <>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Register
