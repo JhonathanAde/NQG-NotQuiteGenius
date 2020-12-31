@@ -15,6 +15,7 @@ import Artist from "./components/artists/Artists";
 
 import SongForm from "./components/SongFormTest"
 import ArtistForm from "./components/ArtistFormTest"
+import Player from "./components/audioPlayer/AudioPlayer"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -93,7 +94,11 @@ function App() {
             <SongForm />
           </Route>
 
-        </Switch>
+          {/* THIS AUDIO PLAYER ROUTE IS FOR TEST PURPOSES ONLY! */}
+          <Route path="/audio-player" exact={true}>
+            <Player />
+          </Route>
+      </Switch>
         <div className="push"></div>
       </div>
       <Footer className="footer"/>

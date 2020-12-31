@@ -1,0 +1,48 @@
+.audio-player__container {
+    display: grid;
+    grid-template-columns: 170px auto;
+    column-gap: 15px;
+    width: 90%;
+    min-width: 500px;
+    border: 2px solid black;
+    align-items: center;
+    padding-left: 6px;
+    position: fixed;
+    bottom: 0;
+}
+
+.audio-player__album-container {
+    display: flex;
+    width: 170px;
+    height: 50px;
+    /* background-color: blue; */
+}
+
+.audio-player__album-art {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    background-color: red;
+}
+
+.audio-player__album-details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 110px;
+    /* background-color: aqua; */
+}
+
+.audio-player__song-title {
+    font-family: Programme,Arial,sans-serif;
+    font-size: .75em;
+    line-height: 1em;
+    word-break: break-word;
+}
+
+.audio-player__artist-name {
+    font-family: Programme,Arial,sans-serif;
+    font-size: .625em;
+    line-height: 1.5em;
+    word-break: break-word;
+}
