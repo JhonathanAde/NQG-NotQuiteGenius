@@ -10,7 +10,7 @@ def seed_songs():
         Song(
         title = 'Willow',
         artist_id = 1,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Evermore-01.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 I'm like the water when your ship rolled in that night<br />
@@ -186,7 +186,7 @@ Hmm, hmm, hmm-hmm"""
         Song(
         title = 'Reborn',
         artist_id = 2,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/kid_sees_ghosts-01.png',
         audio_file = '',
         lyrics = """[Intro: Kid Cudi]<br />
 Hmm, I'm wide awake, I'm wide awake<br />
@@ -294,7 +294,7 @@ Duh-duh-duh, duh, duh, duh<br />
 As he falls back deeper, into a state<br />
 The return (Dot Da Genius, baby)<br />
 (Daytrip took it to ten, hey)<br />
-<br />
+<br />l
 [Verse 1]<br />
 Nights my mind is speedin' by, I'm holdin' on<br />
 Askin' God to help 'em, are you hearin' me?<br />
@@ -436,7 +436,7 @@ No, I can't sleep until I feel your touch"""
         Song(
         title = 'You Should Be Sad',
         artist_id = 4,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Manic.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 I wanna start this out and say<br />
@@ -643,7 +643,7 @@ You should be"""
         Song(
         title = 'No Time To Die',
         artist_id = 5,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/No_Time_To_Die-01.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 I should have known<br />
@@ -694,7 +694,7 @@ There's just no time to die"""
         Song(
         title = 'Roses',
         artist_id = 6,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/While_The_World_Was_Burning.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 Roses<br />
@@ -757,7 +757,7 @@ Roses"""
         Song(
         title = 'Life is Good (feat. Drake)',
         artist_id = 7,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/High_Off_Life.png',
         audio_file = '',
         lyrics = """[Part I]<br />
 <br />
@@ -859,7 +859,7 @@ Hunnid thousand for the cheapest ring on a nigga finger, lil' bitch"""
         Song(
         title = 'Breathe Deeper',
         artist_id = 8,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/The_Slow_Rush-01.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 If you think I couldn't hold my own, believe me, I can<br />
@@ -938,7 +938,7 @@ Telemona"""
         Song(
         title = 'Murder Most Foul',
         artist_id = 9,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Rough_And_Rowdy_Ways.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 'Twas a dark day in Dallas, November '63<br />
@@ -1118,7 +1118,7 @@ Play "The Blood-Stained Banner", play "Murder Most Foul"""
         Song(
         title = 'The Bones',
         artist_id = 10,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/GIRL.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 We're in the homestretch of the hard times<br />
@@ -1174,7 +1174,7 @@ Yeah, ooh"""
         Song(
         title = 'On the Floor',
         artist_id = 11,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/SMHOFI.png',
         audio_file = '',
         lyrics = """I'm trying, but still, I close my eyes (Mmm)<br />
 The dreaming, bringing his face to mine<br />
@@ -1231,7 +1231,7 @@ I just want him in my arms"""
         Song(
         title = 'Yo Perreo Sola (English translation)',
         artist_id = 12,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/YHLQMDLG.png',
         audio_file = '',
         lyrics = """[Pre-Chorus: Nesi]<br />
 You used to ignore me (You ignored me)<br />
@@ -1317,7 +1317,7 @@ I twerk alone (Twerk alone)"""
         Song(
         title = 'Ladies',
         artist_id = 13,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Fetch_The_Boltcutters.png',
         audio_file = '',
         lyrics = """[Intro]<br />
 Ladies, ladies, ladies, ladies<br />
@@ -1399,7 +1399,7 @@ Yet another woman to whom I won't get through"""
         Song(
         title = 'Good News',
         artist_id = 14,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Circles.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 I spent the whole day in my head<br />
@@ -1479,7 +1479,7 @@ Mm, hey, mm, mm, mm"""
         Song(
         title = 'Rare',
         artist_id = 15,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Rare.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 Baby<br />
@@ -1569,7 +1569,7 @@ Rare"""
         Song(
         title = 'Supalonely (feat. Gus Dapperton)',
         artist_id = 16,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Hey_u_x.png',
         audio_file = '',
         lyrics = """[Chorus: BENEE]<br />
 I know I fucked up, I'm just a loser<br />
@@ -1655,7 +1655,7 @@ Lonely (I've been lonely)"""
         Song(
         title = 'Gaslighter',
         artist_id = 17,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/GasLighter.png',
         audio_file = '',
         lyrics = """[Intro]<br />
 Gaslighter, denier<br />
@@ -1733,7 +1733,7 @@ Gaslighter, you liar"""
         Song(
         title = 'Delete Forever',
         artist_id = 18,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Miss_Anthropocene.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 Lying so awake, things I can't escape<br />
@@ -1781,7 +1781,7 @@ More lines on the mirror than a sonnet"""
         Song(
         title = 'Physical',
         artist_id = 19,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Future_Nostalgia.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 Common love isn't for us<br />
@@ -1860,7 +1860,7 @@ Come on, phy-phy-phy-physical"""
         Song(
         title = 'Stupid Love',
         artist_id = 20,
-        image = '',
+        image = 'https://nqg-images.s3.amazonaws.com/Chromatica.png',
         audio_file = '',
         lyrics = """[Verse 1]<br />
 You're the one that I've been waiting for<br />

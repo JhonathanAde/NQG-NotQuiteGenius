@@ -17,11 +17,11 @@ const Player = () => (
             </div>
         </div>
         <AudioPlayer
-            autoPlay
+            autoPlay={false}
             layout="horizontal"
             customAdditionalControls={[]}
             showJumpControls={false}
-            src="http://example.com/audio.mp3"
+            src="https://nqg-songs.s3.amazonaws.com/Ariana_Grande_positions_preview.mp3"
             // style={{ width: '90%', height: '60px' }} 
             // onPlay={e => console.log("onPlay")}
             // other props here

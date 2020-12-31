@@ -100,7 +100,7 @@ function App() {
             <SongForm />
           </Route>
 
-          {/* THIS AUDIO PLAYER ROUTE IS FOR TEST PURPOSES ONLY! */}
+          {/* THIS AUDIO PLAYER ROUTE IS USED FOR REFERENCE */}
           <Route path="/audio-player" exact={true}>
             <Player />
           </Route>
