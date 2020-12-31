@@ -1,9 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
-const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
+const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
+
   return (
     <nav className="nav-bar">
       <div className="logo">
@@ -16,12 +17,18 @@ const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
       </div>
       <div className="user-buttons">
         {authenticated?
+        <>
           <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
+          <NavLink to="/profile">
+            {`${user.username}`}
+            </NavLink>
+        </>
           :
           <>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Register
             </NavLink>
+            {/* <NavLink to="/" */}
             {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink> */}

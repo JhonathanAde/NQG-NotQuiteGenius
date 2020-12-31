@@ -30,11 +30,11 @@ const Song = (authenticated) => {
   useEffect(() => {
     //Remove any previous selections
     const priorSelection = document.querySelectorAll('.songpage-new-annotation');
-    for (n in priorSelection) {
-      const text = n.innerHTML;
-      n.after(text)
-      n.remove()
-    }
+    // for (n in priorSelection) {
+    //   const text = n.innerHTML;
+    //   n.after(text)
+    //   n.remove()
+    // }
     //Make new selections
     if (newAnnotationKey) {
 
@@ -67,7 +67,7 @@ const Song = (authenticated) => {
       var text = "";
       if (window.getSelection) {
           text = window.getSelection().toString();
-      } else if (document.selection && document.selection.type != "Control") {
+      } else if (document.selection && document.selection.type !== "Control") {
           text = document.selection.createRange().text;
       }
       console.log('setting new annotation:', text)

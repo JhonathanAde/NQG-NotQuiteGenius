@@ -107,6 +107,13 @@ def edit_song(id):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+# GETS AN ANNOTATION
+@song_routes.route('/annotations/<int:id>', methods=["GET"])
+def get_annotations(id):
+    annotations = Annotation.query.filter_by(user_id = id)
+    print("annotations", annotations)
+    return [annotation.to_dict() for annotation in annotations]
+
 # POSTS AN ANNOTATION
 @song_routes.route('/<int:id>/annotations', methods=["POST"])
 def post_annotation(id):
