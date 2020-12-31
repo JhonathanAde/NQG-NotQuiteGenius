@@ -51,18 +51,8 @@
     flex-direction: column;
 }
 
-.annotation-key {
-    background-color: lightgray;
-    cursor: pointer;
-}
 
-.annotation-key:hover {
-    background-color: rgb(252, 252, 190);
-}
 
-.annotation-key.active {
-    background-color: yellow;
-}
 
 .annotation-key.active:after {
     content: '';
