@@ -34,13 +34,13 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
       <div className="user-buttons">
         {authenticated?
         <>
-          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
           <button className="nav-button" onClick={rerouteProfile}>
-            {`${user.username}`}
+            {<i className="profileButton" className="fas fa-user-circle " ></i>}
             </button>
             <button className="nav-button" onClick={rerouteCreate}>
               Create Song
             </button>
+            <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
           </>
           : 
           <>

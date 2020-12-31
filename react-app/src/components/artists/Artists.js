@@ -19,9 +19,11 @@ const Artist = () => {
   return (
     <div className="songpage">
       <header className="songpage-header">
-        <img className="songpage-image" alt="Album Cover"/>
-        <div className="songpage-info">
-          {artist && <h1 className="songpage-title">{artist.name}</h1> }
+        <div className="header-container">
+          {artist && <img className="songpage-image" alt="Album Cover" src={artist.image}/>}
+          <div className="songpage-info">
+            {artist && <h1 className="songpage-title">{artist.name}</h1> }
+          </div>
         </div>
       </header>
       <div className="artistpage-content">

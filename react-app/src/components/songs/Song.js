@@ -173,14 +173,16 @@ const Song = ({authenticated, user}) => {
   return (
     <div className="songpage" onClick={onAnnotationClick}>
       <header className="songpage-header">
-        <img className="songpage-image" alt="Album Cover" src={song.image}/>
-        <div className="songpage-info">
-          { song &&
-          <>
-            <h1 className="songpage-title">{song.title}</h1>
-            <Link to={`/artists/${song.artist.id}`} className="artist-name">{song.artist.name}</Link>
-          </>
-          }
+        <div className="header-container">
+          <img className="songpage-image" alt="Album Cover" src={song.image}/>
+          <div className="songpage-info">
+            { song &&
+            <>
+              <h1 className="songpage-title">{song.title}</h1>
+              <Link to={`/artists/${song.artist.id}`} className="artist-name">{song.artist.name}</Link>
+            </>
+            }
+          </div>
         </div>
       </header>
       <div className="songpage-content">
@@ -219,9 +221,9 @@ const Song = ({authenticated, user}) => {
 
             {song && artistSongs &&
               <>
-              <h3>Other songs by this artist</h3>
+              <h3>Songs by this artist:</h3>
               {artistSongs.map((song, idx) => (
-                <NavLink to={`/songs/${song.id}`} key={`${song.id}`}>{song.title}</NavLink>
+                <NavLink className="song-link" to={`/songs/${song.id}`} key={`${song.id}`}>{song.title}</NavLink>
               ))}
               </>
             }
