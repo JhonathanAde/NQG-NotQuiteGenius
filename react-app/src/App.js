@@ -70,8 +70,8 @@ function App() {
               <div className="laptop-icon"></div>
             </div>
             <div className="form-page">
-              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} />
-              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  setUser={setUser}/>
+              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} active={active}/>
+              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  setUser={setUser} active={active}/>
             </div>
           </Route>
           <Route path="/songs/:songId" exact={true}>

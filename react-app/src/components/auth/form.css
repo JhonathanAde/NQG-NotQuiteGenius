@@ -24,7 +24,7 @@
 .form-input {
     margin: 10px;
     font-size: 20px;
-    font-family: Staatliches, sans-serif;
+    font-family: Raleway, arial, sanserif, sans-serif;
 }
 
 input {
@@ -42,9 +42,9 @@ button {
     border: none;
     padding: 5px 10px 5px 10px;
     cursor: pointer;
-    font-family: Staatliches;
+    font-family: Raleway, arial, sanserif;
     font-size: 25px;
-    border-radius: 5px;
+    border-radius: 2px;
     margin: 10px;
     margin-top: 7px;
     margin-bottom: 7px;
@@ -54,6 +54,10 @@ button {
 
 button:focus {
     outline: none;
+}
+
+button:hover {
+    color: #E561B3;
 }
 
 .form-input-file {
@@ -69,7 +73,7 @@ button:focus {
 
 label {
     font-size: 30px;
-    font-family: Staatliches, sans-serif;
+    font-family: Raleway, arial, sanserif, sans-serif;
 }
 
 .partition {
@@ -176,3 +180,11 @@ label {
     background-size: contain;
     background-image: url("../../laptopicon.png");
 }
+
+.login-active:hover {
+    color: #E561B3;
+}
+.sign-up-active:hover {
+    color: #E561B3;
+}
+

@@ -8,7 +8,7 @@ const LogoutButton = ({setAuthenticated, setUser}) => {
     setUser({});
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className="nav-button" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;

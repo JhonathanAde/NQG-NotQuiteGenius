@@ -25,7 +25,7 @@ const Song = ({authenticated, user}) => {
   }, [songId, authenticated]);
 
   useEffect(() => {
-    clearNewAnnotationKey();
+    clearNewAnnotationKey(true);
     updateAnnotations(song, annotations)
   }, [annotations, song])
 
@@ -156,10 +156,16 @@ const Song = ({authenticated, user}) => {
       }
   }
 
-  const clearNewAnnotationKey = () => {
+  const clearNewAnnotationKey = (clear = false) => {
     const existing = document.querySelector('.songpage-new-annotation')
+
     if (existing) {
-      existing.replaceWith(...existing.childNodes)
+      if (clear) {
+        // bandaid fix
+        existing.replaceWith("")
+      } else {
+        existing.replaceWith(...existing.childNodes)
+      }
     }
     setNewAnnotationKey("");
   }
@@ -190,19 +196,18 @@ const Song = ({authenticated, user}) => {
         </section>
         <section className="songpage-sidebar">
           <div className="songpage-annotation">
-          <p className="songpage-annotation-text">
-          </p>
+            <p className="songpage-annotation-text">
+            </p>
           </div>
           <div className="songpage-add-annotation">
-            Add annotation for key "{newAnnotationKey}"
-            <AnnotationForm 
-            lyricKey={newAnnotationKey}  
-            songId={songId} 
-            userId={user.id} 
-            setAnnotations={setAnnotations}
-            annotations={annotations}
-            clearNewAnnotationKey={clearNewAnnotationKey}/>
-            
+              Add annotation for key "{newAnnotationKey}"
+              <AnnotationForm 
+              lyricKey={newAnnotationKey}  
+              songId={songId} 
+              userId={user.id} 
+              setAnnotations={setAnnotations}
+              annotations={annotations}
+              clearNewAnnotationKey={clearNewAnnotationKey}/>            
           </div>
           <div className="songpage-sidelinks">
             {(  authenticated &&
