@@ -12,6 +12,8 @@ import './index.css'
 import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 import Artist from "./components/artists/Artists";
+import Profile from "./components/profile/Profile";
+import { user } from "./components/User"; 
 
 import SongForm from "./components/SongFormTest"
 import ArtistForm from "./components/ArtistFormTest"
@@ -47,7 +49,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser}/>
+        <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser} user={user}/>
         <Switch>
           {/* <Route path="/login" exact={true}>
             <LoginForm
@@ -78,6 +80,9 @@ function App() {
           <Route path="/artists/:artistId" exact={true}>
               <Artist />
           </Route>
+          <ProtectedRoute path="/profile" exact={true} authenticated={authenticated}>
+              <Profile user={user} />
+          </ProtectedRoute>
           <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
             <UsersList/>
           </ProtectedRoute>

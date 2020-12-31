@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
-const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
+const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
   let history = useHistory()
   const rerouteHome = () => {
@@ -29,9 +29,12 @@ const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
         <input type="search" className="search-bar" placeholder="search" />
       </div>
       <div className="user-buttons">
-        {authenticated? 
-          <>
-            <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser}/>
+        {authenticated?
+        <>
+          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
+          <NavLink to="/profile">
+            {`${user.username}`}
+            </NavLink>
             <button onClick={rerouteCreate}>
               CREATE SONG
             </button>
@@ -39,6 +42,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser }) => {
           : 
           <>
             <button onClick={rerouteRegister}>Register</button>
+            {/* <NavLink to="/" */}
             {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink> */}
