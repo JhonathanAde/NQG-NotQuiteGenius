@@ -147,7 +147,7 @@ def post_annotation(id):
             lyric_key=form.data['lyric_key'],
             content=form.data['content']
         )
-        
+
         db.session.add(annotation)
         db.session.commit()
         return annotation.to_dict()
@@ -180,11 +180,14 @@ def update_annotation(id):
 def search():
     search_string = request.args.get('search_string')
     exact_strings = re.findall('"([^"]*)"', search_string)
+    words = search_string
+    for pattern in exact_strings:
+        re.sub(pattern, "", words)
 
     print('EXXXXXXXXXXXXACT', exact_strings)
-    print('SINGLE WORDS', )
+    print('SINGLE WORDS', words)
     if (search_string):
 
         return Song.search(search_string)
     else:
-        return "Missing search string from request."
+        return {"error": "Missing search string from request."}
