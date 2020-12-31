@@ -38,7 +38,6 @@ const Song = ({authenticated, user}) => {
   },[song]);
 
   useEffect(() => {
-    console.log("newA", newAnnotationKey)
     switchActiveSideBar()
   }, [newAnnotationKey, annotation]);
 
