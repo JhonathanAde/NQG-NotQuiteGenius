@@ -84,6 +84,7 @@ Wreck my plans, that's my man"""
         Song(
         title = 'She Knows This',
         artist_id = 2,
+        image = 'https://nqg-images.s3.amazonaws.com/Man_On_The_Moon_III-01.png',
         lyrics = """[Intro: Mark Webber & Michael Cera]<br />
 Scott, let it go<br />
 Don't give 'em the satisfaction<br />
@@ -280,6 +281,7 @@ Keep movin' forward, keep movin' forward"""
         ),
         Song(
         title = 'Tequila Shots',
+        image = 'https://nqg-images.s3.amazonaws.com/Man_On_The_Moon_III-01.png',
         artist_id = 2,
         lyrics = """[Intro]<br />
 Duh-duh-duh, duh, duh, duh<br />
@@ -368,6 +370,7 @@ This fight, this war in me, in me, in me"""
         Song(
         title = 'Blinding Lights',
         artist_id = 3,
+        image = 'https://nqg-images.s3.amazonaws.com/Bliding_lights-01.png',
         lyrics = """[Intro]<br />
 Yeah<br />
 <br />
