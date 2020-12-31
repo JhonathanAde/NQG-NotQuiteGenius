@@ -1,6 +1,5 @@
 import React, { useState, useEffect, } from 'react';
 import { NavLink, Link, useParams } from 'react-router-dom';
-import './Artists.css';
 import {getArtist} from '../../services/artists'
 import SongTile from '../home/SongTile';
 

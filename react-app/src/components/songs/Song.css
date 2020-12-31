@@ -38,15 +38,19 @@
   padding: 5px;
 }
 
-.songpage-annotation.active {
-  display: block;
-}
-
 .songpage-sidelinks {
   display: none;
 }
 
-:not(.active) ~ .songpage-sidelinks {
+.songpage-add-annotation {
+  display: none;
+}
+
+.songpage-sidebar > .active {
+  display: block;
+}
+
+.songpage-sidelinks.active {
   display: flex;
   flex-direction: column;
 }
@@ -76,4 +80,8 @@
   border-width: 15px;
   border-style: solid;
   border-color: transparent black transparent transparent;
+}
+
+.songpage-new-annotation {
+  background-color: cyan;
 }

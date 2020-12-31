@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 class AnnotationForm(FlaskForm):
   user_id = IntegerField('user_id', validators=[DataRequired()])
-  song_id = IntegerField('song_id', validators=[DataRequired()])
+  song_id = IntegerField('song_id')
   lyric_key = StringField('lyric_key', validators=[DataRequired()])
   content = TextAreaField('Content', validators=[DataRequired()])
 
