@@ -12,6 +12,18 @@
     font-size: 70px;
 }
 
+.developers {
+    display: flex;
+    position: absolute;
+    margin-left: 60px;
+    bottom: 5px;
+}
+
+.developers > h1 {
+    margin: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
 .phone-icon {
     position: absolute;
     top: 30px;
