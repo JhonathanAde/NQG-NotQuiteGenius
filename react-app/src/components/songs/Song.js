@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import {getArtist} from '../../services/artists'
 import './Song.css';
 import AnnotationForm from './AnnotationForm';
+import PlayButton from '../audioPlayer/PlayButton';
 
 
 const Song = ({authenticated, user}) => {
@@ -25,7 +26,7 @@ const Song = ({authenticated, user}) => {
   }, [songId, authenticated]);
 
   useEffect(() => {
-    clearNewAnnotationKey();
+    clearNewAnnotationKey(true);
     updateAnnotations(song, annotations)
   }, [annotations, song])
 
@@ -156,10 +157,16 @@ const Song = ({authenticated, user}) => {
       }
   }
 
-  const clearNewAnnotationKey = () => {
+  const clearNewAnnotationKey = (clear = false) => {
     const existing = document.querySelector('.songpage-new-annotation')
+
     if (existing) {
-      existing.replaceWith(...existing.childNodes)
+      if (clear) {
+        // bandaid fix
+        existing.replaceWith("")
+      } else {
+        existing.replaceWith(...existing.childNodes)
+      }
     }
     setNewAnnotationKey("");
   }
@@ -167,14 +174,19 @@ const Song = ({authenticated, user}) => {
   return (
     <div className="songpage" onClick={onAnnotationClick}>
       <header className="songpage-header">
-        <img className="songpage-image" alt="Album Cover" src={song.image}/>
-        <div className="songpage-info">
-          { song &&
-          <>
-            <h1 className="songpage-title">{song.title}</h1>
-            <Link to={`/artists/${song.artist.id}`} className="artist-name">{song.artist.name}</Link>
-          </>
-          }
+        <div className="header-container">
+          <img className="songpage-image" alt="Album Cover" src={song.image}/>
+          <div className="songpage-info">
+            { song &&
+            <>
+              <div className="songpage-title">
+                <h1>{song.title}</h1>
+                <PlayButton song={song}/>
+              </div>
+              <Link to={`/artists/${song.artist.id}`} className="artist-name">{song.artist.name}</Link>
+            </>
+            }
+          </div>
         </div>
       </header>
       <div className="songpage-content">
@@ -190,19 +202,18 @@ const Song = ({authenticated, user}) => {
         </section>
         <section className="songpage-sidebar">
           <div className="songpage-annotation">
-          <p className="songpage-annotation-text">
-          </p>
+            <p className="songpage-annotation-text">
+            </p>
           </div>
           <div className="songpage-add-annotation">
-            Add annotation for key "{newAnnotationKey}"
-            <AnnotationForm 
-            lyricKey={newAnnotationKey}  
-            songId={songId} 
-            userId={user.id} 
-            setAnnotations={setAnnotations}
-            annotations={annotations}
-            clearNewAnnotationKey={clearNewAnnotationKey}/>
-            
+              Add annotation for key "{newAnnotationKey}"
+              <AnnotationForm 
+              lyricKey={newAnnotationKey}  
+              songId={songId} 
+              userId={user.id} 
+              setAnnotations={setAnnotations}
+              annotations={annotations}
+              clearNewAnnotationKey={clearNewAnnotationKey}/>            
           </div>
           <div className="songpage-sidelinks">
             {(  authenticated &&
@@ -214,9 +225,9 @@ const Song = ({authenticated, user}) => {
 
             {song && artistSongs &&
               <>
-              <h3>Other songs by this artist</h3>
+              <h3>Songs by this artist:</h3>
               {artistSongs.map((song, idx) => (
-                <NavLink to={`/songs/${song.id}`} key={`${song.id}`}>{song.title}</NavLink>
+                <NavLink className="song-link" to={`/songs/${song.id}`} key={`${song.id}`}>{song.title}</NavLink>
               ))}
               </>
             }

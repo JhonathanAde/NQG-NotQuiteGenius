@@ -11,7 +11,8 @@
 }
 
 .top-20 {
-    padding: 20px;
+    padding: 0px;
+    padding-bottom: 20px;
     display: flex;
     width: 75%;
     flex-direction: column;
@@ -29,8 +30,10 @@
 
 
 .artists-container {
+    height: 500px;
+    padding-bottom: 20px;
     min-width: 800px;
-    padding: 20px;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -42,7 +45,7 @@
 
 }
 .top-artists {
-    
+    min-width: 700px;
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -60,23 +63,22 @@
     top: 0px;
     font-family: Rubik;
     font-size: 40px;
-    background-color: #2AD6E8;
+    background-color: #E561B3;
     padding-left: 20px;
     border-radius: 2px;
-
 
 }
 .title-artist {
     font-family: Rubik;
     font-size: 40px;
     grid-area: title;
-    background-color: #2AD6E8;
+    background-color: #E561B3;
     padding-left: 20px;
     border-radius: 2px;
 }
 
 .song-tile {
-    font-family: Staatliches;
+    font-family: Raleway, arial, sanserif;
     margin: 10px;
     padding: 10px;
     display: flex;
@@ -108,20 +110,36 @@
 }
 
 .song-title {
+    max-width: 100px;
     margin: 0px 30px 0px 30px;
     font-size: 25px;
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song-title:hover {
+    color: #E561B3;
+    
 }
 
 .song-artist {
+    max-width: 300px;
     margin: 10px;
     font-size: 25px;
     text-align: right;
     cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+.song-artist:hover {
+    color:#E561B3;
 }
 
 .artist-tile {
-    font-family: Staatliches;
+    font-family: Raleway, arial, sanserif;
     margin: 10px;
     padding: 10px;
     display: flex;
