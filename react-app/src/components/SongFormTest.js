@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createSong } from "../services/song";
 import "./SongForm.css"
+import {useHistory} from 'react-router-dom'
 import {createArtist, getArtists} from '../services/artists'
 
 const SongForm = () => {
@@ -20,6 +21,8 @@ const SongForm = () => {
       setArtists(res.artists)
     })()
   }, []);
+
+  let history = useHistory();
   
   console.log("hits", artists)
   const songDataSubmitHandler = async (e) => {
@@ -45,15 +48,16 @@ const SongForm = () => {
     data.append('image', image);
     data.append('audio_file', audioFile);
 
-    // const song = await createSong(data);
+    const song = await createSong(data);
     // const song = await editSong(data, 6);
-    // if (!song.errors) {
-    //   console.log("Submit successful! ", song);
-    // } else {
-    //   setErrors(song.errors);
-    // }
-    // console.log("Submit successful! ", song);
+    if (!song.errors) {
+      console.log("Submit successful! ", song);
+    } else {
+      setErrors(song.errors);
+    }
+    console.log("Submit successful! ", song);
     
+    history.push("/")
   };
 
   const updateTitle = (e) => {

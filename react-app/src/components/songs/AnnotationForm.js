@@ -22,6 +22,10 @@ const AnnotationForm = ({ setAnnotations, annotations, lyricKey, songId, userId,
         setContent(e.target.value)
     }
 
+    const clearSelection = () => {
+        //bandaid fix
+        clearNewAnnotationKey(false)
+    }
 
     return (
         <div>
@@ -30,7 +34,7 @@ const AnnotationForm = ({ setAnnotations, annotations, lyricKey, songId, userId,
                 <textarea className="content-textarea" name="content" placeholder="Add Annotation..." value={content} onChange={updateContent}/>
                 <div className="annotationButtons">
                     <button type="submit">Add</button>
-                    <button type="button" onClick={clearNewAnnotationKey}>Cancel</button>
+                    <button type="button" onClick={clearSelection}>Cancel</button>
                 </div>
             </form>
         </div>
