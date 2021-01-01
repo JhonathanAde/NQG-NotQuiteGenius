@@ -26,16 +26,14 @@ const AnnotationForm = ({ setAnnotations, annotations, lyricKey, songId, userId,
     }
 
     return (
-        <div>
-            <form className="annotation-form" method="post" onSubmit={addAnnotation}>
-                <input type="hidden" name="lyric_key" value={lyricKey} />
-                <textarea className="content-textarea" name="content" placeholder="Add Annotation..." value={content} onChange={updateContent}/>
-                <div className="annotationButtons">
-                    <button type="submit">Add</button>
-                    <button type="button" onClick={clearNewAnnotationKey}>Cancel</button>
-                </div>
-            </form>
-        </div>
+        <form className="annotation-form" method="post" onSubmit={addAnnotation}>
+            <input type="hidden" name="lyric_key" value={lyricKey} />
+            <textarea className="content-textarea" name="content" placeholder="Add Annotation..." value={content} onChange={updateContent}/>
+            <div className="annotationButtons">
+                <button type="submit">Add</button>
+                <button type="button" onClick={clearNewAnnotationKey}>Cancel</button>
+            </div>
+        </form>
     );
 };
 

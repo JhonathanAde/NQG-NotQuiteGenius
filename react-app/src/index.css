@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+#root {
+    min-width: 1200px;
+}
+
 main {
     padding: 0px;
 }

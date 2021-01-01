@@ -203,10 +203,11 @@ const Song = ({authenticated, user}) => {
         </section>
         <section className="songpage-sidebar">
           <div className="songpage-annotation">
-            <p className="songpage-annotation-text">
+            <p className="songpage-annotation-text songpage-sticky">
             </p>
           </div>
           <div className="songpage-add-annotation">
+            <div className="songpage-sticky">
               Add annotation for key "{newAnnotationKey}"
               <AnnotationForm
               lyricKey={newAnnotationKey}
@@ -216,8 +217,10 @@ const Song = ({authenticated, user}) => {
               annotations={annotations}
               clearNewAnnotationKey={clearNewAnnotationKey}
               setActivateAnnotation={setActivateAnnotation}/>
+            </div>
           </div>
           <div className="songpage-sidelinks">
+            <div className="songpage-sticky">
             {(  authenticated &&
                 <h3>{`${user.username}`}&mdash;select non-annotated lyric text to create a new annotation.</h3>
               )
@@ -233,6 +236,7 @@ const Song = ({authenticated, user}) => {
               ))}
               </>
             }
+            </div>
           </div>
         </section>
       </div>
