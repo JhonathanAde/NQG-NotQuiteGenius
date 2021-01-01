@@ -5,11 +5,14 @@ import {getArtist} from '../../services/artists'
 import './Song.css';
 import AnnotationForm from './AnnotationForm';
 import PlayButton from '../audioPlayer/PlayButton';
+import Lyrics from './Lyrics';
 
 
 const Song = ({authenticated, user}) => {
   const [annotation, setAnnotation] = useState("");
   const [annotations, setAnnotations] = useState([]);
+  const [lyricsKey, setLyricsKey] = useState(annotations.length);
+  const [activateAnnotation, setActivateAnnotation] = useState(0);
   const [song, setSong] = useState("");
   const [artistSongs, setArtistSongs] = useState([]);
   const [lyricsHTML, setLyricsHTML] = useState("");
@@ -158,16 +161,10 @@ const Song = ({authenticated, user}) => {
       }
   }
 
-  const clearNewAnnotationKey = (clear = false) => {
+  const clearNewAnnotationKey = () => {
     const existing = document.querySelector('.songpage-new-annotation')
-
     if (existing) {
-      if (clear) {
-        // bandaid fix
-        existing.replaceWith("")
-      } else {
-        existing.replaceWith(...existing.childNodes)
-      }
+      existing.replaceWith(...existing.childNodes)
     }
     setNewAnnotationKey("");
   }
@@ -214,7 +211,8 @@ const Song = ({authenticated, user}) => {
               userId={user.id}
               setAnnotations={setAnnotations}
               annotations={annotations}
-              clearNewAnnotationKey={clearNewAnnotationKey}/>
+              clearNewAnnotationKey={clearNewAnnotationKey}
+              setActivateAnnotation={setActivateAnnotation}/>
           </div>
           <div className="songpage-sidelinks">
             {(  authenticated &&
