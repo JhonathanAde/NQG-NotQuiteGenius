@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { NavLink, Link, useParams, useHistory } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import "./AnnotationList.css"
 
@@ -8,8 +8,7 @@ const AnnotationList = ({annoInfo, idx}) => {
   let history = useHistory();
 
   const {content, lyricKey, song} = annoInfo
-  console.log(content)
-  console.log(song)
+  
   const {artist} = song
 
   const songReroute = () => {
@@ -26,7 +25,7 @@ const AnnotationList = ({annoInfo, idx}) => {
         </h3>
         <div className="divider">
         </div>
-      <h7 className="annoblock-header_artist" onClick={artistReroute}>{artist.name}</h7>
+      <div className="annoblock-header_artist" onClick={artistReroute}>{artist.name}</div>
       </div>
       <div className="annoblock-content">
       <p className="annotation-lyrickey_header">Lyrics:</p>

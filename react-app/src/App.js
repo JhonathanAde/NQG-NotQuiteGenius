@@ -13,10 +13,8 @@ import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 import Artist from "./components/artists/Artists";
 import Profile from "./components/profile/Profile";
-import { user } from "./components/User"; 
 
 import SongForm from "./components/SongFormTest"
-import ArtistForm from "./components/ArtistFormTest"
 import Player from "./components/audioPlayer/AudioPlayer"
 
 function App() {

@@ -13,11 +13,10 @@ const PlayButton = ({song}) => {
     const exit = () => {
         setPlaying(false)
     }
-    console.log("song", song)
     return (
         <>
             <button onClick={playSong}>
-                <i class="fas fa-play"></i>
+                <i className="fas fa-play"></i>
             </button>
             {playing && <Player song={song} exit={exit}/>}
         </>
