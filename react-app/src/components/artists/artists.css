@@ -1,0 +1,6 @@
+.artistpage-content {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 100px 50px 100px;
+}

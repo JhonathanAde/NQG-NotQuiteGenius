@@ -22,6 +22,9 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const rerouteRegister = () => {
     history.push("/sign-up")
   }
+  const rerouteProfile = () => {
+    history.push("/profile")
+  }
 
   const rerouteCreate = () => {
     history.push("/create-song")
@@ -42,17 +45,17 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
       <div className="user-buttons">
         {authenticated?
         <>
-          <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
-          <NavLink to="/profile">
-            {`${user.username}`}
-            </NavLink>
-            <button onClick={rerouteCreate}>
-              CREATE SONG
+          <button className="nav-button" onClick={rerouteProfile}>
+            {<i className="profileButton" className="fas fa-user-circle " ></i>}
             </button>
+            <button className="nav-button" onClick={rerouteCreate}>
+              Create Song
+            </button>
+            <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
           </>
           :
           <>
-            <button onClick={rerouteRegister}>Register</button>
+            <button className="nav-button" onClick={rerouteRegister}>Register</button>
             {/* <NavLink to="/" */}
             {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up

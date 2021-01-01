@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import './form.css'
 
-const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
+const SignUpForm = ({active, authenticated, setAuthenticated, setUser}) => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -48,7 +48,7 @@ const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
 
   return (
     <div className="form-container">
-      <form onSubmit={onSignUp}>
+      {!active? <form className="form-transition" onSubmit={onSignUp}>
         <div>
           {errors.map((error) => (
             <div>{error}</div>
@@ -100,7 +100,8 @@ const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
             <button type="submit">Sign Up</button>
           </div>
         </div>
-      </form>
+      </form> :
+      <></>}
     </div>
   );
 };

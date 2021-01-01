@@ -78,8 +78,11 @@ def edit_artist(id):
     if form.validate_on_submit():
         artist_to_edit = Artist.query.get(id)
 
-        # if !artist:
+        # if artist_to_edit == None:
         #     return {"errors": [f"artist with ID {id} does not exist."]}
+
+        if not artist_to_edit:
+            return {"errors": [f"artist with ID {id} does not exist"]}
 
         if request.files:
             img = request.files['image']
@@ -107,3 +110,13 @@ def edit_artist(id):
         return artist_to_edit.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# DELETE ARTIST
+@artist_routes.route('/<int:id>', methods=["DELETE"])
+def delete_artist(id):
+    artist_to_delete = Artist.query.get(id)
+    if artist_to_delete:
+        artist_to_delete.delete()
+        return {"response": f"Artist with ID {id} has been deleted."}
+    else:
+        return {"errors": [f"Artist with ID {id} does not exist."]}
