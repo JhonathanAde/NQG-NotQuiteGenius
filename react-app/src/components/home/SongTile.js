@@ -1,5 +1,6 @@
 import React from 'react';
 import {useHistory, BrowserRouter} from 'react-router-dom'
+import PlayButton from '../audioPlayer/PlayButton';
 
 const SongTile = ({song, idx}) => {
     let history = useHistory()
@@ -20,6 +21,7 @@ const SongTile = ({song, idx}) => {
                     <img className="song-image" src={song.image} alt="album cover"/>
                     <div className="song-title">{song.title}</div>
                 </div>
+                    {/* <PlayButton song={song}/> */}
                 <div className="artist-link" onClick={artistReroute}>
                     <div className="song-artist">{song.artist.name}</div>
                 </div>
