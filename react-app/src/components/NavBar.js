@@ -8,7 +8,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const doSearch = (e) => {
     const value = document.getElementById('search').value;
     (async () => {
-      const response = await fetch(`/api/songs/search?search_string=${value}`);
+      const response = await fetch(`/api/search?search_string=${value}`);
       const results = await response.json();
       console.log(results)
     })();
@@ -26,7 +26,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const rerouteCreate = () => {
     history.push("/create-song")
   }
-  
+
   return (
     <nav className="nav-bar">
       <div className="logo">
