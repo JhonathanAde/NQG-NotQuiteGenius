@@ -126,6 +126,15 @@ def edit_song(id):
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# DELETE SONG
+@song_routes.route('/<int:id>', methods=["DELETE"])
+def delete_song(id):
+    song_to_delete = Song.query.get(id)
+    if song_to_delete:
+        song_to_delete.delete()
+        return {"response": f"Song with ID {id} has been deleted."}
+    else:
+        return {"errors": [f"Song with ID {id} does not exist."]}
 
 # GETS AN ANNOTATION
 @song_routes.route('/annotations/<int:id>', methods=["GET"])
