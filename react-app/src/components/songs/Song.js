@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import {getArtist} from '../../services/artists'
 import './Song.css';
 import AnnotationForm from './AnnotationForm';
+import PlayButton from '../audioPlayer/PlayButton';
 
 
 const Song = ({authenticated, user}) => {
@@ -178,7 +179,10 @@ const Song = ({authenticated, user}) => {
           <div className="songpage-info">
             { song &&
             <>
-              <h1 className="songpage-title">{song.title}</h1>
+              <div className="songpage-title">
+                <h1>{song.title}</h1>
+                <PlayButton song={song}/>
+              </div>
               <Link to={`/artists/${song.artist.id}`} className="artist-name">{song.artist.name}</Link>
             </>
             }

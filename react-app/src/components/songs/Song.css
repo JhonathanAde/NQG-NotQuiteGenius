@@ -139,7 +139,23 @@
 }
 
 .songpage-title {
-  font-size: 40px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E561B3;
+  padding:5px;
+  padding-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+}
+.songpage-title > h1 {
+  font-size: 35px;
+  margin:0px;
+  padding:0px;
+}
+.songpage-title > button {
+  margin: 0px;
+  margin-left: 10px;
 }
 
 .content-textarea {
