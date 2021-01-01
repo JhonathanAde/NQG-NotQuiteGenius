@@ -41,14 +41,15 @@ def search(exacts, words):
         filter(or_(*[Song.title.ilike(f'%{pattern}%') for pattern in words])).all()
     artists = db.session.query(Artist). \
         filter(or_(*[Artist.name.ilike(f'%{pattern}%') for pattern in words])).all()
-    # artists = db.session.query(Artist). \
-    #     filter(or_(*[Artist.name.ilike(f'%{pattern}%') for pattern in words])).all()
+    annotations = db.session.query(Annotation). \
+        filter(or_(*[Annotation.content.ilike(f'%{pattern}%') for pattern in words])).all()
 
 
     return {
         "titles": [song.to_dict() for song in titles],
         "lyrics": [song.to_dict() for song in lyrics],
-        "artists": [song.to_dict() for song in artists],
+        "artists": [artist.to_dict() for artist in artists],
+        "annotations": [annot.to_dict() for annot in annotations],
         }
 
 

@@ -6,6 +6,7 @@ import './NavBar.css'
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
   const doSearch = (e) => {
+    e.stopPropagation();
     const value = document.getElementById('search').value;
     if (value) {
       (async () => {
@@ -14,6 +15,21 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         console.log(results)
       })();
     }
+  }
+
+  const clearSearch = (e) => {
+    const target = e.target;
+    if (target) {
+      if (target.closest('.search-container')) return;
+    }
+    console.log('hiding', e.target)
+    document.getElementById('search').value = null;
+    document.getElementById('search-results').style.display = null;
+  }
+
+  const displaySearchInfo = (e) => {
+    console.log("displaying")
+    document.getElementById('search-results').style.display = 'block';
   }
 
   let history = useHistory()
@@ -33,16 +49,17 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   }
 
   return (
-    <nav className="nav-bar">
+    <nav className="nav-bar" onClick={clearSearch}>
       <div className="logo">
         <div className="radio"></div>
         <div className="home-link" onClick={rerouteHome}>
           NQG
         </div>
       </div>
-      <div className="search-container">
+      <div className="search-container" onClick={displaySearchInfo} >
         <input id="search" type="search" className="search-bar" placeholder="search" />
         <button className="search-button" onClick={doSearch}><i className="fas fa-search"></i></button>
+        <div id="search-results"></div>
       </div>
       <div className="user-buttons">
         {authenticated?

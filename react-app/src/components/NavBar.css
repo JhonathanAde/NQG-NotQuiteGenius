@@ -99,3 +99,14 @@
 .nav-button:hover {
     color: white;
 }
+
+#search-results {
+    display: none; /* default state */
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.95);
+}

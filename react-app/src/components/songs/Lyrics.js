@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const Lyrics = ({lyricsHTML, activateAnnotation}) => {
 
   useEffect(() => {
-    console.log('in effect', activateAnnotation)
+
     if (activateAnnotation) {
       clickActiveAnnotation(activateAnnotation)
     }
@@ -17,7 +17,7 @@ const Lyrics = ({lyricsHTML, activateAnnotation}) => {
       annotation.click();
     }
   }
-  console.log('rendering lyrics')
+
   return (
     <p>
       {
