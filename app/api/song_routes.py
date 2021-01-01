@@ -1,4 +1,4 @@
-import os
+import os, re
 from flask import Blueprint, jsonify, request, url_for
 import boto3
 import mimetypes
@@ -51,7 +51,7 @@ def create_song():
 
             song_mime_type = mimetypes.guess_type(song_name)
             print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
-            
+
             s3 = boto3.resource('s3')
             uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
@@ -61,7 +61,7 @@ def create_song():
             song_path = f"https://nqg-songs.s3.amazonaws.com/{song_name}"
         else:
             print("SOME FILES WEREN'T SENT!")
-        
+
 
         song = Song(
             title=form.data['title'],
@@ -70,6 +70,7 @@ def create_song():
             image=img_path,
             audio_file=song_path
         )
+        song.create_tsvector()
 
         db.session.add(song)
         db.session.commit()
@@ -101,7 +102,7 @@ def edit_song(id):
 
             mime_type = mimetypes.guess_type(img_name)
             print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
-            
+
             s3 = boto3.resource('s3')
             uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
@@ -112,7 +113,7 @@ def edit_song(id):
         song_to_edit = Song.query.get(id)
         # if !song:
         #     return {"error":f"song with song ID {id} does not exist."}
-        
+
         song_to_edit.title = form.data['title']
         song_to_edit.artist_id = form.data['artist_id']
         song_to_edit.lyrics = form.data['lyrics']
@@ -155,7 +156,7 @@ def post_annotation(id):
             lyric_key=form.data['lyric_key'],
             content=form.data['content']
         )
-        
+
         db.session.add(annotation)
         db.session.commit()
         return annotation.to_dict()
@@ -182,4 +183,20 @@ def update_annotation(id):
                 )
                 db.session.add(annotation)
                 db.session.commit()
-     
+
+# TEXT SEARCH OF DATABASE
+@song_routes.route('/search')
+def search():
+    search_string = request.args.get('search_string')
+    exact_strings = re.findall('"([^"]*)"', search_string)
+    words = search_string
+    for pattern in exact_strings:
+        re.sub(pattern, "", words)
+
+    print('EXXXXXXXXXXXXACT', exact_strings)
+    print('SINGLE WORDS', words)
+    if (search_string):
+
+        return Song.search(search_string)
+    else:
+        return {"error": "Missing search string from request."}
