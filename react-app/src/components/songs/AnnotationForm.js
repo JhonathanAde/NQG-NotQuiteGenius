@@ -14,7 +14,10 @@ const AnnotationForm = ({ setAnnotations, annotations, lyricKey, songId, userId,
 
         setContent("")
         const annotation = await annotate(songId, data)
-        
+
+        //Using current annotations length will result in the right
+        //index for the new annotation that is added
+        setActivateAnnotation(annotations.length)
         setAnnotations([...annotations, annotation])
     }
 

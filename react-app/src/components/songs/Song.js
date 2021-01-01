@@ -46,13 +46,19 @@ const Song = ({authenticated, user}) => {
   }, [newAnnotationKey, annotation]);
 
 
-  const updateAnnotations = (song, annotations) => {
+  const updateAnnotations = async (song, annotations) => {
     let lyrics = song.lyrics;
       annotations.forEach((annot, i) => {
         const key = annot.lyricKey
         lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
       })
       setLyricsHTML(ReactHtmlParser(lyrics));
+
+      await setLyricsKey(annotations.length)
+      //Using async to be sure lyrics key is set prior to resetting activate annotation
+      if (activateAnnotation) {
+        setActivateAnnotation(0)
+      }
   }
 
   const unHighlightKey = () => {
@@ -192,10 +198,7 @@ const Song = ({authenticated, user}) => {
         <section className="songpage-lyrics" onMouseUp={onLyricSelection}>
           <h3>Lyrics</h3>
           {song &&
-            <p> {
-                lyricsHTML
-              }
-            </p>
+            <Lyrics key={lyricsKey} lyricsHTML={lyricsHTML} activateAnnotation={activateAnnotation} />
           }
         </section>
         <section className="songpage-sidebar">
