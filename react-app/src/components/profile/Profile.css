@@ -1,23 +1,51 @@
 .profilepage-header {
-    padding: 30px;
-    display: flex;
-    background-color: gray;
+      padding: 30px;
+      display: flex;
+      padding-left: 150px;
+      padding-right: 150px;
+      border-bottom: solid 2px #E561B3;
+      color: black;
+      font-family: rubik;
+      background-image: url('../../background.gif')
+}
+
+.profilepage-title {
+    font-size: 50px;
+}
+
+.profilepage-email {
+    font-size: 30px;
 }
 
 .profilepage-image {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px;
     height: 200px;
-    background-color: pink;
+    background-color: #E561B3;
+    border: solid 3px white;
+    padding: 10px;
 }
 
 .profilepage-info {
     padding-left: 10px;
 }
 
+
 .profilepage-content {
     display: flex;
     align-items: stretch;
+    padding: 20px;
+    padding-left: 100px;
+    flex: 0 0 50%;
+    position: relative;
+    color:black;
+    font-family: Raleway,
+    arial,
+    sanserif;
+    font-size: 20px;
+    min-width: 500px;
 }
 
 .profilepage-lyrics {

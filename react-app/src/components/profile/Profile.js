@@ -19,25 +19,23 @@ const Profile = ({authenticated, user}) => {
   return (
       <div className="profilepage">
       <header className="profilepage-header">
-      <img className="profilepage-image" alt="Cover Image"/>
-      <div className="profilepage-info">
-      <h1 className="profilepage-title">{user.username}</h1> 
-      <h4>{user.email}</h4>
-      </div>
+        <div className="header-container">
+          <div className="profilepage-image" alt="Cover Image">
+            <i className="profileButton" className="fas fa-user-circle fa-10x" ></i>
+          </div>
+          <div className="profilepage-info">
+          <div className="profilepage-title">{user.username}</div> 
+          <div className="profilepage-email">{user.email}</div>
+        </div>
+        </div>
       </header>
       <div className="profilepage-content">
-      <section className="profilepage-lyrics">
-        <h1>Annotations</h1>
-      {annotation && annotation.annotations.map((annoInfo, idx) => (
-        <AnnotationList annoInfo={annoInfo} idx={idx}/>
-      ))}
-      </section>
-      <section className="profilepage-sidebar">
-      <div className="profilepage-sidelinks">
-      <NavLink to="/songs/1">Song 1</NavLink>
-      <NavLink to="/songs/2">Song 2</NavLink>
-      </div>
-      </section>
+        <section className="profilepage-lyrics">
+          <h1>Annotations</h1>
+        {annotation && annotation.annotations.map((annoInfo, idx) => (
+          <AnnotationList annoInfo={annoInfo} idx={idx}/>
+        ))}
+        </section>
       </div>
       </div>
   )
