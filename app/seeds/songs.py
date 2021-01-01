@@ -87,7 +87,7 @@ Wreck my plans, that's my man"""
         title = 'She Knows This',
         artist_id = 2,
         image = 'https://nqg-images.s3.amazonaws.com/Man_On_The_Moon_III-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Kid_Cudi_She_Knows_This.mp3',
         lyrics = """[Intro: Mark Webber & Michael Cera]<br />
 Scott, let it go<br />
 Don't give 'em the satisfaction<br />
@@ -187,7 +187,7 @@ Hmm, hmm, hmm-hmm"""
         title = 'Reborn',
         artist_id = 2,
         image = 'https://nqg-images.s3.amazonaws.com/kid_sees_ghosts-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Kid+Cudi_Reborn_Kids_See_Ghosts_preview.mp3',
         lyrics = """[Intro: Kid Cudi]<br />
 Hmm, I'm wide awake, I'm wide awake<br />
 I'm wide awake<br />
@@ -287,7 +287,7 @@ Keep movin' forward, keep movin' forward"""
         Song(
         title = 'Tequila Shots',
         image = 'https://nqg-images.s3.amazonaws.com/Man_On_The_Moon_III-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Kid_Cudi_Tequila_Shots_preview.mp3',
         artist_id = 2,
         lyrics = """[Intro]<br />
 Duh-duh-duh, duh, duh, duh<br />
@@ -377,7 +377,7 @@ This fight, this war in me, in me, in me"""
         title = 'Blinding Lights',
         artist_id = 3,
         image = 'https://nqg-images.s3.amazonaws.com/Bliding_lights-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/The_Weeknd_Blinding_Lights_preview.mp3',
         lyrics = """[Intro]<br />
 Yeah<br />
 <br />
@@ -437,7 +437,7 @@ No, I can't sleep until I feel your touch"""
         title = 'You Should Be Sad',
         artist_id = 4,
         image = 'https://nqg-images.s3.amazonaws.com/Manic.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Halsey_You_Should_Be_Sad.mp3',
         lyrics = """[Verse 1]<br />
 I wanna start this out and say<br />
 I gotta get it off my chest (My chest)<br />
@@ -644,7 +644,7 @@ You should be"""
         title = 'No Time To Die',
         artist_id = 5,
         image = 'https://nqg-images.s3.amazonaws.com/No_Time_To_Die-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Billie_Eilish_No_Time_To_Die.mp3',
         lyrics = """[Verse 1]<br />
 I should have known<br />
 I'd leave alone<br />
@@ -695,7 +695,7 @@ There's just no time to die"""
         title = 'Roses',
         artist_id = 6,
         image = 'https://nqg-images.s3.amazonaws.com/While_The_World_Was_Burning.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/SAINt_JHN_Roses_Imanbek_Remix.mp3',
         lyrics = """[Verse 1]<br />
 Roses<br />
 I walked in the corner with the body screaming dolo<br />
@@ -758,7 +758,7 @@ Roses"""
         title = 'Life is Good (feat. Drake)',
         artist_id = 7,
         image = 'https://nqg-images.s3.amazonaws.com/High_Off_Life.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Future_Drake_Life_Is_Good.mp3',
         lyrics = """[Part I]<br />
 <br />
 [Chorus: Drake]<br />
@@ -860,7 +860,7 @@ Hunnid thousand for the cheapest ring on a nigga finger, lil' bitch"""
         title = 'Breathe Deeper',
         artist_id = 8,
         image = 'https://nqg-images.s3.amazonaws.com/The_Slow_Rush-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Tame_Impala_Breathe_Deeper.mp3',
         lyrics = """[Verse 1]<br />
 If you think I couldn't hold my own, believe me, I can<br />
 Believe me, I can, believe me, I can<br />
@@ -939,7 +939,7 @@ Telemona"""
         title = 'Murder Most Foul',
         artist_id = 9,
         image = 'https://nqg-images.s3.amazonaws.com/Rough_And_Rowdy_Ways.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Bob_Dylan_Murder_Most_Foul.mp3',
         lyrics = """[Verse 1]<br />
 'Twas a dark day in Dallas, November '63<br />
 A day that will live on in infamy<br />
@@ -1119,7 +1119,7 @@ Play "The Blood-Stained Banner", play "Murder Most Foul"""
         title = 'The Bones',
         artist_id = 10,
         image = 'https://nqg-images.s3.amazonaws.com/GIRL.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Maren_Morris_The_Bones.mp3',
         lyrics = """[Verse 1]<br />
 We're in the homestretch of the hard times<br />
 We took a hard left, but we're alright<br />
@@ -1175,7 +1175,7 @@ Yeah, ooh"""
         title = 'On the Floor',
         artist_id = 11,
         image = 'https://nqg-images.s3.amazonaws.com/SMHOFI.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Perfume_Genius_On_The_Floor.mp3',
         lyrics = """I'm trying, but still, I close my eyes (Mmm)<br />
 The dreaming, bringing his face to mine<br />
 <br />
@@ -1232,7 +1232,7 @@ I just want him in my arms"""
         title = 'Yo Perreo Sola (English translation)',
         artist_id = 12,
         image = 'https://nqg-images.s3.amazonaws.com/YHLQMDLG.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Yo_Perreo_Sola_Bad_Bunny.mp3',
         lyrics = """[Pre-Chorus: Nesi]<br />
 You used to ignore me (You ignored me)<br />
 Now I ignore you (Hmm, nah)<br />
@@ -1318,7 +1318,7 @@ I twerk alone (Twerk alone)"""
         title = 'Ladies',
         artist_id = 13,
         image = 'https://nqg-images.s3.amazonaws.com/Fetch_The_Boltcutters.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Fiona_Apple_Ladies.mp3',
         lyrics = """[Intro]<br />
 Ladies, ladies, ladies, ladies<br />
 Ladies, ladies, ladies, ladies<br />
@@ -1400,7 +1400,7 @@ Yet another woman to whom I won't get through"""
         title = 'Good News',
         artist_id = 14,
         image = 'https://nqg-images.s3.amazonaws.com/Circles.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Mac_Miller_Good_News.mp3',
         lyrics = """[Verse 1]<br />
 I spent the whole day in my head<br />
 Do a little spring cleanin'<br />
@@ -1480,7 +1480,7 @@ Mm, hey, mm, mm, mm"""
         title = 'Rare',
         artist_id = 15,
         image = 'https://nqg-images.s3.amazonaws.com/Rare.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Selena_Gomez_Rare.mp3',
         lyrics = """[Verse 1]<br />
 Baby<br />
 You've been so distant from me lately<br />
@@ -1570,7 +1570,7 @@ Rare"""
         title = 'Supalonely (feat. Gus Dapperton)',
         artist_id = 16,
         image = 'https://nqg-images.s3.amazonaws.com/Hey_u_x.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/BENEE_Supalonely.mp3',
         lyrics = """[Chorus: BENEE]<br />
 I know I fucked up, I'm just a loser<br />
 Shouldn't be with ya, guess I'm a quitter<br />
@@ -1656,7 +1656,7 @@ Lonely (I've been lonely)"""
         title = 'Gaslighter',
         artist_id = 17,
         image = 'https://nqg-images.s3.amazonaws.com/GasLighter.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Dixie_Chicks_Gaslighter.mp3',
         lyrics = """[Intro]<br />
 Gaslighter, denier<br />
 Doin' anything to get your ass farther<br />
@@ -1734,7 +1734,7 @@ Gaslighter, you liar"""
         title = 'Delete Forever',
         artist_id = 18,
         image = 'https://nqg-images.s3.amazonaws.com/Miss_Anthropocene.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Grimes_Delete_Forever.mp3',
         lyrics = """[Verse 1]<br />
 Lying so awake, things I can't escape<br />
 Lately, I just turn 'em into demons<br />
@@ -1782,7 +1782,7 @@ More lines on the mirror than a sonnet"""
         title = 'Physical',
         artist_id = 19,
         image = 'https://nqg-images.s3.amazonaws.com/Future_Nostalgia.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Dua_Lipa_Physical.mp3',
         lyrics = """[Verse 1]<br />
 Common love isn't for us<br />
 We created something phenomenal<br />
@@ -1861,7 +1861,7 @@ Come on, phy-phy-phy-physical"""
         title = 'Stupid Love',
         artist_id = 20,
         image = 'https://nqg-images.s3.amazonaws.com/Chromatica.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Lady_Gaga_Stupid_Love.mp3',
         lyrics = """[Verse 1]<br />
 You're the one that I've been waiting for<br />
 Gotta quit this cryin', nobody's gonna<br />
