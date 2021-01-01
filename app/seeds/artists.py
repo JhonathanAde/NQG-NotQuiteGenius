@@ -6,83 +6,83 @@ def seed_artists():
 
     taylor = Artist(
         name='Taylor Swift',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Taylor_Swift-01.png'
     )
     cudi = Artist(
         name='Kid Cudi',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Kid_Cudi-01.png'
     )
     weeknd = Artist(
         name='The Weeknd',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/The_Weeknd-01.png'
     )
     halsey = Artist(
         name='Halsey',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Halsey-01.png'
     )
     billie = Artist(
         name='Billie Eilish',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Bilie_Eilish-01.png'
     )
     saint_jhn = Artist(
         name='SAINT JHN',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Saint_Jhn-01.png'
     )
     future = Artist(
         name='Future',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Future-01.png'
     )
     tame = Artist(
         name='Tame Impala',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Tame_Impala.png'
     )
     bob = Artist(
         name='Bob Dylan',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Bob_Dylan-01.png'
     )
     maren = Artist(
         name='Maren Morris',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Maren_Morris-01.png'
     )
     perfume = Artist(
         name='Perfume Genius',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Perfume_genius-01.png'
     )
     bad_bunny = Artist(
         name='Bad Bunny',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Bad_bunny-01.png'
     )
     fiona = Artist(
         name='Fiona Apple',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Fiona_Apple-01.png'
     )
     mac_miller = Artist(
         name='Mac Miller',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Mac_Miller-01.png'
     )
     selena_gomez = Artist(
         name='Selena Gomez',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Salena_Gomez-01.png'
     )
     benee = Artist(
         name='BENEE',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Benee-01.png'
     )
     the_chicks = Artist(
         name='The Chicks',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/The_Chicks01.png'
     )
     grimes = Artist(
         name='Grimes',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Grimes-01.png'
     )
     dua_lipa = Artist(
         name='Dua Lipa',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Dua_Lipa-01.png'
     )
     lady_gaga = Artist(
         name='Lady Gaga',
-        image=''
+        image='https://nqg-images.s3.amazonaws.com/Lady_gaga-01.png'
     )
 
 
