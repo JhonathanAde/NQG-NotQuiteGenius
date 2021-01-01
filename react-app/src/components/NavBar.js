@@ -7,11 +7,13 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
   const doSearch = (e) => {
     const value = document.getElementById('search').value;
-    (async () => {
-      const response = await fetch(`/api/search?search_string=${value}`);
-      const results = await response.json();
-      console.log(results)
-    })();
+    if (value) {
+      (async () => {
+        const response = await fetch(`/api/search?search_string=${value}`);
+        const results = await response.json();
+        console.log(results)
+      })();
+    }
   }
 
   let history = useHistory()
@@ -40,13 +42,13 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
       </div>
       <div className="search-container">
         <input id="search" type="search" className="search-bar" placeholder="search" />
-        <button onClick={doSearch}>Search</button>
+        <button className="search-button" onClick={doSearch}><i className="fas fa-search"></i></button>
       </div>
       <div className="user-buttons">
         {authenticated?
         <>
           <button className="nav-button" onClick={rerouteProfile}>
-            {<i className="profileButton" className="fas fa-user-circle " ></i>}
+            <i className="profileButton fas fa-user-circle" ></i>
             </button>
             <button className="nav-button" onClick={rerouteCreate}>
               Create Song
@@ -56,13 +58,6 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
           :
           <>
             <button className="nav-button" onClick={rerouteRegister}>Register</button>
-            {/* <NavLink to="/" */}
-            {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink> */}
-            {/* <NavLink to="/users" exact={true} activeClassName="active">
-              Users
-            </NavLink> */}
           </>
         }
       </div>

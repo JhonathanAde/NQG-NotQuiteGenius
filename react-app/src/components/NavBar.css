@@ -52,8 +52,37 @@
 .search-bar {
     width: 80%;
     text-align: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    height: 40px;
 }
 
+.search-bar:focus {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-button {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.search-button:hover {
+    color: inherit;
+    cursor: default;
+}
+
+.search-bar:focus ~ .search-button {
+    background-color:#E561B3;;
+    color: black;
+}
+
+.search-bar:focus ~ .search-button:hover {
+    /* background-color: #55BCC4; */
+    color: white;
+    cursor: pointer;
+}
 .radio {
     min-width: 70px;
     width: 70px;
