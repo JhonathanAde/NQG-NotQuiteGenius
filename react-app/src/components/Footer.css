@@ -47,6 +47,7 @@
 .developers > a {
     display: block;
     margin: 15px;
+    color: white;
     font-size: 25px;
     font-weight: bold;
     text-decoration: none;
