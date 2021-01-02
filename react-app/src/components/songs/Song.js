@@ -5,11 +5,14 @@ import {getArtist} from '../../services/artists'
 import './Song.css';
 import AnnotationForm from './AnnotationForm';
 import PlayButton from '../audioPlayer/PlayButton';
+import Lyrics from './Lyrics';
 
 
 const Song = ({authenticated, user}) => {
   const [annotation, setAnnotation] = useState("");
   const [annotations, setAnnotations] = useState([]);
+  const [lyricsKey, setLyricsKey] = useState(annotations.length);
+  const [activateAnnotation, setActivateAnnotation] = useState(0);
   const [song, setSong] = useState("");
   const [artistSongs, setArtistSongs] = useState([]);
   const [lyricsHTML, setLyricsHTML] = useState("");
@@ -30,15 +33,6 @@ const Song = ({authenticated, user}) => {
     updateAnnotations(song, annotations)
   }, [annotations, song])
 
-  const updateAnnotations = (song, annotations) => {
-    let lyrics = song.lyrics;
-      annotations.forEach((annot, i) => {
-        const key = annot.lyricKey
-        lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
-      })
-      setLyricsHTML(ReactHtmlParser(lyrics));
-  }
-
   useEffect( () => {
     if (!song) return;
     (async () => {
@@ -50,6 +44,22 @@ const Song = ({authenticated, user}) => {
   useEffect(() => {
     switchActiveSideBar()
   }, [newAnnotationKey, annotation]);
+
+
+  const updateAnnotations = async (song, annotations) => {
+    let lyrics = song.lyrics;
+      annotations.forEach((annot, i) => {
+        const key = annot.lyricKey
+        lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
+      })
+      setLyricsHTML(ReactHtmlParser(lyrics));
+
+      await setLyricsKey(annotations.length)
+      //Using async to be sure lyrics key is set prior to resetting activate annotation
+      if (activateAnnotation) {
+        setActivateAnnotation(0)
+      }
+  }
 
   const unHighlightKey = () => {
     const elementToReset = document.querySelector('.annotation-key.active');
@@ -157,16 +167,10 @@ const Song = ({authenticated, user}) => {
       }
   }
 
-  const clearNewAnnotationKey = (clear = false) => {
+  const clearNewAnnotationKey = () => {
     const existing = document.querySelector('.songpage-new-annotation')
-
     if (existing) {
-      if (clear) {
-        // bandaid fix
-        existing.replaceWith("")
-      } else {
-        existing.replaceWith(...existing.childNodes)
-      }
+      existing.replaceWith(...existing.childNodes)
     }
     setNewAnnotationKey("");
   }
@@ -194,28 +198,29 @@ const Song = ({authenticated, user}) => {
         <section className="songpage-lyrics" onMouseUp={onLyricSelection}>
           <h3>Lyrics</h3>
           {song &&
-            <p> {
-                lyricsHTML
-              }
-            </p>
+            <Lyrics key={lyricsKey} lyricsHTML={lyricsHTML} activateAnnotation={activateAnnotation} />
           }
         </section>
         <section className="songpage-sidebar">
           <div className="songpage-annotation">
-            <p className="songpage-annotation-text">
+            <p className="songpage-annotation-text songpage-sticky">
             </p>
           </div>
           <div className="songpage-add-annotation">
+            <div className="songpage-sticky">
               Add annotation for key "{newAnnotationKey}"
-              <AnnotationForm 
-              lyricKey={newAnnotationKey}  
-              songId={songId} 
-              userId={user.id} 
+              <AnnotationForm
+              lyricKey={newAnnotationKey}
+              songId={songId}
+              userId={user.id}
               setAnnotations={setAnnotations}
               annotations={annotations}
-              clearNewAnnotationKey={clearNewAnnotationKey}/>            
+              clearNewAnnotationKey={clearNewAnnotationKey}
+              setActivateAnnotation={setActivateAnnotation}/>
+            </div>
           </div>
           <div className="songpage-sidelinks">
+            <div className="songpage-sticky">
             {(  authenticated &&
                 <h3>{`${user.username}`}&mdash;select non-annotated lyric text to create a new annotation.</h3>
               )
@@ -231,6 +236,7 @@ const Song = ({authenticated, user}) => {
               ))}
               </>
             }
+            </div>
           </div>
         </section>
       </div>
