@@ -44,13 +44,15 @@
     bottom: 5px;
 }
 
-.developers > h1 {
+.developers > a {
     margin: 15px;
     font-size: 25px;
     cursor: pointer;
+    text-decoration: none;
+    color: #E561B3;
 }
 
-.developers > h1:hover {
+.developers > a:hover {
     color: #55BCC4;
 }
 .phone-icon {

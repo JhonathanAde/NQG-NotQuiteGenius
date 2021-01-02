@@ -60,6 +60,10 @@ const SongForm = () => {
     history.push("/")
   };
 
+  const prevent = (e) => {
+    e.preventDefault();
+  }
+
   const updateTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -161,7 +165,7 @@ const SongForm = () => {
               placeholder="Album art"
               onChange={updateImage}
             />
-          <div className="file-button">Upload File</div>
+          <button className="file-button" onClick={prevent}>Upload File</button>
           </div>
           <label htmlFor="">Song Sample</label>
           <div className="form-input-file">
@@ -172,7 +176,7 @@ const SongForm = () => {
               placeholder="Song_sample"
               onChange={updateSong}
             />
-            <div className="file-button">Upload File</div>
+            <button className="file-button" onClick={prevent}>Upload File</button>
           </div>
           <label htmlFor="lyrics">Lyrics</label>
           <div className="form-input">

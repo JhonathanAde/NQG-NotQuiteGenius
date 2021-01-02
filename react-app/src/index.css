@@ -66,3 +66,7 @@ textarea:focus {
     border: none;
     outline: none;
 }
+
+.error-list {
+    font-family: Raleway arial sans-serif;
+}
