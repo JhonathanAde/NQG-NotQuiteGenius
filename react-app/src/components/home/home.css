@@ -100,13 +100,14 @@
     border: 2px solid black;
 }
 .artist-image {
+    object-fit: cover;
     width: 150px;
     height: 150px;
     margin: 0px 0px 0px 30px;
     font-size: 20px;
     cursor: pointer;
     border: 2px solid black;
-
+    object-position: 50% 20%;
 }
 
 .song-title {
