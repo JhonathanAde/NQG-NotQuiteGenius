@@ -89,6 +89,7 @@
 }
 
 .search-close {
+  display: block;
   font-size: 3em;
   float: right;
 }

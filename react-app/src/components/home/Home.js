@@ -22,18 +22,18 @@ const Home = () => {
         <div className="main-content">
             <div className="top-20">
                 <div className="title-20">TOP SONGS</div>
-                {songs ? songs.map((song, idx) => 
+                {songs ? songs.map((song, idx) =>
                     <>
-                        <SongTile key={idx} song={song} idx={idx + 1}/>
-                        
+                        <SongTile key={`song_${song.id}`} song={song} idx={idx + 1}/>
+
                     </>
                 ): "loading"}
             </div>
             <div className="artists-container">
                 <div className="title-artist">TOP ARTISTS</div>
                 <div className="top-artists">
-                    {artists ? artists.map((artist, idx) => 
-                        <ArtistTile key={idx} artist={artist} idx={idx + 1}/>
+                    {artists ? artists.map((artist, idx) =>
+                        <ArtistTile key={`artist_${artist.id}`} artist={artist} idx={idx + 1}/>
                     ): "loading"}
                 </div>
             </div>

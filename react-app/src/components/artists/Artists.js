@@ -15,7 +15,7 @@ const Artist = () => {
             setArtist(res)
         })()
     },[artistId]);
-    console.log(artist)
+    // console.log(artist)
   return (
     <div className="songpage">
       <header className="songpage-header">
@@ -28,7 +28,7 @@ const Artist = () => {
       </header>
       <div className="artistpage-content">
             {artist && artist.songs.map((song, idx) => (
-                <SongTile key={idx} song={song} idx={idx + 1}/>
+                <SongTile key={song.id} song={song} idx={idx + 1}/>
             ))}
       </div>
     </div>

@@ -50,18 +50,6 @@ function App() {
       <div className="wrapper">
         <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setUser={setUser} user={user}/>
         <Switch>
-          {/* <Route path="/login" exact={true}>
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-              setUser={setUser}
-            />
-            <SignUpForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-              setUser={setUser}
-            />
-          </Route> */} 
           <Route path="/sign-up" exact={true}>
             <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
               <div className="switch-container">

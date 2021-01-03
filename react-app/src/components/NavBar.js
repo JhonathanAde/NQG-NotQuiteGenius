@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import Search from './search/Search'
@@ -9,7 +9,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
   const clearSearch = (e) => {
     const target = e.target;
-   
+
     if (target
         && !target.classList.contains('search-link')
         && !target.closest('.search-close')) {
