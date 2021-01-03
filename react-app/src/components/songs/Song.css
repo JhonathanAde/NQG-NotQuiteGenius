@@ -6,7 +6,7 @@
   border-bottom: solid 2px #E561B3;
   color: black;
   font-family: rubik;
-  background-image: url('../../background.gif')
+  background-image: url('../../static/background.gif')
 }
 
 
@@ -24,6 +24,8 @@
   width: 200px;
   height: 200px;
   border: solid 3px white;
+  object-fit: cover;
+  object-position: 50% 20%;
 }
 
 .songpage-info {
@@ -193,4 +195,17 @@
 
 .song-link:hover {
   color: #E561B3;
+}
+
+.song-link.active {
+  color: #858586;
+  cursor: default;
+}
+
+.song-link.active:after {
+  content: "(you are here)";
+  display: inline-block;
+  font-size: .5em;
+  color: #bebec0;
+  padding-left: 1em;
 }

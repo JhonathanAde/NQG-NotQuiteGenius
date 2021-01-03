@@ -1,6 +1,5 @@
 import React from 'react';
-import {useHistory, BrowserRouter} from 'react-router-dom'
-import PlayButton from '../audioPlayer/PlayButton';
+import {useHistory,} from 'react-router-dom'
 
 const SongTile = ({song, idx}) => {
     let history = useHistory()

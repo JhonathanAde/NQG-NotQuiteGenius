@@ -107,6 +107,7 @@ const Song = ({authenticated, user}) => {
           clearNewAnnotationKey();
           return;
         }
+        console.log(sel)
         text = sel.toString();
         processSelection(text, range);
         if(sel.empty) {
@@ -115,7 +116,7 @@ const Song = ({authenticated, user}) => {
           sel.removeAllRanges()
         }
       }
-      else if (document.selection && document.selection.type != "Control") {
+      else if (document.selection && document.selection.type !== "Control") {
         sel = document.selection;
         if (sel.text === '') return;
         range = sel.createRange();

@@ -1,10 +1,9 @@
-import os, re
 from flask import Blueprint, jsonify, request, url_for
 import boto3
 import mimetypes
 from werkzeug.utils import secure_filename
 # from flask_login import login_required
-from app.models import Artist, Song, Annotation, db
+from app.models import Song, Annotation, db
 from app.forms import SongForm, AnnotationForm
 
 
@@ -69,7 +68,6 @@ def create_song():
             image=img_path,
             audio_file=song_path
         )
-        song.create_tsvector()
 
         db.session.add(song)
         db.session.commit()
@@ -187,20 +185,3 @@ def update_annotation(id):
                 )
                 db.session.add(annotation)
                 db.session.commit()
-
-# TEXT SEARCH OF DATABASE
-@song_routes.route('/search')
-def search():
-    search_string = request.args.get('search_string')
-    exact_strings = re.findall('"([^"]*)"', search_string)
-    words = search_string
-    for pattern in exact_strings:
-        re.sub(pattern, "", words)
-
-    print('EXXXXXXXXXXXXACT', exact_strings)
-    print('SINGLE WORDS', words)
-    if (search_string):
-
-        return Song.search(search_string)
-    else:
-        return {"error": "Missing search string from request."}

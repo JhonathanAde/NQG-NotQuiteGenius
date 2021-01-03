@@ -3,6 +3,7 @@ import './Footer.css'
 
 
 const Footer = () => {
+
     return (
         <div className="footer">
             <div className="title">
@@ -16,10 +17,10 @@ const Footer = () => {
                 </p>
             </div>
             <div className="developers">
-                <a href="https://github.com/achoi1225" target="_blank">Andrew Choi</a>
-                <a href="https://github.com/JhonathanAde" target="_blank">Jhonathan Ade</a>
-                <a href="https://github.com/Maximos-S" target="_blank">Maximos Salzman</a>
-                <a href="https://github.com/scottgit" target="_blank">Scott Smith</a>
+                <a href="https://github.com/achoi1225" target="_blank" rel="noopener noreferrer">Andrew Choi</a>
+                <a href="https://github.com/JhonathanAde" target="_blank" rel="noopener noreferrer">Jhonathan Ade</a>
+                <a href="https://github.com/Maximos-S" target="_blank" rel="noopener noreferrer">Maximos Salzman</a>
+                <a href="https://github.com/scottgit" target="_blank" rel="noopener noreferrer">Scott Smith</a>
             </div>
             <div className="phone-icon"></div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react';
-import { NavLink, Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {getArtist} from '../../services/artists'
 import SongTile from '../home/SongTile';
 import './artists.css'
@@ -14,8 +14,8 @@ const Artist = () => {
             const res = await getArtist(artistId)
             setArtist(res)
         })()
-    },[]);
-    console.log(artist)
+    },[artistId]);
+    // console.log(artist)
   return (
     <div className="songpage">
       <header className="songpage-header">
@@ -28,7 +28,7 @@ const Artist = () => {
       </header>
       <div className="artistpage-content">
             {artist && artist.songs.map((song, idx) => (
-                <SongTile song={song} idx={idx + 1}/>
+                <SongTile key={song.id} song={song} idx={idx + 1}/>
             ))}
       </div>
     </div>

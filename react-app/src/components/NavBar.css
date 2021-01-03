@@ -43,23 +43,12 @@
     margin: 5px;
 }
 
-.search-container {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-}
-
-.search-bar {
-    width: 80%;
-    text-align: center;
-}
-
 .radio {
     min-width: 70px;
     width: 70px;
     height: 60px;
     background-size: contain;
-    background-image: url("../radio.png");
+    background-image: url("../static/radio.png");
 }
 
 .nav-button {

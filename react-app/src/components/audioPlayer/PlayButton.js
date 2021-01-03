@@ -13,7 +13,6 @@ const PlayButton = ({song}) => {
     const exit = () => {
         setPlaying(false)
     }
-
     return (
         <>
             <button onClick={playSong}>
