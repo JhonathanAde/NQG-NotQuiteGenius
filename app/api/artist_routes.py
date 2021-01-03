@@ -32,19 +32,15 @@ def artist():
     if form.validate_on_submit():
         if request.files:
             img = request.files['image']
-            print(f"CHECK TO SEE IF IMG EXISTS: {img}")
             img_name = secure_filename(img.filename)
-            # print(f"FILE NAME!! {img_name}")
-
             mime_type = mimetypes.guess_type(img_name)
-            print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
             
             s3 = boto3.resource('s3')
             uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
             img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
         else:
-            print("NO IMAGE WAS SENT!")
+            print("Note: Creating artist without an image")
 
         try:
             artist = Artist(
@@ -86,19 +82,16 @@ def edit_artist(id):
 
         if request.files:
             img = request.files['image']
-            print(f"CHECK TO SEE IF IMG EXISTS: {img}")
             img_name = secure_filename(img.filename)
-            # print(f"FILE NAME!! {img_name}")
-
             mime_type = mimetypes.guess_type(img_name)
-            print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
+            # print(f"MIME TYPE FOR UPLOADED FILE!!! {mime_type}")
             
             s3 = boto3.resource('s3')
             uploaded_image = s3.Bucket('nqg-images').put_object(Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
             img_path = f"https://nqg-images.s3.amazonaws.com/{img_name}"
         else:
-            print("Creating artist without an image. Just letting you know...")
+            print("Note: Editing artist without an image.")
  
 
         artist_to_edit.name = form.data['name']

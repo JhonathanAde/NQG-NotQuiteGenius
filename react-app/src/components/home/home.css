@@ -17,15 +17,15 @@
     width: 75%;
     flex-direction: column;
     align-items: space-around;
-    height: 500px;
+    /* height: 500px; */
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 40px;
     margin-top: 0px;
     background-color: rgba(255,255,255,.4);
-    position: relative;
+    /* position: relative;
     border-radius: 2px;
-    min-width: 700px;
+    min-width: 700px; */
 }
 
 
@@ -59,8 +59,8 @@
 }
 
 .title-20 {
-    position: sticky;
-    top: 0px;
+    /* position: sticky; */
+    /* top: 0px; */
     font-family: Rubik;
     font-size: 40px;
     background-color: #E561B3;
@@ -79,10 +79,13 @@
 
 .song-tile {
     font-family: Raleway, arial, sanserif;
+    height: 800px;
     margin: 10px;
     padding: 10px;
-    display: flex;
-    align-items: center;
+    /* width: 900px; */
+    /* display: flex;
+    align-items: center; */
+    background-color: aqua;
 }
 
 .song-number {
@@ -150,7 +153,7 @@
 
 .song-link {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     align-items: center;
     width: 80%;
 }
