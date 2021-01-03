@@ -196,3 +196,16 @@
 .song-link:hover {
   color: #E561B3;
 }
+
+.song-link.active {
+  color: #858586;
+  cursor: default;
+}
+
+.song-link.active:after {
+  content: "(you are here)";
+  display: inline-block;
+  font-size: .5em;
+  color: #bebec0;
+  padding-left: 1em;
+}
