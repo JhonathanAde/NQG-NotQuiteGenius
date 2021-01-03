@@ -69,7 +69,6 @@ def create_song():
             image=img_path,
             audio_file=song_path
         )
-        song.create_tsvector()
 
         db.session.add(song)
         db.session.commit()
