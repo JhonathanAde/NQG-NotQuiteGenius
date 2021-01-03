@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import Search from './search/Search'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
+  const [lastSearch, setLastSearch] = useState('')
 
   const clearSearch = (e) => {
     const target = e.target;
-    if (target) {
+    if (target && !target.classList.contains('search-link')) {
       if (target.closest('.search-container')) return;
     }
-    document.getElementById('search').value = null;
+    const searchInput = document.getElementById('search');
+    searchInput.value = null;
     document.getElementById('search-results').style.display = null;
   }
 
@@ -39,7 +41,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
           NQG
         </div>
       </div>
-      <Search clearSearch={clearSearch}/>
+      <Search clearSearch={clearSearch} lastSearch={lastSearch} setLastSearch={setLastSearch}/>
       <div className="user-buttons">
         {authenticated?
         <>

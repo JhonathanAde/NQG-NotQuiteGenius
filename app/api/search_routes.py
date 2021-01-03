@@ -57,14 +57,16 @@ def search(exacts, words):
 
     #NOTE: any "full" hits must be added after non-full (OR) hits for proper weighting of duplicate hits after they are made unique
     raw_order_and_sanitized_songs = (
-        [{"key": f"song_{song.id}", "type": "title", "object": song.to_dict(), "full": False} for song in titles] \
-                 \
+          [{"key": f"song_{song.id}", "type": "title", "object": song.to_dict(), "full": False} for song in titles] \
         + [{"key": f"song_{song.id}", "type": "lyric", "object": song.to_dict(), "full": False} for song in lyrics] \
-        + [{"key": f"song_{annot.song_id}", "type": "annotation", "object": annot.to_dict(), "full": False} for annot in annotations] \
         + [{"key": f"song_{song.id}", "type": "title", "object": song.to_dict(), "full": True} for song in full_titles] \
-                 \
         + [{"key": f"song_{song.id}", "type": "lyric", "object": song.to_dict(), "full": True} for song in full_lyrics] \
-        + [{"key": f"song_{annot.song_id}", "type": "annotation", "object": annot.to_dict(), "full": True} for annot in full_annotations]
+
+    )
+
+    raw_order_and_sanitized_annotations = (
+          [{"key": f"annot_{annot.id}", "type": "annotation", "object": annot.to_dict(), "full": False} for annot in annotations] \
+        + [{"key": f"annot_{annot.id}", "type": "annotation", "object": annot.to_dict(), "full": True} for annot in full_annotations]
     )
 
     raw_order_and_sanitized_artists = (
@@ -75,10 +77,22 @@ def search(exacts, words):
 
     #Make unique listings by casting to a dictionary with keys to be unique
     unique_songs = list({song['key']: song for song in raw_order_and_sanitized_songs}.values())
+    unique_annotations = list({a['key']: a for a in raw_order_and_sanitized_songs}.values())
     unique_artists = list({artist['key']: artist for artist in raw_order_and_sanitized_artists}.values())
+
+    # Merge or Morph annotations into song objects
+    for annot in unique_annotations:
+        song_obj = annot["object"]["song"]
+        song_id = song_obj["id"]
+        song_key = f"song_{song_id}"
+        if (song_key) in unique_songs: #Merge
+
+
 
     # Weight and order song results
     full_patterns = exacts + words
+
+
 
     for song in unique_songs:
         # Full search hit on all words gets 1000 weight to start
@@ -87,6 +101,7 @@ def search(exacts, words):
             "lyrics": {"whole_weight": 0, "part_weight": 0, "total_weight": 0},
             "annotations": {"whole_weight": 0, "part_weight": 0, "total_weight": 0},
             }
+        locations = []
 
         for pattern in full_patterns:
             whole = rf"(?i)\b{pattern}\b"
@@ -96,6 +111,10 @@ def search(exacts, words):
             #Exact matches will double weight for that pattern
             #Whole will double weight
             #Titles get triple final weight
+            content = ''
+            if (song["type"] == "annotation"):
+                content = song["object"]["content"]
+
             if (song["type"] == "title" or song["type"] == "lyric"):
                 title = song["object"]["title"]
                 lyrics = song["object"]["lyrics"]
@@ -119,8 +138,17 @@ def search(exacts, words):
                 profile["annotations"]["part_weight"] += len(re.findall(part, annotation))  + len(re.findall(part_exact, annotation))
                 profile["annotations"]["total_weight"] += profile["annotations"]["whole_weight"] + profile["annotations"]["part_weight"]
 
+
+            if (profile["title"]["total_weight"]):
+                locations += ["title"]
+            if (profile["lyrics"]["total_weight"]):
+                locations += ["lyrics"]
+            if (profile["annotations"]["total_weight"]):
+                locations += ["lyric annotation"]
+
             song["url"] = f"/songs/{id}"
             song["display"] = display
+            song["locations"] = " & ".join(locations)
 
         song["weight"] = (1000 if song["full"] else 0) + (
             profile["title"]["total_weight"] +
@@ -133,6 +161,7 @@ def search(exacts, words):
         artist["url"] = f"/artists/{artist['object']['id']}"
         artist["weight"] = 2000 if artist["full"] else 1
         artist["display"] = artist['object']['name']
+        artist["locations"] = "artist name"
 
     final_results = sorted(unique_songs + unique_artists, key=lambda item: item["weight"], reverse=True)
 
