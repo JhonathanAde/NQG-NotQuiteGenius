@@ -5,6 +5,15 @@ import './NavBar.css'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
+  const doSearch = (e) => {
+    const value = document.getElementById('search').value;
+    (async () => {
+      const response = await fetch(`/api/songs/search?search_string=${value}`);
+      const results = await response.json();
+      console.log(results)
+    })();
+  }
+
   let history = useHistory()
   const rerouteHome = () => {
     history.push("/")
@@ -20,7 +29,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const rerouteCreate = () => {
     history.push("/create-song")
   }
-
+  
   return (
     <nav className="nav-bar">
       <div className="logo">
@@ -30,7 +39,8 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         </div>
       </div>
       <div className="search-container">
-        <input type="search" className="search-bar" placeholder="search" />
+        <input id="search" type="search" className="search-bar" placeholder="search" />
+        <button onClick={doSearch}>Search</button>
       </div>
       <div className="user-buttons">
         {authenticated?
@@ -45,7 +55,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
             </button>
             <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
           </>
-          : 
+          :
           <>
             <button className="nav-button" onClick={rerouteRegister}>Register</button>
             {/* <NavLink to="/" */}

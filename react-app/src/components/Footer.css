@@ -45,11 +45,12 @@
 }
 
 .developers > a {
+    display: block;
     margin: 15px;
+    color: white;
     font-size: 25px;
-    cursor: pointer;
+    font-weight: bold;
     text-decoration: none;
-    color: #E561B3;
 }
 
 .developers > a:hover {
@@ -62,5 +63,5 @@
     width: 300px;
     height: 300px;
     background-size: contain;
-    background-image: url("../phoneicon.png");
+    background-image: url("../static/phoneicon.png");
 }

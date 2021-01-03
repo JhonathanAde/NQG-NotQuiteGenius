@@ -47,7 +47,8 @@
     justify-content: center;
     flex-direction: column;
     max-width: 110px;
-    /* background-color: aqua; */
+    padding-right: 5px;
+    
 }
 
 .audio-player__song-title {
@@ -55,6 +56,9 @@
     font-size: 1.2em;
     line-height: 1.2em;
     word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .audio-player__artist-name {
@@ -63,4 +67,7 @@
     font-size: .8em;
     line-height: 1.5em;
     word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

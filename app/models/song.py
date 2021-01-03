@@ -1,5 +1,7 @@
 from app.models import annotation
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.expression import func
+# from sqlalchemy.dialects.postgresql import TSVECTOR
 from .db import db
 
 class Song(db.Model):
@@ -37,4 +39,49 @@ class Song(db.Model):
             "audioFile": self.audio_file,
             "artist": self.artist.to_dict_no_songs(),
         }
-    
+
+    @classmethod
+    def vector_search(cls, search_string, dictionary='english'):
+        lyrics = db.session.query(cls). \
+            filter(func.to_tsvector(dictionary, getattr(cls, 'lyrics')).match(search_string, postgresql_regconfig='english')).all()
+        titles = db.session.query(cls). \
+            filter(func.to_tsvector(dictionary, getattr(cls, 'title')).match(search_string, postgresql_regconfig='english')).all()
+        # artist = db.session.query(cls). \
+        #     filter(func.to_tsvector('english', getattr(cls, 'title')).match(search_string, postgresql_regconfig='english')).all()
+
+
+        return {
+            "titles": [song.to_dict() for song in titles],
+            "lyrics": [song.to_dict() for song in lyrics]
+            }
+
+    @classmethod
+    def search(cls, search_string):
+        stripped_of_html_lyrics = getattr(cls, 'lyrics').replace('<br />', ' ')
+        lyrics = db.session.query(cls). \
+            filter(getattr(cls, 'lyrics').ilike(f'%{search_string}%')).all()
+        titles = db.session.query(cls). \
+            filter(getattr(cls, 'title').ilike(f'%{search_string}%')).all()
+        # artist = db.session.query(cls). \
+        #     filter(func.to_tsvector('english', getattr(cls, 'title')).match(search_string, postgresql_regconfig='english')).all()
+
+
+        return {
+            "titles": [song.to_dict() for song in titles],
+            "lyrics": [song.to_dict() for song in lyrics]
+            }
+
+    # def create_tsvector(self):
+    #     print()
+    #     song = self.to_dict()
+    #     annotation_content = [annotation["content"] for annotation in song["annotations"]]
+
+    #     search_array = [
+    #         song["lyrics"].replace('<br />',' '),
+    #         song["title"],
+    #         song["artist"]["name"],
+    #     ] + annotation_content
+
+    #     vector = func.to_tsvector("english", " ".join(search_array))
+    #     print("VVVVVVVV", vector[0])
+    #     self._search_ = vector

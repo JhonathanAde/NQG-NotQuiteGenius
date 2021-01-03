@@ -1,8 +1,10 @@
+from app import models
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .artists import seed_artists, undo_artists
 from .songs import seed_songs, undo_songs
 from .annotations import seed_annotations, undo_annotations
+from app.models import Song, db
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -15,6 +17,14 @@ def seed():
     seed_artists()
     seed_songs()
     seed_annotations()
+
+    #set the search vectors for Songs
+    # songs = Song.query.all()
+    # for song in songs:
+    #     song.create_tsvector()
+
+    # db.session.bulk_save_objects(songs)
+    # db.session.commit()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
