@@ -13,10 +13,26 @@
 .annoblock-header_title {
   padding: 2px;
   margin-bottom: -2px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.annoblock-header_title:hover {
+  color: #E561B3;
 }
 
 .annoblock-header_artist {
   padding: 2px;
+  margin-bottom: -2px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-size: 30px;
+}
+.annoblock-header_artist:hover {
+  color: #E561B3;
 }
 
 .annotation-header {

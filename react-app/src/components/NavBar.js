@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
@@ -46,7 +46,9 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         {authenticated?
         <>
           <button className="nav-button" onClick={rerouteProfile}>
-            {<i className="profileButton" className="fas fa-user-circle " ></i>}
+            <div className="profileButton">
+              {<i className="fas fa-user-circle " ></i>}
+            </div>
             </button>
             <button className="nav-button" onClick={rerouteCreate}>
               Create Song
