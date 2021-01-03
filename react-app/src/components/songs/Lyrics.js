@@ -12,7 +12,7 @@ const Lyrics = ({lyricsHTML, activateAnnotation}) => {
 
   const clickActiveAnnotation = (index) => {
     const annotation = document.querySelector(`[data-index="${index}"]`);
-    console.log(annotation)
+
     if (annotation) {
       annotation.click();
     }
