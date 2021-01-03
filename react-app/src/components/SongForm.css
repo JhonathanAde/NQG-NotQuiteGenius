@@ -1,7 +1,7 @@
 .form-container-song {
     height: auto;
     min-width: 50%;
-    background-image: url(../background3.gif);
+    background-image: url(../static/background3.gif);
     background-size: contain;
     display: flex;
     justify-content: center;

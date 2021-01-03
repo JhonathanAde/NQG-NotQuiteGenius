@@ -51,7 +51,7 @@ const SignUpForm = ({active, authenticated, setAuthenticated, setUser}) => {
       {!active? <form className="form-transition" onSubmit={onSignUp}>
         <div>
           {errors.map((error) => (
-            <div>{error}</div>
+            <div className="error-list">{error}</div>
           ))}
         </div>
         <div className="form-inputs">

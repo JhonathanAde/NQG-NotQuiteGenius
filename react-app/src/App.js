@@ -13,10 +13,8 @@ import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 import Artist from "./components/artists/Artists";
 import Profile from "./components/profile/Profile";
-import { user } from "./components/User"; 
 
 import SongForm from "./components/SongFormTest"
-import ArtistForm from "./components/ArtistFormTest"
 import Player from "./components/audioPlayer/AudioPlayer"
 
 function App() {
@@ -66,9 +64,11 @@ function App() {
           </Route> */} 
           <Route path="/sign-up" exact={true}>
             <div  className={`partition ${active? 'partition-login': 'partition-sign-up'}`}>
-              <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
-              <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
-              <div className="laptop-icon"></div>
+              <div className="switch-container">
+                <h1 className={active? 'login-hidden' : 'login-active'} onClick={toggleClass}>Login</h1>
+                <h1 className={active? 'sign-up-active' : 'sign-up-hidden'} onClick={toggleClass}>Sign Up</h1>
+                <div className="laptop-icon"></div>
+              </div>
             </div>
             <div className="form-page">
               <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} active={active}/>

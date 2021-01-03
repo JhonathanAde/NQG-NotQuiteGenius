@@ -79,16 +79,26 @@
 
 .song-tile {
     font-family: Raleway, arial, sanserif;
+    min-height: 130px;
+    min-width: 500px;
     margin: 10px;
     padding: 10px;
     display: flex;
     align-items: center;
+
 }
 
 .song-number {
     margin-left: 30px;
     font-size: 40px;
     width: 50px;
+    cursor: pointer;
+}
+
+.artist-number {
+    font-size: 40px;
+    width: 30px;
+    cursor: pointer;
 }
 
 .song-image {
@@ -98,6 +108,8 @@
     font-size: 20px;
     cursor: pointer;
     border: 2px solid black;
+    object-fit: cover;
+    object-position: 50% 20%;
 }
 .artist-image {
     width: 150px;
@@ -106,16 +118,30 @@
     font-size: 20px;
     cursor: pointer;
     border: 2px solid black;
-
+    object-fit: cover;
+    object-position: 50% 20%;
 }
 
 .song-title {
+    max-width: 300px;
+    margin: 0px 30px 0px 30px;
+    font-size: 25px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.artist-title {
     max-width: 100px;
     margin: 0px 30px 0px 30px;
     font-size: 25px;
     cursor: pointer;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.artist-title:hover {
+    color: #e561b3;
 }
 
 .song-title:hover {

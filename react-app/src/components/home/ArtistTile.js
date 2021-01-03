@@ -11,11 +11,11 @@ const ArtistTile = ({artist, idx}) => {
     return (
         <div className="artist-tile" onClick={songReroute}>
             <div className="song-link">
-                <div className="song-number">{idx}</div>
+                <div className="artist-number">{idx}</div>
                 <img className="artist-image" src={artist.image} alt="artist"/>
             </div>
             <div className="artist-link">
-                <div className="song-title">{artist.name}</div>
+                <div className="artist-title">{artist.name}</div>
             </div>
         </div>
     );

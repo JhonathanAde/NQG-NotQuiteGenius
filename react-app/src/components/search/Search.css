@@ -2,13 +2,12 @@
   width: 40%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .search-bar {
   width: 80%;
   text-align: center;
-  margin-top: 7px;
-  margin-bottom: 7px;
   height: 40px;
 }
 
