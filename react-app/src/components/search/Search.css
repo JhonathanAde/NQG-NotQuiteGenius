@@ -28,7 +28,7 @@
 }
 
 .search-bar:focus ~ .search-button {
-  background-color:#E561B3;;
+  background-color:#E561B3;
   color: black;
 }
 
@@ -52,6 +52,48 @@
   padding: 10px;
 }
 
+.search-results-list {
+  list-style-type: none;
+  font-size: 1.2em;
+}
+
+.search-results-item {
+  padding: 3px;
+}
+
 .search-msg {
   color: #55BCC4;
+}
+
+.search-link {
+  color: black;
+  text-decoration: none;
+}
+
+.search-link.active {
+  opacity: .5;
+  cursor: default;
+}
+
+.search-link.active span:before {
+  content: ' -- you are already here --';
+  color: #E561B3;
+}
+
+.search-link:not(.active):hover {
+  color: #E561B3
+}
+
+.search-link > span {
+  color: #888
+}
+
+.search-close {
+  font-size: 3em;
+  float: right;
+}
+
+.search-close:hover {
+  color: #E561B3;
+  cursor: pointer;
 }

@@ -9,7 +9,10 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
   const clearSearch = (e) => {
     const target = e.target;
-    if (target && !target.classList.contains('search-link')) {
+   
+    if (target
+        && !target.classList.contains('search-link')
+        && !target.closest('.search-close')) {
       if (target.closest('.search-container')) return;
     }
     const searchInput = document.getElementById('search');

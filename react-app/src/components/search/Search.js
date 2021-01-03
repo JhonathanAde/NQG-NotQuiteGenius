@@ -36,11 +36,13 @@ const Search = ({clearSearch, lastSearch, setLastSearch}) => {
     document.getElementById('search-results').style.display = 'block';
     document.getElementById('search').value = inputValue
     sizeResults(results.length ? 'full' : 'min');
+
   }
 
   const hideSearchInfo = (e) => {
+    e.stopPropagation()
     document.getElementById('search').value = lastSearch
-    clearSearch();
+    clearSearch(e);
   }
 
   const sizeResults = (size) => {
@@ -61,7 +63,7 @@ const Search = ({clearSearch, lastSearch, setLastSearch}) => {
       <input id="search" type="search" className="search-bar" placeholder="search" autoComplete="off" onChange={updateInput} value={inputValue}/>
       <button className="search-button" onClick={doSearch}><i className="fas fa-search"></i></button>
       <div id="search-results">
-        <p className="search-help">For searching, use double quotes if you desire exact phrases or words (including capitalization and punctuation).</p>
+        <p className="search-help">For searching, use double quotes if you desire exact phrases or words (including capitalization and punctuation).<div className="search-close" onClick={hideSearchInfo}><i className="fas fa-times-circle"></i></div></p>
         { (results.length &&
           <>
             <h2>Last search was: <span className="search-msg">{lastSearch}</span></h2>
@@ -69,10 +71,10 @@ const Search = ({clearSearch, lastSearch, setLastSearch}) => {
             <ul className="search-results-list">
                 {results.map((link) => (
                   <li className="search-results-item">
-                    <NavLink className="search-link" to={`${link.url}`} key={`${link.key}`} onClick={clearSearch}>
+                    <NavLink className="search-link" to={`${link.url}`} key={`${link.key}`} onClick={hideSearchInfo}>
                       {link.display}
-                    </NavLink>
                     <span className="search-info"> (Hits in: {link.hitLocations})</span>
+                    </NavLink>
                   </li>
                 ))}
             </ul>
