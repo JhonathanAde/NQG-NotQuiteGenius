@@ -78,13 +78,13 @@ textarea:focus {
 /* The emerging W3C standard
    that is currently Firefox-only */
 * {
-scrollbar-width: thin;
+scrollbar-width: auto;
 scrollbar-color: #55BCC4 black;
 }
 
 /* Works on Chrome/Edge/Safari */
 *::-webkit-scrollbar {
-width: 14px;
+width: 16px;
 
 }
 *::-webkit-scrollbar-track {
