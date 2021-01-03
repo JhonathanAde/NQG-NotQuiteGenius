@@ -2,34 +2,17 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
+import Search from './search/Search'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
-
-  const doSearch = (e) => {
-    e.stopPropagation();
-    const value = document.getElementById('search').value;
-    if (value) {
-      (async () => {
-        const response = await fetch(`/api/search?search_string=${value}`);
-        const results = await response.json();
-        console.log(results)
-      })();
-    }
-  }
 
   const clearSearch = (e) => {
     const target = e.target;
     if (target) {
       if (target.closest('.search-container')) return;
     }
-    console.log('hiding', e.target)
     document.getElementById('search').value = null;
     document.getElementById('search-results').style.display = null;
-  }
-
-  const displaySearchInfo = (e) => {
-    console.log("displaying")
-    document.getElementById('search-results').style.display = 'block';
   }
 
   let history = useHistory()
@@ -56,11 +39,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
           NQG
         </div>
       </div>
-      <div className="search-container" onClick={displaySearchInfo} >
-        <input id="search" type="search" className="search-bar" placeholder="search" />
-        <button className="search-button" onClick={doSearch}><i className="fas fa-search"></i></button>
-        <div id="search-results"></div>
-      </div>
+      <Search clearSearch={clearSearch}/>
       <div className="user-buttons">
         {authenticated?
         <>
