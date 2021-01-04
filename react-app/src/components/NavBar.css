@@ -43,18 +43,6 @@
     margin: 5px;
 }
 
-.search-container {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.search-bar {
-    width: 80%;
-    text-align: center;
-}
-
 .radio {
     min-width: 70px;
     width: 70px;

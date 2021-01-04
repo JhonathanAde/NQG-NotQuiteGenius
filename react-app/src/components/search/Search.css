@@ -1,0 +1,100 @@
+.search-container {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar {
+  width: 80%;
+  text-align: center;
+  height: 40px;
+}
+
+.search-bar:focus {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-button {
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.search-button:hover {
+  color: inherit;
+  cursor: default;
+}
+
+.search-bar:focus ~ .search-button {
+  background-color:#E561B3;
+  color: black;
+}
+
+.search-bar:focus ~ .search-button:hover {
+  /* background-color: #55BCC4; */
+  color: white;
+  cursor: pointer;
+}
+
+#search-results {
+  display: none; /* default state */
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 100;
+  color: black;
+  padding: 10px 10px 80px;
+}
+
+.search-results-list {
+  list-style-type: none;
+  font-size: 1.2em;
+}
+
+.search-results-item {
+  padding: 3px;
+}
+
+.search-msg {
+  color: #55BCC4;
+}
+
+.search-link {
+  color: black;
+  text-decoration: none;
+}
+
+.search-link.active {
+  opacity: .5;
+  cursor: default;
+}
+
+.search-link.active span:before {
+  content: ' -- you are already here --';
+  color: #E561B3;
+}
+
+.search-link:not(.active):hover {
+  color: #E561B3
+}
+
+.search-link > span {
+  color: #888
+}
+
+.search-close {
+  display: block;
+  font-size: 3em;
+  float: right;
+}
+
+.search-close:hover {
+  color: #E561B3;
+  cursor: pointer;
+}

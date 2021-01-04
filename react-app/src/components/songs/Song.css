@@ -165,6 +165,11 @@
   margin-left: 10px;
 }
 
+.songpage-display-selection {
+  padding: 5px 15px;
+  color: #55BCC4;
+}
+
 .content-textarea {
   resize: none;
   width: 100%;
@@ -195,4 +200,17 @@
 
 .song-link:hover {
   color: #E561B3;
+}
+
+.song-link.active {
+  color: #858586;
+  cursor: default;
+}
+
+.song-link.active:after {
+  content: "(you are here)";
+  display: inline-block;
+  font-size: .5em;
+  color: #bebec0;
+  padding-left: 1em;
 }

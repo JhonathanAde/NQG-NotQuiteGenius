@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
+import Search from './search/Search'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
+  const [lastSearch, setLastSearch] = useState('')
 
-  const doSearch = (e) => {
-    const value = document.getElementById('search').value;
-    (async () => {
-      const response = await fetch(`/api/songs/search?search_string=${value}`);
-      const results = await response.json();
-      console.log(results)
-    })();
+  const clearSearch = (e) => {
+    const target = e.target;
+
+    if (target
+        && !target.classList.contains('search-link')
+        && !target.closest('.search-close')) {
+      if (target.closest('.search-container')) return;
+    }
+    const searchInput = document.getElementById('search');
+    searchInput.value = null;
+    document.getElementById('search-results').style.display = null;
   }
 
   let history = useHistory()
@@ -29,19 +35,16 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const rerouteCreate = () => {
     history.push("/create-song")
   }
-  
+
   return (
-    <nav className="nav-bar">
+    <nav className="nav-bar" onClick={clearSearch}>
       <div className="logo">
         <div className="radio"></div>
         <div className="home-link" onClick={rerouteHome}>
           NQG
         </div>
       </div>
-      <div className="search-container">
-        <input id="search" type="search" className="search-bar" placeholder="search" />
-        <button onClick={doSearch}>Search</button>
-      </div>
+      <Search clearSearch={clearSearch} lastSearch={lastSearch} setLastSearch={setLastSearch}/>
       <div className="user-buttons">
         {authenticated?
         <>
@@ -58,13 +61,6 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
           :
           <>
             <button className="nav-button" onClick={rerouteRegister}>Register</button>
-            {/* <NavLink to="/" */}
-            {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink> */}
-            {/* <NavLink to="/users" exact={true} activeClassName="active">
-              Users
-            </NavLink> */}
           </>
         }
       </div>
