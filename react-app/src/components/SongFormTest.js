@@ -25,14 +25,7 @@ const SongForm = () => {
   
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
-    const loadBar = document.getElementById("loadBarHidden")
-    const progressBar = document.getElementById("progressBar")
-    loadBar.classList.add("loadBar")
     let artistId;
-    
-    let lineBreaks = lyrics.split('\n').join('<br >')
-    progressBar.style.width = "30%"
-
     if(!existingArtist) {
       const artistData = new FormData()
       artistData.append('name', newArtist)
@@ -43,24 +36,23 @@ const SongForm = () => {
     } else {
       artistId = existingArtist
     }
-    progressBar.style.width = "60%"
+
     const data = new FormData();
     data.append('title', title);
     data.append('artist_id', artistId);
-    data.append('lyrics', lineBreaks);
+    data.append('lyrics', lyrics);
     data.append('image', image);
     data.append('audio_file', audioFile);
 
-    progressBar.style.width = "90%"
     const song = await createSong(data);
     // const song = await editSong(data, 6);
-    progressBar.style.width = "100%"
     if (!song.errors) {
       console.log("Submit successful! ", song);
     } else {
       setErrors(song.errors);
     }
     console.log("Submit successful! ", song);
+    
     history.push("/")
   };
 
@@ -193,9 +185,6 @@ const SongForm = () => {
             />
           </div>
             <button className="form-input" type="submit">Submit</button>
-            <div id="loadBarHidden">
-              <div className="progressBar" id="progressBar"></div>
-            </div>
         </div>
       </form>
     </div>
