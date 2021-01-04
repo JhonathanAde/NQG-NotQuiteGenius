@@ -13,6 +13,7 @@ const SongForm = () => {
   const [image, setImage] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [artists, setArtists] = useState(null);
+  
 
   useEffect(() => {
     (async () => {
@@ -58,7 +59,9 @@ const SongForm = () => {
     if (!song.errors) {
       console.log("Submit successful! ", song);
     } else {
+      loadBar.classList.remove("loadBar")
       setErrors(song.errors);
+      return
     }
     console.log("Submit successful! ", song);
     history.push("/")
