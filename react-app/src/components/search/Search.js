@@ -18,7 +18,13 @@ const Search = ({clearSearch, lastSearch, setLastSearch}) => {
       setDoingSearch(true);
       sizeResults('min');
       (async () => {
-        const response = await fetch(`/api/search?search_string=${value}`);
+        const response = await fetch(`/api/search?search_string=${value}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Security-Policy': 'upgrade-insecure-requests'
+          },
+        });
         const res = await response.json();
         setDoingSearch(false);
         // console.log(res)
