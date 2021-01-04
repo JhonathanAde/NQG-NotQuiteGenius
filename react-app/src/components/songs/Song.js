@@ -35,7 +35,9 @@ const Song = ({authenticated, user}) => {
         //Insure breaks are formatted for finding
         lyrics = lyrics.replaceAll(/<br ?\/?>/g, "<br>")
         annotations.forEach((annot, i) => {
-          const key = annot.lyricKey
+          let key = annot.lyricKey
+          //Insure breaks are formatted for finding
+          key = key.replaceAll(/<br ?\/?>/g, "<br>")
           lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
         })
         setLyricsHTML(ReactHtmlParser(lyrics));
