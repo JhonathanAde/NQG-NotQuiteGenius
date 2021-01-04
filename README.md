@@ -1,4 +1,4 @@
-# Not Quite Genius (NQP)
+# Not Quite Genius (NQG)
 
 Not Quite Genius is a one stop source for lyrics to your favorite songs.  
 
