@@ -17,14 +17,12 @@ const SongForm = () => {
   useEffect(() => {
     (async () => {
       const res = await getArtists()
-      console.log(res)
       setArtists(res.artists)
     })()
   }, []);
 
   let history = useHistory();
   
-  console.log("hits", artists)
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
     let artistId;
@@ -41,7 +39,6 @@ const SongForm = () => {
     }
 
     const data = new FormData();
-
     data.append('title', title);
     data.append('artist_id', artistId);
     data.append('lyrics', lyrics);
