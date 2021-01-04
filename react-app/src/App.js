@@ -35,7 +35,6 @@ function App() {
   }, []);
 
     const toggleClass = () => {
-      console.log("hits toggle class")
       const currentState = active
       setActive(!currentState);
   };
