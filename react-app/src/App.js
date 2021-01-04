@@ -35,6 +35,7 @@ function App() {
   }, []);
 
     const toggleClass = () => {
+      console.log("hits toggle class")
       const currentState = active
       setActive(!currentState);
   };
@@ -59,8 +60,8 @@ function App() {
               </div>
             </div>
             <div className="form-page">
-              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} />
-              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  setUser={setUser}/>
+              <LoginForm authenticated={authenticated} active={active}setAuthenticated={setAuthenticated} setUser={setUser} />
+              <SignUpForm authenticated={authenticated} active={active} setAuthenticated={setAuthenticated}  setUser={setUser}/>
             </div>
           </Route>
           <Route path="/songs/:songId" exact={true}>
