@@ -29,8 +29,29 @@ const Song = ({authenticated, user}) => {
   }, [songId, authenticated]);
 
   useEffect(() => {
+    const updateAnnotations = async (song, annotations) => {
+      let lyrics = song.lyrics;
+      if (lyrics) {
+        //Insure breaks are formatted for finding
+        lyrics = lyrics.replaceAll(/<br ?\/?>/g, "<br>")
+        annotations.forEach((annot, i) => {
+          const key = annot.lyricKey
+          lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
+        })
+        setLyricsHTML(ReactHtmlParser(lyrics));
+
+        await setLyricsKey(annotations.length)
+        //Using async to be sure lyrics key is set prior to resetting activate annotation
+        if (activateAnnotation) {
+          setActivateAnnotation(0)
+        }
+      }
+    }
+
     clearNewAnnotationKey(true);
-    updateAnnotations(song, annotations)
+    updateAnnotations(song, annotations);
+    // Next line disables the warning on activateAnnotation
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [annotations, song])
 
   useEffect( () => {
@@ -42,40 +63,25 @@ const Song = ({authenticated, user}) => {
   },[song]);
 
   useEffect(() => {
-    switchActiveSideBar()
+    const switchActiveSideBar = () => {
+      const removeActive = document.querySelector('.songpage-sidebar > .active');
+      if (removeActive) removeActive.classList.remove('active');
+      if (annotation) {
+        document.querySelector('.songpage-annotation').classList.add('active');
+      } else if (newAnnotationKey) {
+        document.querySelector('.songpage-add-annotation').classList.add('active');
+      } else {
+        document.querySelector('.songpage-sidelinks').classList.add('active');
+      }
+    }
+
+    switchActiveSideBar();
   }, [newAnnotationKey, annotation]);
 
-
-  const updateAnnotations = async (song, annotations) => {
-    let lyrics = song.lyrics;
-      annotations.forEach((annot, i) => {
-        const key = annot.lyricKey
-        lyrics = lyrics.replaceAll(key, `<span class="annotation-key" data-index="${i}">${key}</span>`)
-      })
-      setLyricsHTML(ReactHtmlParser(lyrics));
-
-      await setLyricsKey(annotations.length)
-      //Using async to be sure lyrics key is set prior to resetting activate annotation
-      if (activateAnnotation) {
-        setActivateAnnotation(0)
-      }
-  }
 
   const unHighlightKey = () => {
     const elementToReset = document.querySelector('.annotation-key.active');
     if (elementToReset) elementToReset.classList.remove('active');
-  }
-
-  const switchActiveSideBar = () => {
-    const removeActive = document.querySelector('.songpage-sidebar > .active');
-    if (removeActive) removeActive.classList.remove('active');
-    if (annotation) {
-      document.querySelector('.songpage-annotation').classList.add('active');
-    } else if (newAnnotationKey) {
-      document.querySelector('.songpage-add-annotation').classList.add('active');
-    } else {
-      document.querySelector('.songpage-sidelinks').classList.add('active');
-    }
   }
 
   const onAnnotationClick = (e) => {
@@ -87,7 +93,6 @@ const Song = ({authenticated, user}) => {
     clearNewAnnotationKey();
     unHighlightKey();
     e.target.classList.add('active')
-    const annotationKey = e.target.innerHTML;
     const annotation = annotations[parseInt(e.target.getAttribute("data-index"))].content;
     document.querySelector('.songpage-annotation-text').innerHTML = annotation
     setAnnotation(annotation)
@@ -107,9 +112,7 @@ const Song = ({authenticated, user}) => {
           clearNewAnnotationKey();
           return;
         }
-        console.log(sel)
-        text = sel.toString();
-        processSelection(text, range);
+        processSelection(range);
         if(sel.empty) {
           sel.empty()
         } else if (sel.removeAllRanges) {
@@ -159,12 +162,12 @@ const Song = ({authenticated, user}) => {
         return notNestedInKey && notIntersectingKey && isInLyrics
       }
 
-      function processSelection(text, range) {
+      function processSelection(range) {
         clearNewAnnotationKey();
-        setNewAnnotationKey(text);
         const wrap = document.createElement('span');
         wrap.classList.add('songpage-new-annotation');
         range.surroundContents(wrap);
+        setNewAnnotationKey(wrap.innerHTML);
       }
   }
 
@@ -209,7 +212,10 @@ const Song = ({authenticated, user}) => {
           </div>
           <div className="songpage-add-annotation">
             <div className="songpage-sticky">
-              Add annotation for key "{newAnnotationKey}"
+              Add annotation for key:
+              <div className="songpage-display-selection">
+                {ReactHtmlParser(newAnnotationKey)}
+              </div>
               <AnnotationForm
               lyricKey={newAnnotationKey}
               songId={songId}
