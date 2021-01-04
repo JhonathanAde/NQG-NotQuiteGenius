@@ -13,6 +13,7 @@ const SongForm = () => {
   const [image, setImage] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [artists, setArtists] = useState(null);
+  
 
   useEffect(() => {
     (async () => {
@@ -59,6 +60,7 @@ const SongForm = () => {
       console.log("Submit successful! ", song);
     } else {
       setErrors(song.errors);
+      return
     }
     console.log("Submit successful! ", song);
     history.push("/")
@@ -193,6 +195,11 @@ const SongForm = () => {
             />
           </div>
             <button className="form-input" type="submit">Submit</button>
+            <div>
+              {errors.map((error) => (
+                <div className="error-list">{error}</div>
+              ))}
+            </div>
             <div id="loadBarHidden">
               <div className="progressBar" id="progressBar"></div>
             </div>
