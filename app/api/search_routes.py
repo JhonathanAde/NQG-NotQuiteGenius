@@ -164,21 +164,3 @@ def search(exacts, words):
     final_results = sorted(unique_songs + unique_artists, key=lambda item: item["weight"], reverse=True)
 
     return {"results": final_results}
-
-
-
-
-
-# def vector_search(cls, search_string, dictionary='english'):
-#     lyrics = db.session.query(cls). \
-#         filter(func.to_tsvector(dictionary, getattr(cls, 'lyrics')).match(search_string, postgresql_regconfig='english')).all()
-#     titles = db.session.query(cls). \
-#         filter(func.to_tsvector(dictionary, getattr(cls, 'title')).match(search_string, postgresql_regconfig='english')).all()
-#     # artist = db.session.query(cls). \
-#     #     filter(func.to_tsvector('english', getattr(cls, 'title')).match(search_string, postgresql_regconfig='english')).all()
-
-
-#     return {
-#         "titles": [song.to_dict() for song in titles],
-#         "lyrics": [song.to_dict() for song in lyrics]
-#         }

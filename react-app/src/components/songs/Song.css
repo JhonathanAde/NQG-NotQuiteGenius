@@ -165,6 +165,11 @@
   margin-left: 10px;
 }
 
+.songpage-display-selection {
+  padding: 5px 15px;
+  color: #55BCC4;
+}
+
 .content-textarea {
   resize: none;
   width: 100%;

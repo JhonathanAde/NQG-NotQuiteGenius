@@ -63,7 +63,7 @@ const Search = ({clearSearch, lastSearch, setLastSearch}) => {
       <input id="search" type="search" className="search-bar" placeholder="search" autoComplete="off" onChange={updateInput} value={inputValue}/>
       <button className="search-button" onClick={doSearch}><i className="fas fa-search"></i></button>
       <div id="search-results">
-        <p className="search-help">For searching, use double quotes if you desire exact phrases or words (including capitalization and punctuation). (Note: usernames are currently not searchable.)<div className="search-close" onClick={hideSearchInfo}><i className="fas fa-times-circle"></i></div></p>
+        <p className="search-help">For searching, use double quotes if you desire exact phrases or words (including capitalization and punctuation). (Note: usernames are currently not searchable.)<span className="search-close" onClick={hideSearchInfo}><i className="fas fa-times-circle"></i></span></p>
         { (results.length &&
           <>
             <h2>Last search was: <span className="search-msg">{lastSearch}</span></h2>
