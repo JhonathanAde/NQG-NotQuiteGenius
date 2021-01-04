@@ -11,7 +11,7 @@ def seed_songs():
         title = 'Willow',
         artist_id = 1,
         image = 'https://nqg-images.s3.amazonaws.com/Evermore-01.png',
-        audio_file = '',
+        audio_file = 'https://nqg-songs.s3.amazonaws.com/Taylor_Swift_willow_preview.mp3',
         lyrics = """[Verse 1]<br />
 I'm like the water when your ship rolled in that night<br />
 Rough on the surface, but you cut through like a knife<br />
