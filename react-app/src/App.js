@@ -13,9 +13,9 @@ import Footer from "./components/Footer";
 import Song from "./components/songs/Song";
 import Artist from "./components/artists/Artists";
 import Profile from "./components/profile/Profile";
-
-import SongForm from "./components/SongFormTest"
-import Player from "./components/audioPlayer/AudioPlayer"
+import SongForm from "./components/SongForm"
+// import { user } from "./components/User"; 
+// import Player from "./components/audioPlayer/AudioPlayer"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -59,8 +59,8 @@ function App() {
               </div>
             </div>
             <div className="form-page">
-              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} active={active}/>
-              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  setUser={setUser} active={active}/>
+              <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} />
+              <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  setUser={setUser}/>
             </div>
           </Route>
           <Route path="/songs/:songId" exact={true}>
@@ -84,14 +84,13 @@ function App() {
           <Route path="/" exact={true} authenticated={authenticated}>
             <Home />
           </Route>
-          <Route path="/song-form-test" exact={true}>
+
+          {/* <Route path="/song-form-test" exact={true}>
             <SongForm />
           </Route>
-
-          {/* THIS AUDIO PLAYER ROUTE IS USED FOR REFERENCE */}
           <Route path="/audio-player" exact={true}>
             <Player />
-          </Route>
+          </Route> */}
       </Switch>
         <div className="push"></div>
       </div>
