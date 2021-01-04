@@ -59,6 +59,7 @@ const SongForm = () => {
     if (!song.errors) {
       console.log("Submit successful! ", song);
     } else {
+      loadBar.classList.remove("loadBar")
       setErrors(song.errors);
       return
     }
@@ -195,11 +196,6 @@ const SongForm = () => {
             />
           </div>
             <button className="form-input" type="submit">Submit</button>
-            <div>
-              {errors.map((error) => (
-                <div className="error-list">{error}</div>
-              ))}
-            </div>
             <div id="loadBarHidden">
               <div className="progressBar" id="progressBar"></div>
             </div>
