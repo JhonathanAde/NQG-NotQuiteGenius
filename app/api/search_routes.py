@@ -7,7 +7,7 @@ from collections import Counter, OrderedDict
 search_routes = Blueprint('search', __name__)
 
 # TEXT SEARCH OF DATABASE
-@search_routes.route('/')
+@search_routes.route('')
 def search_database():
     search_string = request.args.get('search_string')
 
