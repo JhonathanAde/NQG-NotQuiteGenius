@@ -38,9 +38,12 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   }
 
   const signInDemoUser = async () => {
-    await login ('demo@nqg.com', 'password')
-    setAuthenticated(true);
-    history.push("/")
+    const data = await login ('demo@nqg.com', 'password')
+    if (!data.errors) {
+        setAuthenticated(true);
+        setUser(data)
+        history.push("/")
+    }
   }
 
   return (
