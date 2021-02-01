@@ -22,7 +22,7 @@ const SongForm = () => {
   }, []);
 
   let history = useHistory();
-  
+
   const songDataSubmitHandler = async (e) => {
     e.preventDefault();
     let artistId;
@@ -30,7 +30,7 @@ const SongForm = () => {
       const artistData = new FormData()
       artistData.append('name', newArtist)
       artistData.append('image', image)
-  
+
       const artist = await createArtist(artistData)
       artistId = artist.id
     } else {
@@ -52,12 +52,19 @@ const SongForm = () => {
       setErrors(song.errors);
     }
     console.log("Submit successful! ", song);
-    
+
     history.push("/")
   };
 
   const prevent = (e) => {
     e.preventDefault();
+  }
+
+  const focusImageUpload = (e) => {
+    console.log('here')
+    e.preventDefault();
+    const input = document.getElementById('image-upload');
+    input.focus();
   }
 
   const updateTitle = (e) => {
@@ -108,7 +115,7 @@ const SongForm = () => {
           </div>
           <label htmlFor="title">Select Artist</label>
             <div className="form-input">
-              <select 
+              <select
                 name="artist_id"
                 type="text"
                 placeholder="Artist"
@@ -116,7 +123,7 @@ const SongForm = () => {
                 onChange={updateArtistId}
               >
                 <option value={null}>Choose an Artist</option>
-                {artists && 
+                {artists &&
                 artists.map((artist, id) => (
                   <option value={artist.id}>{artist.name}</option>
                   ))
@@ -131,7 +138,7 @@ const SongForm = () => {
                 type="text"
                 placeholder="Artist"
                 value={newArtist}
-                onChange={updateNewArtist} 
+                onChange={updateNewArtist}
               />
             </div>
           {/* <div className="form-input">
@@ -144,7 +151,7 @@ const SongForm = () => {
               onChange={updateArtistId}
             />
             <datalist id="artists">
-              {artists && 
+              {artists &&
               artists.map((art, id) => (
                 <option value={art.id}>{art.name}</option>
               ))
@@ -152,16 +159,17 @@ const SongForm = () => {
             </datalist>
           </div> */}
 
-          <label htmlFor="image">Album Cover</label>
+          <label htmlFor="image-upload">Album Cover</label>
           <div className="form-input-file">
             <input
+              id="image-upload"
               className="custom-file-input"
               name="Album art"
               type="file"
               placeholder="Album art"
               onChange={updateImage}
             />
-          <button className="file-button" onClick={prevent}>Upload File</button>
+          <button className="file-button" type="button" onClick={focusImageUpload}>Upload File</button>
           </div>
           <label htmlFor="">Song Sample</label>
           <div className="form-input-file">
