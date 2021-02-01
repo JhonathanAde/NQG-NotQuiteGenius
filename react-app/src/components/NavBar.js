@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import Search from './search/Search'
+import { login } from "../services/auth";
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
   const [lastSearch, setLastSearch] = useState('')
@@ -36,6 +37,12 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
     history.push("/create-song")
   }
 
+  const signInDemoUser = async () => {
+    await login ('demo@nqg.com', 'password')
+    setAuthenticated(true);
+    history.push("/")
+  }
+
   return (
     <nav className="nav-bar" onClick={clearSearch}>
       <div className="logo">
@@ -61,6 +68,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
           :
           <>
             <button className="nav-button" onClick={rerouteRegister}>Register</button>
+            <button className="nav-button" onClick={signInDemoUser}>Demo</button>
           </>
         }
       </div>
