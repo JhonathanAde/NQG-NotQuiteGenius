@@ -167,15 +167,14 @@
     margin: 10px;
     padding: 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .song-link {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    width: 80%;
+    /* justify-content: flex-start; */
+    /* width: 80%; */
 }
 
 .divider-container {
