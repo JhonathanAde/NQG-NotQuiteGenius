@@ -38,42 +38,44 @@ const ArtistForm = ({setNewArtistForm}) => {
 
   return (
     <div className="new-artist-form-wrapper">
-      <form onSubmit={artistDataSubmitHandler} encType="multipart/form-data">
-        <div className="form-inputs">
-          <label>Create Artist</label>
-          <div>
-            {errors.map((error) => (
-              <div>{error}</div>
-            ))}
-          </div>
-            <label htmlFor="name">Name</label>
-            <input
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={updateName}
-            />
-
-            <label htmlFor="image-upload" className="file-upload">
-            <div className="file-label">Album Cover</div>
-            <input
-                id="image-upload"
-                className="custom-file-input"
-                name="image-upload"
-                type="file"
-              />
-            <div className="form-input-file">
-              <div id="image-file-path" className="file-path">No file</div>
-              <button className="file-button" type="button" >Upload File</button>
-            </div>
-          </label>
+      <div className="new-artist-form-container">
+        <form onSubmit={artistDataSubmitHandler} encType="multipart/form-data">
+          <div className="artist-form-inputs">
+            <div className="artist-form-header">Create Artist</div>
             <div>
-              <button type="submit">Submit</button>
-              <button onClick={() => setNewArtistForm(false)}>Cancel</button>
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
             </div>
-        </div>
-      </form>
+              <label htmlFor="name">Name</label>
+              <input
+                name="name"
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={updateName}
+              />
+
+              <label htmlFor="image-upload" className="file-upload">
+              <div className="file-label">Album Cover</div>
+              <input
+                  id="image-upload"
+                  className="custom-file-input"
+                  name="image-upload"
+                  type="file"
+                />
+              <div className="form-input-file">
+                <div id="image-file-path" className="file-path">No file</div>
+                <button className="file-button" type="button" >Upload File</button>
+              </div>
+            </label>
+              <div>
+                <button className="nav-button" type="submit">Submit</button>
+                <button className="nav-button" onClick={() => setNewArtistForm(false)}>Cancel</button>
+              </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
