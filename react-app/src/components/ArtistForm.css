@@ -1,0 +1,9 @@
+.new-artist-form-wrapper {
+    position: fixed;
+    top: 150px;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    background-color: black;
+    border-radius: 5px;
+}

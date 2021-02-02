@@ -3,6 +3,7 @@ import { createSong } from "../services/song";
 import "./SongForm.css"
 import {useHistory} from 'react-router-dom'
 import {createArtist, getArtists} from '../services/artists'
+import ArtistForm from './ArtistFormTest'
 
 const SongForm = () => {
   const [errors, setErrors] = useState([]);
@@ -13,6 +14,7 @@ const SongForm = () => {
   const [image, setImage] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [artists, setArtists] = useState(null);
+  const [newArtistForm, setNewArtistForm] = useState(false)
 
 
   useEffect(() => {
@@ -68,6 +70,15 @@ const SongForm = () => {
     // console.log("Submit successful! ", song);
     history.push("/")
   };
+
+  const createNewArtist = (e) => {
+    e.preventDefault();
+    if (newArtistForm) {
+      setNewArtistForm(false)
+    } else {
+      setNewArtistForm(true)
+    }
+  }
 
   const updateTitle = (e) => {
     setTitle(e.target.value);
@@ -176,8 +187,9 @@ const SongForm = () => {
               </select>
             </div>
             <div className="form-input">-or-</div>
-          <label htmlFor="title">Create New Artist</label>
-            <div className="form-input">
+          <button className="form-input" onClick={createNewArtist}>Create New Artist</button>
+                { newArtistForm ? <ArtistForm setNewArtistForm={setNewArtistForm}/> : <></>}
+            {/* <div className="form-input">
               <input
                 name="artist_id"
                 type="text"
@@ -185,7 +197,7 @@ const SongForm = () => {
                 value={newArtist}
                 onChange={updateNewArtist}
               />
-            </div>
+            </div> */}
           <label htmlFor="image-upload" className="file-upload">
             <div className="file-label">Album Cover</div>
             <input

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { createArtist, editArtist } from "../services/artists";
+import "./ArtistForm.css"
 
-const ArtistForm = () => {
+const ArtistForm = ({setNewArtistForm}) => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -36,33 +37,44 @@ const ArtistForm = () => {
 
 
   return (
-    <form onSubmit={artistDataSubmitHandler} encType="multipart/form-data">
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          name="name"
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={updateName}
-        />
-      </div>
-      <div>
-        <label htmlFor="image">Artist image</label>
-        <input
-          name="Artist image"
-          type="file"
-          placeholder="Artist image"
-          onChange={updateImage}
-        />
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    <div className="new-artist-form-wrapper">
+      <form onSubmit={artistDataSubmitHandler} encType="multipart/form-data">
+        <div className="form-inputs">
+          <label>Create Artist</label>
+          <div>
+            {errors.map((error) => (
+              <div>{error}</div>
+            ))}
+          </div>
+            <label htmlFor="name">Name</label>
+            <input
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={updateName}
+            />
+
+            <label htmlFor="image-upload" className="file-upload">
+            <div className="file-label">Album Cover</div>
+            <input
+                id="image-upload"
+                className="custom-file-input"
+                name="image-upload"
+                type="file"
+              />
+            <div className="form-input-file">
+              <div id="image-file-path" className="file-path">No file</div>
+              <button className="file-button" type="button" >Upload File</button>
+            </div>
+          </label>
+            <div>
+              <button type="submit">Submit</button>
+              <button onClick={() => setNewArtistForm(false)}>Cancel</button>
+            </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
