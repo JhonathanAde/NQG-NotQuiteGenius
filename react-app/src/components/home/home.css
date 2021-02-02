@@ -58,6 +58,7 @@
 
 .title-20 {
     position: sticky;
+    width: 75%;
     top: 0px;
     font-family: Rubik;
     font-size: 40px;
