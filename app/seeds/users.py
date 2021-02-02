@@ -21,9 +21,13 @@ def seed_users():
         password='password'
     )
 
+    demo_user = User(username='demo user', email='demo@nqg.com', is_admin= True,
+                password='password')
+
     db.session.add(admin_adc)
     db.session.add(admin_jhon)
     db.session.add(admin_scott)
+    db.session.add(demo_user)
 
     db.session.commit()
 
