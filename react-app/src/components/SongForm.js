@@ -40,12 +40,12 @@ const SongForm = () => {
       artistData.append('image', image)
 
       const artist = await createArtist(artistData);
-      console.log('making artist', artist)
+
       artistId = artist.id
     } else {
       artistId = existingArtist
     }
-    console.log('using artist')
+
     progressBar.style.width = "60%"
     const data = new FormData();
     data.append('title', title);
