@@ -76,8 +76,8 @@ const Search = ({clearSearch, lastSearch, setLastSearch}) => {
 
             <ul className="search-results-list">
                 {results.map((link) => (
-                  <li className="search-results-item">
-                    <NavLink className="search-link" to={`${link.url}`} key={`${link.key}`} onClick={hideSearchInfo}>
+                  <li className="search-results-item" key={`${link.key}`}>
+                    <NavLink className="search-link" to={`${link.url}`}  onClick={hideSearchInfo}>
                       {link.display}
                     <span className="search-info"> (Hits in: {link.hitLocations})</span>
                     </NavLink>

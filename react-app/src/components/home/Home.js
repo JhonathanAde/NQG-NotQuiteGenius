@@ -23,10 +23,7 @@ const Home = () => {
             <div className="top-20">
                 <div className="title-20">TOP SONGS</div>
                 {songs ? songs.map((song, idx) =>
-                    <>
-                        <SongTile key={`song_${song.id}`} song={song} idx={idx + 1}/>
-
-                    </>
+                    <SongTile key={`song_${song.id}`} song={song} idx={idx + 1}/>
                 ): "loading"}
             </div>
             <div className="artists-container">
