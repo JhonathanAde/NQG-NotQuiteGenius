@@ -189,3 +189,19 @@
     background-color: black;
     border-radius: 2px;
 }
+
+.hp-loadsongs {
+    width: 25rem;
+    background-color: transparent;
+    display: flex;
+    align-content: center;
+    transform: translate(85%, 10%);
+}
+
+.hp-loadartists{
+    width: 25rem;
+    background-color: transparent;
+    display: flex;
+    align-content: center;
+    transform: translate(105%);
+}
