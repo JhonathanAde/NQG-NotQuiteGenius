@@ -1,4 +1,5 @@
 import React from 'react';
+import {AiFillLinkedin, AiFillGithub} from 'react-icons/ai'
 import './Footer.css'
 
 
@@ -17,11 +18,29 @@ const Footer = () => {
                 </p>
             </div>
             <div className="developers">
-                <a href="https://github.com/achoi1225" target="_blank" rel="noopener noreferrer">Andrew Choi</a>
-                <a href="https://github.com/JhonathanAde" target="_blank" rel="noopener noreferrer">Jhonathan Ade</a>
-                <a href="https://github.com/Maximos-S" target="_blank" rel="noopener noreferrer">Maximos Salzman</a>
-                <a href="https://github.com/scottgit" target="_blank" rel="noopener noreferrer">Scott Smith</a>
+                <p>
+                    Andrew Choi  
+                    <a href="https://github.com/achoi1225" target="_blank" rel="noopener noreferrer"><AiFillGithub /></a>
+                    <a href="https://www.linkedin.com/in/andrew-choi-340162201/" target="_blank" rel="noopener noreferrer"><AiFillLinkedin /></a>
+                </p>
+                <p>
+                    Jhonathan Ade
+                    <a href="https://github.com/JhonathanAde" target="_blank" rel="noopener noreferrer"><AiFillGithub /></a>
+                    <a href="https://www.linkedin.com/in/jhonathan-ade-358b9b66/" target="_blank" rel="noopener noreferrer"><AiFillLinkedin /></a>
+                </p>
+                <p>
+                    Maximos Salzman
+                    <a href="https://github.com/Maximos-S" target="_blank" rel="noopener noreferrer"><AiFillGithub /></a>
+                    <a href="https://www.linkedin.com/in/maximos-salzman-5a7050171/" target="_blank" rel="noopener noreferrer"><AiFillLinkedin /></a>
+                </p>
+                    
+                <p>
+                    Scott Smith
+                    <a href="https://github.com/scottgit" target="_blank" rel="noopener noreferrer"><AiFillGithub /></a>
+                    <a href="https://www.linkedin.com/in/one-scott-smith/" target="_blank" rel="noopener noreferrer"><AiFillLinkedin /></a>
+                </p>
             </div>
+
             <div className="phone-icon"></div>
         </div>
     );

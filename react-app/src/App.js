@@ -92,8 +92,8 @@ function App() {
             <Player />
           </Route> */}
       </Switch>
-        <div className="push"></div>
       </div>
+        <div className="push"></div>
       <Footer className="footer"/>
     </BrowserRouter>
   );
