@@ -13,14 +13,20 @@ const ArtistForm = ({setNewArtistForm, setArtists, artists, setExistingArtist}) 
     e.stopPropagation()
     const data = new FormData();
 
+    const loadBar = document.getElementById("loadBarHidden2")
+    const progressBar = document.getElementById("progressBar2")
+    loadBar.classList.add("loadBar")
+
     data.append('name', name);
     data.append('image', image);
+    progressBar.style.width = "90%"
 
     // const artist = await createArtist(data);
     const artist = await createArtist(data);
     if (!artist.errors) {
       setArtists([...artists, artist])
       setExistingArtist(artist.id)
+      progressBar.style.width = "100%"
     } else {
       setErrors(artist.errors)
       return
@@ -113,6 +119,9 @@ const ArtistForm = ({setNewArtistForm, setArtists, artists, setExistingArtist}) 
               <div>
                 <button className="nav-button" type="submit">Submit</button>
                 <button className="nav-button" onClick={() => setNewArtistForm(false)}>Cancel</button>
+                <div id="loadBarHidden2">
+                <div className="progressBar" id="progressBar2"></div>
+                </div>
               </div>
           </div>
         </form>

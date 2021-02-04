@@ -173,7 +173,7 @@ const SongForm = () => {
                 value={existingArtist}
                 onChange={updateArtistId}
               >
-                <option value={existingArtist.id}>{existingArtist? artists[artists.length-1].name:"Choose an Artist"}</option>
+                <option value={null}>Choose an Artist</option>
                 {artists &&
                 artists.map((artist, id) => (
                   <option key={artist.id} value={artist.id}>{artist.name}</option>
