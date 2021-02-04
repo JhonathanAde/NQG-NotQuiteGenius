@@ -39,7 +39,7 @@ const SongForm = () => {
     if(!existingArtist) {
       setErrors([...errors,"must select an Artist"])
     } else {
-      artistId = existingArtist.id
+      artistId = existingArtist
     }
 
     progressBar.style.width = "60%"
