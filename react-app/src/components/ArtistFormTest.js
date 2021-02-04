@@ -3,20 +3,29 @@ import { Redirect } from "react-router-dom";
 import { createArtist, editArtist } from "../services/artists";
 import "./ArtistForm.css"
 
-const ArtistForm = ({setNewArtistForm}) => {
+const ArtistForm = ({setNewArtistForm, setArtists, artists, setExistingArtist}) => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
 
   const artistDataSubmitHandler = async (e) => {
     e.preventDefault();
+    e.stopPropagation()
     const data = new FormData();
 
     data.append('name', name);
     data.append('image', image);
 
     // const artist = await createArtist(data);
-    const artist = await editArtist(data, 30);
+    const artist = await createArtist(data);
+    if (!artist.errors) {
+      setArtists([...artists, artist])
+      setExistingArtist(artist.id)
+    } else {
+      setErrors(artist.errors)
+      return
+    }
+    setNewArtistForm(false)
 
     // const song = await editSong(data, 6);
     // if (!song.errors) {
@@ -74,8 +83,8 @@ const ArtistForm = ({setNewArtistForm}) => {
           <div className="artist-form-inputs">
             <div className="artist-form-header">Create Artist</div>
             <div>
-              {errors.map((error) => (
-                <div>{error}</div>
+              {errors.map((error, i) => (
+                <div key={i} className="artist-form-errors">{error}</div>
               ))}
             </div>
               <label htmlFor="name">Name</label>

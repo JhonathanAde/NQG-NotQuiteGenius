@@ -6,4 +6,4 @@ from flask_wtf.file import FileAllowed
 
 class ArtistForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    image = FileField('Artist image', validators=[FileAllowed(['jpg', 'jpeg', 'png'], 'jpg and png only!')])
+    image = FileField('Artist image', validators=[FileAllowed(['jpg', 'jpeg', 'png'], 'jpg and png only!'), DataRequired()])

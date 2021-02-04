@@ -44,6 +44,15 @@
     font-size: 40px;
 }
 
+.artist-form-errors {
+    font-family: Raleway,
+    arial,
+    sanserif;
+    font-weight: 700;
+    color: #E561B3;
+    font-size: 20px;
+}
+
 .artist-form-inputs > label{
     color: white;
     margin: 10px;

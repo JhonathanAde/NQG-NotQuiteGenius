@@ -37,15 +37,9 @@ const SongForm = () => {
     progressBar.style.width = "30%"
 
     if(!existingArtist) {
-      const artistData = new FormData()
-      artistData.append('name', newArtist)
-      artistData.append('image', image)
-
-      const artist = await createArtist(artistData);
-
-      artistId = artist.id
+      setErrors([...errors,"must select an Artist"])
     } else {
-      artistId = existingArtist
+      artistId = existingArtist.id
     }
 
     progressBar.style.width = "60%"
@@ -86,13 +80,13 @@ const SongForm = () => {
 
   const updateArtistId = (e) => {
     setExistingArtist(e.target.value);
-    setNewArtist("")
+    // setNewArtist("")
   };
 
-  const updateNewArtist = (e) => {
-    setNewArtist(e.target.value)
-    setExistingArtist("");
-  };
+  // const updateNewArtist = (e) => {
+  //   setNewArtist(e.target.value)
+  //   setExistingArtist("");
+  // };
 
   const updateLyrics = (e) => {
     setLyrics(e.target.value);
@@ -172,13 +166,14 @@ const SongForm = () => {
           <label htmlFor="title">Select Artist</label>
             <div className="form-input">
               <select
+                id = "artist-selector"
                 name="artist_id"
                 type="text"
                 placeholder="Artist"
                 value={existingArtist}
                 onChange={updateArtistId}
               >
-                <option value={null}>Choose an Artist</option>
+                <option value={existingArtist.id}>{existingArtist? artists[artists.length-1].name:"Choose an Artist"}</option>
                 {artists &&
                 artists.map((artist, id) => (
                   <option key={artist.id} value={artist.id}>{artist.name}</option>
@@ -188,16 +183,7 @@ const SongForm = () => {
             </div>
             <div className="form-input">-or-</div>
           <button className="form-input" onClick={createNewArtist}>Create New Artist</button>
-                { newArtistForm ? <ArtistForm setNewArtistForm={setNewArtistForm}/> : <></>}
-            {/* <div className="form-input">
-              <input
-                name="artist_id"
-                type="text"
-                placeholder="Artist"
-                value={newArtist}
-                onChange={updateNewArtist}
-              />
-            </div> */}
+          { newArtistForm ? <ArtistForm setNewArtistForm={setNewArtistForm} setArtists={setArtists} artists={artists} setExistingArtist={setExistingArtist}/> : <></>}
           <label htmlFor="image-upload" className="file-upload">
             <div className="file-label">Album Cover</div>
             <input

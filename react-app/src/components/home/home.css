@@ -29,6 +29,7 @@
 }
 
 
+
 .artists-container {
     height: 500px;
     padding-bottom: 20px;
@@ -84,7 +85,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
 }
 
 .song-number {
