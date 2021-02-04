@@ -231,7 +231,7 @@ const Song = ({authenticated, user}) => {
           <div className="songpage-sidelinks">
             <div className="songpage-sticky">
             {(  authenticated &&
-                <h3>{`${user.username}`}&mdash;select non-annotated lyric text to create a new annotation.</h3>
+                <h3>{`${user.username}`}&mdash;higlight non-annotated lyric text to create a new annotation.</h3>
               )
               ||
               <h3>You must login to annotate lyrics.</h3>

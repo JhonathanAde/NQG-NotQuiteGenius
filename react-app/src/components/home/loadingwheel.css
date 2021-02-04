@@ -1,0 +1,36 @@
+.hploading {
+  width: 25rem;
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rem;
+}
+
+#pink-loading{
+  width: 50%;
+  height: 50%;
+  background-color: #E561B3;
+  border-right: 95px solid black;
+  border-radius: 50%;
+  animation: rotateLoad .75s linear infinite;
+  /* animation-name: rotateLoad;
+  animation-duration: 50s;
+  animation-direction: alternate; */
+}
+
+#black-loading {
+  width: 50%;
+  height: 50%;
+  background-color: black;
+}
+
+@keyframes rotateLoad {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
