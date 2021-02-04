@@ -17,6 +17,7 @@ const ArtistForm = ({setNewArtistForm}) => {
 
     // const artist = await createArtist(data);
     const artist = await editArtist(data, 30);
+
     // const song = await editSong(data, 6);
     // if (!song.errors) {
     //   console.log("Submit successful! ", song);
@@ -31,9 +32,39 @@ const ArtistForm = ({setNewArtistForm}) => {
     setName(e.target.value);
   };
 
+  const getAndSetFilePath = (path, id) => {
+    const pathField = document.getElementById(id);
+    if (path) {
+      let segments = path.split('/');
+      if (segments.length === 1) {
+        segments = path.split("\\")
+      }
+      const lastSegment = segments[segments.length - 1];
+      pathField.innerHTML = lastSegment;
+      pathField.setAttribute('title', lastSegment);
+    } else {
+      pathField.innerHTML = "No file";
+    }
+  }
+
   const updateImage = (e) => {
     setImage(e.target.files[0]);
+    getAndSetFilePath(e.target.value, 'image-file-path');
+    console.log('image file', e.target.files[0])
   };
+
+  const handleImageUpdate = (e) => {
+    e.preventDefault();
+    document.getElementById('image-upload').click();
+  }
+
+  const persistLastImageSelection = (e) => {
+    if (image) {
+      const dataTransfer = new ClipboardEvent('').clipboardData || new DataTransfer();
+      dataTransfer.items.add(new File(['album cover'], `${image.name}`));
+      e.target.files = dataTransfer.files;
+    }
+  }
 
 
   return (
@@ -55,18 +86,19 @@ const ArtistForm = ({setNewArtistForm}) => {
                 value={name}
                 onChange={updateName}
               />
-
               <label htmlFor="image-upload" className="file-upload">
-              <div className="file-label">Album Cover</div>
+              <div className="file-label">Artist Image</div>
               <input
                   id="image-upload"
                   className="custom-file-input"
                   name="image-upload"
                   type="file"
+                  onChange={updateImage}
+                  onClick={persistLastImageSelection}
                 />
               <div className="form-input-file">
                 <div id="image-file-path" className="file-path">No file</div>
-                <button className="file-button" type="button" >Upload File</button>
+                <button className="file-button" type="button" onClick={handleImageUpdate}>Upload File</button>
               </div>
             </label>
               <div>
