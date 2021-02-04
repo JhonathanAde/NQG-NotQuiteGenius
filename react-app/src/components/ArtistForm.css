@@ -1,0 +1,64 @@
+.new-artist-form-container {
+    position: fixed;
+    top: 150px;
+    left: 25%;
+    right: 25%;
+    z-index: 5;
+    width: auto;
+    height: auto;
+    background-color: black;
+    border: 5px solid #E561B3;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.new-artist-form-wrapper {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0,0, .5);
+}
+
+.artist-form-inputs {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 2px;
+    padding: 30px;
+}
+
+.artist-form-header {
+    font-family: Raleway,
+        arial,
+        sanserif;
+    font-weight: 700;
+    color: #E561B3;
+    font-size: 40px;
+}
+
+.artist-form-errors {
+    font-family: Raleway,
+    arial,
+    sanserif;
+    font-weight: 700;
+    color: #E561B3;
+    font-size: 20px;
+}
+
+.artist-form-inputs > label{
+    color: white;
+    margin: 10px;
+    font-size: 30px;
+    font-family: Raleway,
+    arial,
+    sanserif,
+    sans-serif;
+}

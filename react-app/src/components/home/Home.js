@@ -19,6 +19,7 @@ const Home = () => {
             setArtists(resArtists.artists)
         })()
     }, []);
+    
 
     return (
         <div className="main-content">
@@ -31,7 +32,7 @@ const Home = () => {
                     <div className="hp-loadsongs">
                         <LoadingWheel className="hp-loadsongs"/>
                     </div>
-                        }
+                    }
             </div>
             <div className="artists-container">
                 <div className="title-artist">TOP ARTISTS</div>

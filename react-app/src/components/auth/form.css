@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     min-width: 400px;
-    width: 40vw;
+    width: auto;
     height: auto;
     background-color: rgba(255,255,255,.4);
     border-radius: 2px;
@@ -90,6 +90,7 @@ button:hover {
 }
 
 .file-path {
+    color: black;
     font-size: 20px;
     font-family: Quattrocento;
     text-overflow: ellipsis;
