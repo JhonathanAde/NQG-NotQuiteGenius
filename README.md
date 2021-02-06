@@ -2,6 +2,8 @@
 
 Not Quite Genius is a one stop source for lyrics to your favorite songs.  
 
+![](nqg.gif)
+
 
 ## Getting Started
 

@@ -40,20 +40,36 @@
     min-width: 900px;
     display: flex;
     position: absolute;
+    height: 30%;
     margin-left: 60px;
     bottom: 5px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.developers > p{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size:20px;
+    margin: 10px;
 }
 
-.developers > a {
+.developers > p > a {
+    padding: 0;
+    padding-top: 4px;
+    margin: 2px;
     display: block;
-    margin: 15px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none;  
+
 }
 
-.developers > a:hover {
+
+.developers > p > a:hover {
     color: #55BCC4;
 }
 .phone-icon {
